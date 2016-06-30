@@ -1,3 +1,4 @@
+/* ini comment */
 echo "# mydotfiles" >> README.md
 git init
 git add README.md
