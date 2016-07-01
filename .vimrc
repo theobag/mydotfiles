@@ -116,7 +116,6 @@ set history=200
 set backup
 set backupdir=~/.vim/backup
 set directory=~/.vim/tmp
-set sessionoptions-=options                         " don't save options :mksession
 " ----------------------------------------------------------------------------------------
 let mapleader = "\<Space>"
 " ----------------------------------------------------------------------------------------
@@ -129,7 +128,7 @@ inoremap jj <Esc>
 noremap Y y$
 " highlight last inserted text
 nnoremap gV `[v`]
-" Go to position of last edit. Mnem: 'Go to Edit'
+" go to position of last edit. mean: 'go to edit'
 nnoremap ge `.
 " ----------------------------------------------------------------------------------------
 " type the leader++
@@ -153,8 +152,6 @@ nnoremap <Leader>k <c-w>k
 nnoremap <Leader>l <c-w>l
 " visual mode with leader twice
 nnoremap <Leader><Leader> V
-" vim mksession
-nnoremap <Leader>ss :mksession!<CR>
 " syntastic shortcut
 nnoremap <Leader>so :Errors<CR>
 nnoremap <Leader>sl :lclose<CR>
