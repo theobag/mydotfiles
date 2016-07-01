@@ -96,6 +96,7 @@ set noswapfile	                                    " disable swap to prevent ann
 set autochdir                                       " auto directory
 set autowrite                                       " Automatically save before commands like :next and :make
 set autoread                                        " set to auto read when file is changed from outside
+set complete-=i
 set completeopt=menu,menuone                        " clang_complete without preview
 set pumheight=20                                    " limit popup menu height (supertab)
 set nohidden                                        " when i close tab, remove the buffer
