@@ -189,9 +189,9 @@ nnoremap k gk
 vnoremap j gj
 vnoremap k gk
 " Move cursor together with the screen
-noremap <c-j> j<c-e>
-noremap <c-k> k<c-y>
-" switch buffer using ctrl j & k
+nnoremap <c-j> j<c-e>
+nnoremap <c-k> k<c-y>
+" switch buffer using ctrl h & l
 nnoremap <C-h> :bprev<CR>
 nnoremap <C-l> :bnext<CR>
 " shift + l/h switch between tabs
