@@ -188,6 +188,9 @@ nnoremap j gj
 nnoremap k gk
 vnoremap j gj
 vnoremap k gk
+" Move cursor together with the screen
+noremap <c-j> j<c-e>
+noremap <c-k> k<c-y>
 " switch buffer using ctrl j & k
 nnoremap <C-h> :bprev<CR>
 nnoremap <C-l> :bnext<CR>
@@ -199,6 +202,9 @@ cnoremap <c-l> <right>
 cnoremap <c-h> <left>
 cnoremap <c-k> <S-Right>
 cnoremap <c-j> <S-Left>
+" Center screen on next/previous selection.
+nnoremap n nzz
+nnoremap N Nzz
 " ----------------------------------------------------------------------------------------
 " stop autocomment on nextline
 inoremap <expr> <enter> getline('.') =~ '^\s*//' ? '<enter><esc>S' : '<enter>'
@@ -208,6 +214,9 @@ nnoremap <expr> o getline('.') =~ '^\s*//' ? 'o<esc>S' : 'o'
 " Use j/k to start, then scroll through autocomplete options
 inoremap <expr> <C-j> ((pumvisible())?("\<C-n>"):("\<C-x><c-n>"))
 inoremap <expr> <C-k> ((pumvisible())?("\<C-p>"):("\<C-x><c-k>"))
+" ----------------------------------------------------------------------------------------
+" Remove any trailing whitespace that is in the file
+autocmd BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
 " ----------------------------------------------------------------------------------------
 " nerdtree & tagbar
 nnoremap <C-n> :NERDTreeToggle<CR>
