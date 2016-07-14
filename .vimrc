@@ -119,9 +119,6 @@ set directory=~/.vim/tmp
 " ----------------------------------------------------------------------------------------
 let mapleader = "\<Space>"
 " ----------------------------------------------------------------------------------------
-" ; == : in normal mode
-noremap ; :
-noremap , ;
 " jj == esc
 inoremap jj <Esc>
 " make Y yank to end of line (like D, or C)
@@ -130,6 +127,13 @@ noremap Y y$
 nnoremap gV `[v`]
 " go to position of last edit. mean: 'go to edit'
 nnoremap ge `.
+" ; == : in normal mode
+noremap ; :
+noremap , ;
+" i can paste multiple lines multiple times with simple ppppp
+vnoremap <silent> y y`]
+vnoremap <silent> p p`]
+nnoremap <silent> p p`]
 " ----------------------------------------------------------------------------------------
 " type the leader++
 nnoremap <Leader>w :w<CR>
@@ -140,11 +144,11 @@ nnoremap <Leader>n :q!<CR>
 nnoremap <Leader>b :bd<CR>
 nnoremap <Leader>m :bd!<CR>
 nnoremap <Leader>t :Texplore<CR>
-nnoremap <Leader>e :tabedit
+nnoremap <Leader>e :tabedit<space>
 nnoremap <Leader>o :tabonly<CR>
 nnoremap <Leader>+ :tabm+<CR>
 nnoremap <Leader>- :tabm-<CR>
-nnoremap <Leader>! :au! BufWritePost
+nnoremap <Leader>! :au! BufWritePost<space>
 " use leader h/j/k/l to switch between split
 nnoremap <Leader>h <c-w>h
 nnoremap <Leader>j <c-w>j
@@ -183,28 +187,28 @@ noremap <CR> G
 " move the beginning/end of line
 noremap B ^
 noremap E $
+" center screen on next/previous selection.
+nnoremap n nzz
+nnoremap N Nzz
 " j == gj
 nnoremap j gj
 nnoremap k gk
 vnoremap j gj
 vnoremap k gk
-" Move cursor together with the screen
-nnoremap <c-j> j<c-e>
-nnoremap <c-k> k<c-y>
-" switch buffer using ctrl h & l
-nnoremap <C-h> :bprev<CR>
-nnoremap <C-l> :bnext<CR>
+" move cursor together with the screen
+nnoremap <C-j> j<c-e>
+nnoremap <C-k> k<c-y>
 " shift + l/h switch between tabs
 nnoremap <S-l> gt
 nnoremap <S-h> gT
+" switch buffer using ctrl h & l
+nnoremap <C-h> :bprev<CR>
+nnoremap <C-l> :bnext<CR>
 " moving around in command mode
-cnoremap <c-l> <right>
-cnoremap <c-h> <left>
-cnoremap <c-k> <S-Right>
-cnoremap <c-j> <S-Left>
-" Center screen on next/previous selection.
-nnoremap n nzz
-nnoremap N Nzz
+cnoremap <C-l> <right>
+cnoremap <C-h> <left>
+cnoremap <C-k> <S-Right>
+cnoremap <C-j> <S-Left>
 " ----------------------------------------------------------------------------------------
 " stop autocomment on nextline
 inoremap <expr> <enter> getline('.') =~ '^\s*//' ? '<enter><esc>S' : '<enter>'
@@ -217,6 +221,17 @@ inoremap <expr> <C-k> ((pumvisible())?("\<C-p>"):("\<C-x><c-k>"))
 " ----------------------------------------------------------------------------------------
 " Remove any trailing whitespace that is in the file
 autocmd BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
+" ----------------------------------------------------------------------------------------
+" vp doesn't replace paste buffer
+function! RestoreRegister()
+  let @" = s:restore_reg
+  return ''
+endfunction
+function! s:Repl()
+  let s:restore_reg = @"
+  return "p@=RestoreRegister()\<cr>"
+endfunction
+vmap <silent> <expr> p <sid>Repl()
 " ----------------------------------------------------------------------------------------
 " nerdtree & tagbar
 nnoremap <C-n> :NERDTreeToggle<CR>
