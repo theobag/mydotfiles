@@ -194,9 +194,6 @@ nnoremap <C-k> k<c-y>
 " shift + l/h switch between tabs
 nnoremap <S-l> gt
 nnoremap <S-h> gT
-" switch buffer using ctrl h & l
-nnoremap <C-h> :bprev<CR>
-nnoremap <C-l> :bnext<CR>
 " moving around in command mode
 cnoremap <C-l> <right>
 cnoremap <C-h> <left>
