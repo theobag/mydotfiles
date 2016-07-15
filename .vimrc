@@ -9,7 +9,6 @@ Plugin 'sjl/badwolf'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'bling/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'scrooloose/nerdtree'
 Plugin 'majutsushi/tagbar'                          " sudo apt install exuberant-ctags
 Plugin 'rip-rip/clang_complete'                     " sudo apt install clang
 Plugin 'ervandew/supertab'	                        " <c+v>+tab for real tab
@@ -65,12 +64,6 @@ let g:airline_enable_syntastic=1
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
-" ----------------------------------------------------------------------------------------
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-let g:NERDTreeDirArrowExpandable = '▸'
-let g:NERDTreeDirArrowCollapsible = '▾'
 " ----------------------------------------------------------------------------------------
 set enc=utf-8
 set fenc=utf-8
@@ -233,8 +226,7 @@ function! s:Repl()
 endfunction
 vmap <silent> <expr> p <sid>Repl()
 " ----------------------------------------------------------------------------------------
-" nerdtree & tagbar
-nnoremap <C-n> :NERDTreeToggle<CR>
+" tagbar
 nnoremap <F8> :TagbarToggle<CR>
 " ----------------------------------------------------------------------------------------
 let g:clang_use_library = 1
