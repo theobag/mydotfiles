@@ -65,6 +65,8 @@ if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
 " ----------------------------------------------------------------------------------------
+let g:netrw_liststyle = 2
+" ----------------------------------------------------------------------------------------
 set enc=utf-8
 set fenc=utf-8
 set termencoding=utf-8
