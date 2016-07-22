@@ -228,6 +228,8 @@ vmap <silent> <expr> p <sid>Repl()
 " tagbar
 nnoremap <F8> :TagbarToggle<CR>
 " ----------------------------------------------------------------------------------------
+set conceallevel=2
+set concealcursor=vin
 let g:clang_use_library = 1
 let g:clang_library_path ='/usr/lib/x86_64-linux-gnu/libclang-3.8.so.1'
 let g:clang_close_preview = 1
