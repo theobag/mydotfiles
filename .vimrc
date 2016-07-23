@@ -42,6 +42,7 @@ set cmdheight=1                                     " make the command line 1 li
 set number
 set ruler                                           " show the line number on the bar
 set nowrap                                          " dont wrap lines by default
+set secure                                          " limit what modelines and autocmds can do
 set cursorline
 set cursorcolumn
 hi cursorlinenr ctermfg=blue
@@ -124,7 +125,7 @@ nnoremap ge `.
 " ; == : in normal mode
 noremap ; :
 noremap , ;
-" i can paste multiple lines multiple times with simple ppppp
+" paste multiple lines multiple times with simple ppppp
 vnoremap <silent> y y`]
 vnoremap <silent> p p`]
 nnoremap <silent> p p`]
@@ -201,17 +202,20 @@ cnoremap <C-h> <left>
 cnoremap <C-k> <S-Right>
 cnoremap <C-j> <S-Left>
 " ----------------------------------------------------------------------------------------
+" tagbar
+nnoremap <F8> :TagbarToggle<CR>
+" ----------------------------------------------------------------------------------------
+" remove any trailing whitespace that is in the file
+autocmd BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
+" ----------------------------------------------------------------------------------------
+" use j/k to start, then scroll through autocomplete options
+inoremap <expr> <C-j> ((pumvisible())?("\<C-n>"):("\<C-x><c-n>"))
+inoremap <expr> <C-k> ((pumvisible())?("\<C-p>"):("\<C-x><c-k>"))
+" ----------------------------------------------------------------------------------------
 " stop autocomment on nextline
 inoremap <expr> <enter> getline('.') =~ '^\s*//' ? '<enter><esc>S' : '<enter>'
 nnoremap <expr> O getline('.') =~ '^\s*//' ? 'O<esc>S' : 'O'
 nnoremap <expr> o getline('.') =~ '^\s*//' ? 'o<esc>S' : 'o'
-" ----------------------------------------------------------------------------------------
-" Use j/k to start, then scroll through autocomplete options
-inoremap <expr> <C-j> ((pumvisible())?("\<C-n>"):("\<C-x><c-n>"))
-inoremap <expr> <C-k> ((pumvisible())?("\<C-p>"):("\<C-x><c-k>"))
-" ----------------------------------------------------------------------------------------
-" Remove any trailing whitespace that is in the file
-autocmd BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
 " ----------------------------------------------------------------------------------------
 " vp doesn't replace paste buffer
 function! RestoreRegister()
@@ -223,9 +227,6 @@ function! s:Repl()
   return "p@=RestoreRegister()\<cr>"
 endfunction
 vmap <silent> <expr> p <sid>Repl()
-" ----------------------------------------------------------------------------------------
-" tagbar
-nnoremap <F8> :TagbarToggle<CR>
 " ----------------------------------------------------------------------------------------
 let g:clang_use_library = 1
 let g:clang_library_path ='/usr/lib/x86_64-linux-gnu/libclang-3.8.so.1'
