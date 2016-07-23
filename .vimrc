@@ -97,7 +97,6 @@ set pumheight=20                                    " limit popup menu height (s
 set nohidden                                        " when i close tab, remove the buffer
 set ttyfast                                         " smoother changer
 set wildmenu
-set wildmode=list:longest,full                      " tab completion with list
 set wildignore=*.o,*~,*.pyc
 set lazyredraw                                      " don't update while executing macros
 set title                                           " show title in console title bar
