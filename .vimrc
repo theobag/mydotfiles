@@ -53,7 +53,7 @@ let g:airline_theme='hybrid'
 let g:airline_section_c=""
 let g:airline_section_x=""
 let g:airline_section_b="%f"
-let g:airline_section_y="%Y"
+let g:airline_section_y=""
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#tabline#left_sep = ''
@@ -244,7 +244,7 @@ let g:clang_user_options = '|| exit 0'
 highlight SyntasticError guibg=#2f0000
 " ----------------------------------------------------------------------------------------
 let g:SuperTabDefaultCompletionType = "context"
-let g:SuperTabContextDefaultCompletionType = "<c-n>"
+let g:SuperTabContextDefaultCompletionType = "<c-p>"
 let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
 let g:SuperTabLongestEnhanced = 1
 let g:SuperTabNoCompleteAfter = ['^', ',', '\s']
