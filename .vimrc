@@ -228,28 +228,26 @@ function! s:Repl()
 endfunction
 vmap <silent> <expr> p <sid>Repl()
 " ----------------------------------------------------------------------------------------
+let g:SuperTabDefaultCompletionType = "context"
+let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
+let g:SuperTabNoCompleteAfter = ['^', ',', '\s']
+let g:SuperTabCrMapping = 1                         " no newline on supertab
+let g:SuperTabClosePreviewOnPopupClose = 1          " autoclose popup
+runtime! plugin/supertab.vim                        " real tabs with shift+tab
+inoremap <s-tab> <tab>
+" ----------------------------------------------------------------------------------------
+highlight SyntasticError guibg=#2f0000
+" ----------------------------------------------------------------------------------------
 let g:clang_use_library = 1
 let g:clang_library_path ='/usr/lib/x86_64-linux-gnu/libclang-3.8.so.1'
 let g:clang_close_preview = 1
 let g:clang_complete_copen = 1
 let g:clang_complete_auto = 1
-let g:clang_auto_select = 1                         " automatically select the first entry in the popup menu
+let g:clang_auto_select = 1                         " auto select the first entry in the popup menu
 let g:clang_trailing_placeholder = 1
 let g:clang_complete_macros = 1
 let g:clang_complete_patterns = 1
 let g:clang_snippets = 1
 let g:clang_snippets_engine = 'clang_complete'
 let g:clang_user_options = '|| exit 0'
-" ----------------------------------------------------------------------------------------
-highlight SyntasticError guibg=#2f0000
-" ----------------------------------------------------------------------------------------
-let g:SuperTabDefaultCompletionType = "context"
-let g:SuperTabContextDefaultCompletionType = "<c-p>"
-let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
-let g:SuperTabLongestEnhanced = 1
-let g:SuperTabNoCompleteAfter = ['^', ',', '\s']
-let g:SuperTabCrMapping = 1                         " no newline on supertab
-let g:SuperTabClosePreviewOnPopupClose = 1          " autoclose popup
-runtime! plugin/supertab.vim                        " real tabs with shift+tab
-inoremap <s-tab> <tab>
 " ----------------------------------------------------------------------------------------
