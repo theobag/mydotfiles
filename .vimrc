@@ -250,4 +250,6 @@ let g:SuperTabLongestEnhanced = 1
 let g:SuperTabNoCompleteAfter = ['^', ',', '\s']
 let g:SuperTabCrMapping = 1                         " no newline on supertab
 let g:SuperTabClosePreviewOnPopupClose = 1          " autoclose popup
+runtime! plugin/supertab.vim                        " real tabs with shift+tab
+inoremap <s-tab> <tab>
 " ----------------------------------------------------------------------------------------
