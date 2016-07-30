@@ -181,7 +181,7 @@ inoremap <C-@> <Esc>`^
 noremap <CR> G
 " move the beginning/end of line
 noremap B ^
-noremap E $
+noremap E g_
 " center screen on next/previous selection.
 nnoremap n nzz
 nnoremap N Nzz
