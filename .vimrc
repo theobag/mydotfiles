@@ -11,8 +11,8 @@ Plugin 'bling/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'majutsushi/tagbar'                          " sudo apt install exuberant-ctags
 Plugin 'rip-rip/clang_complete'                     " sudo apt install clang
-Plugin 'ervandew/supertab'	                        " <c+v>+tab for real tab
-Plugin 'jiangmiao/auto-pairs'
+Plugin 'ervandew/supertab'	                        " c-v+tab for real tab
+Plugin 'jiangmiao/auto-pairs'                       " c-v+pair for real pair
 Plugin 'scrooloose/syntastic'
 Plugin 'darfink/starsearch.vim'                     " dont jump next on star search
 Plugin 'ReplaceWithRegister'                        " gr and motion
@@ -20,7 +20,7 @@ Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'kana/vim-textobj-user'
 Plugin 'kana/vim-textobj-entire'                    " motion plus ae or ie to select entire
 Plugin 'tpope/vim-unimpaired'                       " [ maps and stuff
-Plugin 'tpope/vim-capslock'                         " insert: <c-l> or <c-g>c, normal: gC
+Plugin 'tpope/vim-capslock'                         " insert: c-l or c-g+c, normal: gC
 Plugin 'tpope/vim-eunuch'                           " bash commands
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
@@ -194,9 +194,9 @@ vnoremap k gk
 " move cursor together with the screen
 nnoremap <C-j> j<c-e>
 nnoremap <C-k> k<c-y>
-" shift + l/h switch between tabs
-nnoremap <S-l> gt
-nnoremap <S-h> gT
+" ctrl + l/h switch between tabs
+nnoremap <C-l> gt
+nnoremap <C-h> gT
 " moving around in command mode
 cnoremap <C-l> <right>
 cnoremap <C-h> <left>
@@ -218,7 +218,7 @@ inoremap <expr> <enter> getline('.') =~ '^\s*//' ? '<enter><esc>S' : '<enter>'
 nnoremap <expr> O getline('.') =~ '^\s*//' ? 'O<esc>S' : 'O'
 nnoremap <expr> o getline('.') =~ '^\s*//' ? 'o<esc>S' : 'o'
 " ----------------------------------------------------------------------------------------
-"  active alt
+" activate alt
 for i in range(65,90) + range(97,122)
     let c = nr2char(i)
     exec "map \e".c." <M-".c.">"
