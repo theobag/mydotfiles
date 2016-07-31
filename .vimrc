@@ -12,8 +12,9 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'majutsushi/tagbar'                          " sudo apt install exuberant-ctags
 Plugin 'rip-rip/clang_complete'                     " sudo apt install clang
 Plugin 'ervandew/supertab'	                        " <c+v>+tab for real tab
+Plugin 'jiangmiao/auto-pairs'
 Plugin 'scrooloose/syntastic'
-Plugin 'raimondi/delimitmate'                       " jump: <c-g>g or just repeat the action
+Plugin 'darfink/starsearch.vim'                     " dont jump next on star search
 Plugin 'ReplaceWithRegister'                        " gr and motion
 Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'kana/vim-textobj-user'
@@ -237,6 +238,8 @@ runtime! plugin/supertab.vim                        " real tabs with shift+tab
 inoremap <s-tab> <tab>
 " ----------------------------------------------------------------------------------------
 highlight SyntasticError guibg=#2f0000
+" ----------------------------------------------------------------------------------------
+let g:AutoPairsFlyMode = 1                          " fly to last pair
 " ----------------------------------------------------------------------------------------
 let g:clang_use_library = 1
 let g:clang_library_path ='/usr/lib/x86_64-linux-gnu/libclang-3.8.so.1'
