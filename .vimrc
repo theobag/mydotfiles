@@ -11,8 +11,8 @@ Plugin 'bling/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'majutsushi/tagbar'                          " sudo apt install exuberant-ctags
 Plugin 'rip-rip/clang_complete'                     " sudo apt install clang
-Plugin 'ervandew/supertab'	                        " c-v+tab for real tab
 Plugin 'jiangmiao/auto-pairs'                       " c-v+pair for real pair
+Plugin 'ervandew/supertab'	                        " c-v+tab for real tab
 Plugin 'scrooloose/syntastic'
 Plugin 'darfink/starsearch.vim'                     " dont jump next on star search
 Plugin 'ReplaceWithRegister'                        " gr and motion
@@ -35,7 +35,6 @@ colorscheme badwolf
 let g:badwolf_tabline = 0
 let g:badwolf_darkgutter = 1
 set laststatus=2
-set showtabline=2
 set tabpagemax=50	                                " allow for up to 50 opened tabs on vim start
 set modeline
 set showcmd                                         " this shows what you are typing as a command
@@ -246,18 +245,14 @@ inoremap <s-tab> <tab>
 " ----------------------------------------------------------------------------------------
 highlight SyntasticError guibg=#2f0000
 " ----------------------------------------------------------------------------------------
-let g:AutoPairsFlyMode = 1                          " fly to last pair
-" ----------------------------------------------------------------------------------------
 let g:clang_use_library = 1
 let g:clang_library_path ='/usr/lib/x86_64-linux-gnu/libclang-3.8.so.1'
 let g:clang_close_preview = 1
 let g:clang_complete_copen = 1
-let g:clang_complete_auto = 1
-let g:clang_auto_select = 1                         " auto select the first entry in the popup menu
+let g:clang_auto_select = 2                         " auto select the first entry in the popup menu
 let g:clang_trailing_placeholder = 1
 let g:clang_complete_macros = 1
 let g:clang_complete_patterns = 1
 let g:clang_snippets = 1
-let g:clang_snippets_engine = 'clang_complete'
 let g:clang_user_options = '|| exit 0'
 " ----------------------------------------------------------------------------------------
