@@ -217,8 +217,9 @@ inoremap <expr> <enter> getline('.') =~ '^\s*//' ? '<enter><esc>S' : '<enter>'
 nnoremap <expr> O getline('.') =~ '^\s*//' ? 'O<esc>S' : 'O'
 nnoremap <expr> o getline('.') =~ '^\s*//' ? 'o<esc>S' : 'o'
 " ----------------------------------------------------------------------------------------
-" auto indent delimitmate after enter
+" auto indent delimitmate after enter and expand with space
 imap <expr> <CR> pumvisible() ? "\<c-y>" : "<Plug>delimitMateCR"
+let delimitMate_expand_space = 1
 " ----------------------------------------------------------------------------------------
 " activate alt
 for i in range(65,90) + range(97,122)
