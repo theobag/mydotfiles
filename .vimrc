@@ -205,9 +205,6 @@ cnoremap <C-j> <S-Left>
 " tagbar
 nnoremap <F8> :TagbarToggle<CR>
 " ----------------------------------------------------------------------------------------
-" auto indent delimitmate after enter
-imap <expr> <CR> pumvisible() ? "\<c-y>" : "<Plug>delimitMateCR"
-" ----------------------------------------------------------------------------------------
 " remove any trailing whitespace that is in the file
 autocmd BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
 " ----------------------------------------------------------------------------------------
@@ -219,6 +216,9 @@ inoremap <expr> <C-k> ((pumvisible())?("\<C-p>"):("\<C-x><c-k>"))
 inoremap <expr> <enter> getline('.') =~ '^\s*//' ? '<enter><esc>S' : '<enter>'
 nnoremap <expr> O getline('.') =~ '^\s*//' ? 'O<esc>S' : 'O'
 nnoremap <expr> o getline('.') =~ '^\s*//' ? 'o<esc>S' : 'o'
+" ----------------------------------------------------------------------------------------
+" auto indent delimitmate after enter
+imap <expr> <CR> pumvisible() ? "\<c-y>" : "<Plug>delimitMateCR"
 " ----------------------------------------------------------------------------------------
 " activate alt
 for i in range(65,90) + range(97,122)
