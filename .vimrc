@@ -11,12 +11,11 @@ Plugin 'bling/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'majutsushi/tagbar'                          " sudo apt install exuberant-ctags
 Plugin 'rip-rip/clang_complete'                     " sudo apt install clang
-Plugin 'jiangmiao/auto-pairs'                       " c-v+pair for real pair
+Plugin 'raimondi/delimitmate'                       " jump: <c-g>g or just repeat the action
 Plugin 'ervandew/supertab'	                        " c-v+tab for real tab
 Plugin 'scrooloose/syntastic'
 Plugin 'darfink/starsearch.vim'                     " dont jump next on star search
 Plugin 'ReplaceWithRegister'                        " gr and motion
-Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'kana/vim-textobj-user'
 Plugin 'kana/vim-textobj-entire'                    " motion plus ae or ie to select entire
 Plugin 'tpope/vim-unimpaired'                       " [ maps and stuff
@@ -25,6 +24,7 @@ Plugin 'tpope/vim-eunuch'                           " bash commands
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-commentary'	                    " gc + motion or line == gcc
+Plugin 'bronson/vim-trailing-whitespace'
 call vundle#end()             " required
 filetype plugin indent on     " required
 
@@ -204,6 +204,9 @@ cnoremap <C-j> <S-Left>
 " ----------------------------------------------------------------------------------------
 " tagbar
 nnoremap <F8> :TagbarToggle<CR>
+" ----------------------------------------------------------------------------------------
+" auto indent delimitmate after enter
+imap <expr> <CR> pumvisible() ? "\<c-y>" : "<Plug>delimitMateCR"
 " ----------------------------------------------------------------------------------------
 " remove any trailing whitespace that is in the file
 autocmd BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
