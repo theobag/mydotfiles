@@ -6,9 +6,9 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'sjl/badwolf'
-Plugin 'sheerun/vim-polyglot'
 Plugin 'bling/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'sheerun/vim-polyglot'
 Plugin 'majutsushi/tagbar'                          " sudo apt install exuberant-ctags
 Plugin 'rip-rip/clang_complete'                     " sudo apt install clang
 Plugin 'raimondi/delimitmate'                       " jump: <c-g>g or just repeat the action
@@ -24,21 +24,17 @@ Plugin 'tpope/vim-eunuch'                           " bash commands
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-commentary'	                    " gc + motion or line == gcc
-Plugin 'bronson/vim-trailing-whitespace'
 call vundle#end()             " required
 filetype plugin indent on     " required
 
-set background=dark
 set t_Co=256
 syntax enable
 colorscheme badwolf
 let g:badwolf_tabline = 0
 let g:badwolf_darkgutter = 1
 set laststatus=2
-set tabpagemax=50	                                " allow for up to 50 opened tabs on vim start
 set modeline
 set showcmd                                         " this shows what you are typing as a command
-set cmdheight=1                                     " make the command line 1 line high
 set number
 set ruler                                           " show the line number on the bar
 set nowrap                                          " dont wrap lines by default
@@ -83,7 +79,6 @@ set shiftwidth=4
 set expandtab
 set smarttab
 set textwidth=120
-set backspace=2                                     " make backspace work like most other apps
 set backspace=indent,eol,start
 set showmatch
 set comments=sl:/*,mb:\ *,elx:\ */
@@ -253,9 +248,5 @@ let g:clang_library_path ='/usr/lib/x86_64-linux-gnu/libclang-3.8.so.1'
 let g:clang_close_preview = 1
 let g:clang_complete_copen = 1
 let g:clang_auto_select = 2                         " auto select the first entry in the popup menu
-let g:clang_trailing_placeholder = 1
-let g:clang_complete_macros = 1
-let g:clang_complete_patterns = 1
-let g:clang_snippets = 1
 let g:clang_user_options = '|| exit 0'
 " ----------------------------------------------------------------------------------------
