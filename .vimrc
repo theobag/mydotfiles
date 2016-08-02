@@ -109,17 +109,17 @@ set directory=~/.vim/tmp
 " ----------------------------------------------------------------------------------------
 let mapleader = "\<Space>"
 " ----------------------------------------------------------------------------------------
-" jj == esc
-inoremap jj <Esc>
+" ; == : in normal mode
+noremap ; :
+noremap , ;
 " make Y yank to end of line (like D, or C)
 noremap Y y$
+" jj == esc
+inoremap jj <Esc>
 " highlight last inserted text
 nnoremap gV `[v`]
 " go to position of last edit. mean: 'go to edit'
 nnoremap ge `.
-" ; == : in normal mode
-noremap ; :
-noremap , ;
 " paste multiple lines multiple times with simple ppppp
 vnoremap <silent> y y`]
 vnoremap <silent> p p`]
@@ -214,6 +214,12 @@ nnoremap <expr> o getline('.') =~ '^\s*//' ? 'o<esc>S' : 'o'
 " auto indent delimitmate after enter and expand with space
 imap <expr> <CR> pumvisible() ? "\<c-y>" : "<Plug>delimitMateCR"
 let delimitMate_expand_space = 1
+" ----------------------------------------------------------------------------------------
+" by default, vim assumes all .h files to be C++ files
+augroup project
+    autocmd!
+    autocmd BufRead,BufNewFile *.h,*.c set filetype=c.doxygen
+augroup END
 " ----------------------------------------------------------------------------------------
 " activate alt
 for i in range(65,90) + range(97,122)
