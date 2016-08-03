@@ -32,13 +32,11 @@ syntax enable
 colorscheme badwolf
 let g:badwolf_tabline = 0
 let g:badwolf_darkgutter = 1
-set laststatus=2
 set modeline
-set showcmd                                         " this shows what you are typing as a command
+set secure                                          " limit what modelines and autocmds can do
+set laststatus=2
 set number
 set ruler                                           " show the line number on the bar
-set nowrap                                          " dont wrap lines by default
-set secure                                          " limit what modelines and autocmds can do
 set cursorline
 set cursorcolumn
 hi cursorlinenr ctermfg=blue
@@ -69,7 +67,6 @@ set fenc=utf-8
 set termencoding=utf-8
 set timeoutlen=800
 set ttimeoutlen=50
-set noshowmode
 set autoindent
 set cindent
 set smartindent
@@ -83,6 +80,11 @@ set backspace=indent,eol,start
 set showmatch
 set comments=sl:/*,mb:\ *,elx:\ */
 set omnifunc=syntaxcomplete#Complete
+set wildmenu
+set wildignore=*.o,*~,*.pyc
+set showcmd                                         " this shows what you are typing as a command
+set noshowmode                                      " hide insert status
+set nowrap                                          " dont wrap lines by default
 set noswapfile	                                    " disable swap to prevent annoying messages
 set autochdir                                       " auto directory
 set autowrite                                       " Automatically save before commands like :next and :make
@@ -92,8 +94,6 @@ set completeopt=menu,menuone                        " clang_complete without pre
 set pumheight=20                                    " limit popup menu height (supertab)
 set nohidden                                        " when i close tab, remove the buffer
 set ttyfast                                         " smoother changer
-set wildmenu
-set wildignore=*.o,*~,*.pyc
 set lazyredraw                                      " don't update while executing macros
 set title                                           " show title in console title bar
 set titlestring=%t                                  " only title not PATH
@@ -253,6 +253,6 @@ let g:clang_use_library = 1
 let g:clang_library_path ='/usr/lib/x86_64-linux-gnu/libclang-3.8.so.1'
 let g:clang_close_preview = 1
 let g:clang_complete_copen = 1
-let g:clang_auto_select = 2                         " auto select the first entry in the popup menu
+let g:clang_auto_select = 1                         " auto select the first entry in the popup menu
 let g:clang_user_options = '|| exit 0'
 " ----------------------------------------------------------------------------------------
