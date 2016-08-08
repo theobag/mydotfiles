@@ -31,7 +31,6 @@ set t_Co=256
 syntax enable
 colorscheme badwolf
 let g:badwolf_tabline = 0
-let g:badwolf_darkgutter = 1
 set modeline
 set secure                                          " limit what modelines and autocmds can do
 set laststatus=2
@@ -39,7 +38,6 @@ set number
 set ruler                                           " show the line number on the bar
 set cursorline
 set cursorcolumn
-hi cursorlinenr ctermfg=blue
 hi cursorline cterm=NONE ctermbg=234 ctermfg=NONE
 hi cursorcolumn cterm=NONE ctermbg=234 ctermfg=NONE
 " ----------------------------------------------------------------------------------------
@@ -249,10 +247,9 @@ inoremap <s-tab> <tab>
 " ----------------------------------------------------------------------------------------
 highlight SyntasticError guibg=#2f0000
 " ----------------------------------------------------------------------------------------
-let g:clang_use_library = 1
 let g:clang_library_path ='/usr/lib/x86_64-linux-gnu/libclang-3.8.so.1'
 let g:clang_close_preview = 1
 let g:clang_complete_copen = 1
-let g:clang_auto_select = 1                         " auto select the first entry in the popup menu
+let g:clang_auto_select = 2                         " auto select the first entry in the popup menu
 let g:clang_user_options = '|| exit 0'
 " ----------------------------------------------------------------------------------------
