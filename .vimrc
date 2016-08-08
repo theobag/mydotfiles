@@ -249,7 +249,5 @@ highlight SyntasticError guibg=#2f0000
 " ----------------------------------------------------------------------------------------
 let g:clang_library_path ='/usr/lib/x86_64-linux-gnu/libclang-3.8.so.1'
 let g:clang_close_preview = 1
-let g:clang_complete_copen = 1
-let g:clang_auto_select = 2                         " auto select the first entry in the popup menu
 let g:clang_user_options = '|| exit 0'
 " ----------------------------------------------------------------------------------------
