@@ -11,7 +11,7 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'majutsushi/tagbar'                          " sudo apt install exuberant-ctags
 Plugin 'rip-rip/clang_complete'                     " sudo apt install clang
-Plugin 'raimondi/delimitmate'                       " jump: <c-g>g or just repeat the action
+Plugin 'raimondi/delimitmate'                       " jump <c-g>g or just repeat the action
 Plugin 'ervandew/supertab'	                        " c-v+tab for real tab
 Plugin 'scrooloose/syntastic'
 Plugin 'darfink/starsearch.vim'                     " dont jump next on star search
@@ -38,6 +38,7 @@ set number
 set ruler                                           " show the line number on the bar
 set cursorline
 set cursorcolumn
+hi cursorlinenr ctermfg=blue
 hi cursorline cterm=NONE ctermbg=234 ctermfg=NONE
 hi cursorcolumn cterm=NONE ctermbg=234 ctermfg=NONE
 " ----------------------------------------------------------------------------------------
@@ -168,7 +169,7 @@ nnoremap <C-@> <Esc>:noh<CR>
 vnoremap <C-@> <Esc>gV
 onoremap <C-@> <Esc>
 cnoremap <C-@> <C-c>
-inoremap <C-@> <Esc>`^
+inoremap <C-@> <C-e>
 " ----------------------------------------------------------------------------------------
 " hit enter to go end of line and hit 12 + enter to jump line 12
 noremap <CR> G
@@ -249,5 +250,5 @@ highlight SyntasticError guibg=#2f0000
 " ----------------------------------------------------------------------------------------
 let g:clang_library_path ='/usr/lib/x86_64-linux-gnu/libclang-3.8.so.1'
 let g:clang_close_preview = 1
-let g:clang_user_options = '|| exit 0'
+let g:clang_user_options = '-std=c++11 || exit 0'   " remove -std=c++11
 " ----------------------------------------------------------------------------------------
