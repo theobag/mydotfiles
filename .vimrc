@@ -149,6 +149,9 @@ nnoremap <Leader><Leader> V
 nnoremap <Leader>so :Errors<CR>
 nnoremap <Leader>sl :lclose<CR>
 noremap <silent> <leader>sy :SyntasticToggleMode<cr>
+" save mysql last query
+noremap <Leader>z :w! /tmp/query.sql\| w!<CR>
+noremap <Leader>Z :w! /tmp/query.sql\| wq!<CR>
 " ----------------------------------------------------------------------------------------
 " copy and paste to system clipboard
 noremap <Leader>r "+
