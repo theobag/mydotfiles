@@ -169,7 +169,7 @@ nnoremap <C-@> <Esc>:noh<CR>
 vnoremap <C-@> <Esc>gV
 onoremap <C-@> <Esc>
 cnoremap <C-@> <C-c>
-inoremap <C-@> <C-e>
+inoremap <C-@> <Esc>`^
 " ----------------------------------------------------------------------------------------
 " hit enter to go end of line and hit 12 + enter to jump line 12
 noremap <CR> G
