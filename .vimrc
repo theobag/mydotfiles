@@ -250,5 +250,5 @@ highlight SyntasticError guibg=#2f0000
 " ----------------------------------------------------------------------------------------
 let g:clang_library_path ='/usr/lib/x86_64-linux-gnu/libclang-3.8.so.1'
 let g:clang_close_preview = 1
-let g:clang_user_options = '-std=c++11 || exit 0'   " remove -std=c++11
+let g:clang_user_options = '|| exit 0'
 " ----------------------------------------------------------------------------------------
