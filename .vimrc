@@ -119,8 +119,8 @@ inoremap jj <Esc>
 nnoremap gV `[v`]
 " go to position of last edit. mean: 'go to edit'
 nnoremap ge `.
-" split line with alt-j
-nnoremap <M-j> i<CR><ESC>
+" split line with K
+nnoremap K i<CR><ESC>
 " paste multiple lines multiple times with simple ppppp
 vnoremap <silent> y y`]
 vnoremap <silent> p p`]
