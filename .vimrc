@@ -111,7 +111,7 @@ let mapleader = "\<Space>"
 " ----------------------------------------------------------------------------------------
 " ; == : in normal mode
 noremap ; :
-noremap , ;
+noremap : ;
 " make Y yank to end of line (like D, or C)
 noremap Y y$
 " jj == esc
