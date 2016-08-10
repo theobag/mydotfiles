@@ -140,7 +140,7 @@ nnoremap <Leader>e :tabedit<space>
 nnoremap <Leader>o :tabonly<CR>
 nnoremap <Leader>+ :tabm+<CR>
 nnoremap <Leader>- :tabm-<CR>
-nnoremap <Leader>! :au! BufWritePost<space>
+nnoremap <Leader>! :au! BufWritePost *.c :!<space>
 " use leader h/j/k/l to switch between split
 nnoremap <Leader>h <c-w>h
 nnoremap <Leader>j <c-w>j
@@ -193,9 +193,6 @@ vnoremap k gk
 " move cursor together with the screen
 nnoremap <C-j> j<c-e>
 nnoremap <C-k> k<c-y>
-" ctrl + l/h switch between tabs
-nnoremap <C-l> gt
-nnoremap <C-h> gT
 " moving around in command mode
 cnoremap <C-l> <right>
 cnoremap <C-h> <left>
@@ -244,6 +241,25 @@ function! s:Repl()
 endfunction
 vmap <silent> <expr> p <sid>Repl()
 " ----------------------------------------------------------------------------------------
+" movement between tabs or buffers
+nnoremap <C-l> :call MyNext()<CR>
+nnoremap <C-h> :call MyPrev()<CR>
+" MyNext() and MyPrev(): movement between tabs OR buffers
+function! MyNext()
+    if exists( '*tabpagenr' ) && tabpagenr('$') != 1
+        normal gt
+    else
+        execute ":bnext"
+    endif
+endfunction
+function! MyPrev()
+    if exists( '*tabpagenr' ) && tabpagenr('$') != '1'
+        normal gT
+    else
+        execute ":bprev"
+    endif
+endfunction
+" ----------------------------------------------------------------------------------------
 let g:SuperTabDefaultCompletionType = "context"
 let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
 let g:SuperTabNoCompleteAfter = ['^', ',', '\s']
@@ -260,5 +276,15 @@ let g:clang_user_options = '|| exit 0'
 " ----------------------------------------------------------------------------------------
 let g:ctrlp_match_window = 'bottom,order:ttb'       " order mathcing files top to bottom
 let g:ctrlp_switch_buffer = 0                       " always open in new buffer
-let g:ctrlp_working_path_mode = 0
+let g:ctrlp_working_path_mode = 0                   " lets us change the working directory
+let g:ctrlp_use_caching = 0
+if executable('ag')
+    set grepprg=ag\ --nogroup\ --nocolor
+    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+else
+    let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
+    let g:ctrlp_prompt_mappings = {
+                \ 'AcceptSelection("e")': ['<space>', '<cr>', '<2-LeftMouse>'],
+                \ }
+endif
 " ----------------------------------------------------------------------------------------
