@@ -24,6 +24,7 @@ Plugin 'tpope/vim-eunuch'                           " bash commands
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-commentary'	                    " gc + motion or line == gcc
+Plugin 'kien/ctrlp.vim'
 call vundle#end()             " required
 filetype plugin indent on     " required
 
@@ -256,4 +257,8 @@ highlight SyntasticError guibg=#2f0000
 let g:clang_library_path ='/usr/lib/x86_64-linux-gnu/libclang-3.8.so.1'
 let g:clang_close_preview = 1
 let g:clang_user_options = '|| exit 0'
+" ----------------------------------------------------------------------------------------
+let g:ctrlp_match_window = 'bottom,order:ttb'       " order mathcing files top to bottom
+let g:ctrlp_switch_buffer = 0                       " always open in new buffer
+let g:ctrlp_working_path_mode = 0
 " ----------------------------------------------------------------------------------------
