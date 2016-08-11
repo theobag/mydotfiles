@@ -24,6 +24,7 @@ Plugin 'tpope/vim-eunuch'                           " bash commands
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-commentary'	                    " gc + motion or line == gcc
+Plugin 'tpope/vim-fugitive'
 Plugin 'kien/ctrlp.vim'
 call vundle#end()             " required
 filetype plugin indent on     " required
@@ -85,14 +86,13 @@ set wildignore=*.o,*~,*.pyc
 set showcmd                                         " this shows what you are typing as a command
 set noshowmode                                      " hide insert status
 set nowrap                                          " dont wrap lines by default
-set noswapfile	                                    " disable swap to prevent annoying messages
 set autochdir                                       " auto directory
 set autowrite                                       " Automatically save before commands like :next and :make
 set autoread                                        " set to auto read when file is changed from outside
 set complete-=i
 set completeopt=menu,menuone                        " clang_complete without preview
 set pumheight=20                                    " limit popup menu height (supertab)
-set nohidden                                        " when i close tab, remove the buffer
+set hidden
 set ttyfast                                         " smoother changer
 set lazyredraw                                      " don't update while executing macros
 set title                                           " show title in console title bar
