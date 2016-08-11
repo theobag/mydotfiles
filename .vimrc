@@ -23,7 +23,7 @@ Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-commentary'	                    " gc + motion or line with gcc
 Plugin 'tpope/vim-fugitive'
-Plugin 'kien/ctrlp.vim'
+Plugin 'wincent/command-t'
 call vundle#end()             " required
 filetype plugin indent on     " required
 " ----------------------------------------------------------------------------------------
@@ -129,21 +129,15 @@ nnoremap <silent> p p`]
 nnoremap <Leader>w :w!<CR>
 nnoremap <Leader>x :x!<CR>
 nnoremap <Leader>q :q<CR>
+nnoremap <Leader>r :bd<CR>
 nnoremap <Leader>a :wqa!<CR>
 nnoremap <Leader>n :q!<CR>
-nnoremap <Leader>b :bd<CR>
 nnoremap <Leader>m :bd!<CR>
-nnoremap <Leader>t :Texplore<CR>
+nnoremap <Leader>o :Texplore<CR>
 nnoremap <Leader>e :tabedit<space>
-nnoremap <Leader>o :tabonly<CR>
 nnoremap <Leader>+ :tabm+<CR>
 nnoremap <Leader>- :tabm-<CR>
 nnoremap <Leader>! :au! BufWritePost *.c :!<space>
-" use leader h/j/k/l to switch between split
-nnoremap <Leader>h <c-w>h
-nnoremap <Leader>j <c-w>j
-nnoremap <Leader>k <c-w>k
-nnoremap <Leader>l <c-w>l
 " visual mode with leader twice
 nnoremap <Leader><Leader> V
 " syntastic shortcut
@@ -268,10 +262,4 @@ highlight SyntasticError guibg=#2f0000
 let g:clang_library_path ='/usr/lib/x86_64-linux-gnu/libclang-3.8.so.1'
 let g:clang_close_preview = 1
 let g:clang_user_options = '|| exit 0'
-" ----------------------------------------------------------------------------------------
-let g:ctrlp_match_window = 'bottom,order:ttb'       " order mathcing files top to bottom
-let g:ctrlp_switch_buffer = 0                       " always open in new buffer
-let g:ctrlp_working_path_mode = 0                   " lets us change the working directory
-let g:ctrlp_use_caching = 0
-let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
 " ----------------------------------------------------------------------------------------
