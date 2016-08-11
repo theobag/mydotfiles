@@ -85,6 +85,7 @@ set noshowmode                                      " hide insert status
 set nowrap                                          " dont wrap lines by default
 set autowrite                                       " Automatically save before commands like :next and :make
 set autoread                                        " set to auto read when file is changed from outside
+set autochdir
 set complete-=i
 set completeopt=menu,menuone                        " clang_complete without preview
 set pumheight=20                                    " limit popup menu height (supertab)
@@ -270,7 +271,7 @@ let g:clang_user_options = '|| exit 0'
 " ----------------------------------------------------------------------------------------
 let g:ctrlp_match_window = 'bottom,order:ttb'       " order mathcing files top to bottom
 let g:ctrlp_switch_buffer = 0                       " always open in new buffer
-let g:ctrlp_working_path_mode = 0                   " lets us change the working directory
+let g:ctrlp_working_path_mode = 'ra'                " lets us change the working directory
 let g:ctrlp_use_caching = 0
 let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
 " ----------------------------------------------------------------------------------------
