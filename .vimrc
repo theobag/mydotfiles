@@ -1,7 +1,6 @@
 set nocompatible              " be improved, required
 filetype off                  " required
-
-" set the runtime path to include vundle and initialize
+" ----------------------------------------------------------------------------------------
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
@@ -23,21 +22,20 @@ Plugin 'tpope/vim-capslock'                         " insert: c-l or c-g+c, norm
 Plugin 'tpope/vim-eunuch'                           " bash commands
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-commentary'	                    " gc + motion or line == gcc
+Plugin 'tpope/vim-commentary'	                    " gc + motion or line with gcc
 Plugin 'tpope/vim-fugitive'
 Plugin 'kien/ctrlp.vim'
 call vundle#end()             " required
 filetype plugin indent on     " required
-
+" ----------------------------------------------------------------------------------------
 set t_Co=256
 syntax enable
 colorscheme badwolf
 let g:badwolf_tabline = 0
-set modeline
-set secure                                          " limit what modelines and autocmds can do
 set laststatus=2
 set number
 set ruler                                           " show the line number on the bar
+set secure                                          " limit what modelines and autocmds can do
 set cursorline
 set cursorcolumn
 hi cursorlinenr ctermfg=blue
@@ -101,7 +99,8 @@ set scrolloff=1                                     " keep at least 1 lines abov
 set sidescrolloff=5                                 " keep at least 5 lines left/right
 set incsearch                                       " search as characters are entered
 set hlsearch                                        " highlight matches
-set titleold=                                       " don't set the title to 'Thank for flaying Vim' when exiting
+set shortmess+=I                                    " don't display the intro message on starting vim.
+set titleold=                                       " don't display 'Thank for flaying Vim' when exiting
 set history=200
 set backup
 set backupdir=~/.vim/backup
@@ -128,10 +127,10 @@ vnoremap <silent> p p`]
 nnoremap <silent> p p`]
 " ----------------------------------------------------------------------------------------
 " type the leader++
-nnoremap <Leader>w :w<CR>
-nnoremap <Leader>x :x<CR>
+nnoremap <Leader>w :w!<CR>
+nnoremap <Leader>x :x!<CR>
 nnoremap <Leader>q :q<CR>
-nnoremap <Leader>a :wqa<CR>
+nnoremap <Leader>a :wqa!<CR>
 nnoremap <Leader>n :q!<CR>
 nnoremap <Leader>b :bd<CR>
 nnoremap <Leader>m :bd!<CR>
@@ -157,8 +156,6 @@ noremap <Leader>z :w! /tmp/query.sql\| w!<CR>
 noremap <Leader>Z :w! /tmp/query.sql\| wq!<CR>
 " ----------------------------------------------------------------------------------------
 " copy and paste to system clipboard
-noremap <Leader>r "+
-vnoremap <Leader>r "+
 noremap <Leader>y "+y
 noremap <Leader>Y "+y$
 vnoremap <Leader>y "+y
@@ -244,7 +241,6 @@ vmap <silent> <expr> p <sid>Repl()
 " movement between tabs or buffers
 nnoremap <C-l> :call MyNext()<CR>
 nnoremap <C-h> :call MyPrev()<CR>
-" MyNext() and MyPrev(): movement between tabs OR buffers
 function! MyNext()
     if exists( '*tabpagenr' ) && tabpagenr('$') != 1
         normal gt
@@ -278,13 +274,5 @@ let g:ctrlp_match_window = 'bottom,order:ttb'       " order mathcing files top t
 let g:ctrlp_switch_buffer = 0                       " always open in new buffer
 let g:ctrlp_working_path_mode = 0                   " lets us change the working directory
 let g:ctrlp_use_caching = 0
-if executable('ag')
-    set grepprg=ag\ --nogroup\ --nocolor
-    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-else
-    let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
-    let g:ctrlp_prompt_mappings = {
-                \ 'AcceptSelection("e")': ['<space>', '<cr>', '<2-LeftMouse>'],
-                \ }
-endif
+let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 " ----------------------------------------------------------------------------------------
