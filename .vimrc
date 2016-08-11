@@ -18,7 +18,6 @@ Plugin 'ReplaceWithRegister'                        " gr and motion
 Plugin 'kana/vim-textobj-user'
 Plugin 'kana/vim-textobj-entire'                    " motion plus ae or ie to select entire
 Plugin 'tpope/vim-unimpaired'                       " [ maps and stuff
-Plugin 'tpope/vim-capslock'                         " insert: c-l or c-g+c, normal: gC
 Plugin 'tpope/vim-eunuch'                           " bash commands
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
