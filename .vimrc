@@ -10,25 +10,27 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'majutsushi/tagbar'                          " sudo apt install exuberant-ctags
 Plugin 'rip-rip/clang_complete'                     " sudo apt install clang
-Plugin 'raimondi/delimitmate'                       " jump <c-g>g or just repeat the action
-Plugin 'ervandew/supertab'	                        " c-v+tab for real tab
+Plugin 'raimondi/delimitmate'                       " jump c-g g or just repeat the action
+Plugin 'ervandew/supertab'	                        " c-v + tab for real tab
 Plugin 'scrooloose/syntastic'
 Plugin 'darfink/starsearch.vim'                     " dont jump next on star search
 Plugin 'ReplaceWithRegister'                        " gr and motion
+Plugin 'wincent/command-t'
 Plugin 'kana/vim-textobj-user'
 Plugin 'kana/vim-textobj-entire'                    " motion plus ae or ie to select entire
-Plugin 'tpope/vim-unimpaired'                       " [ maps and stuff
+Plugin 'tpope/vim-unimpaired'                       " pair maps and stuff
 Plugin 'tpope/vim-eunuch'                           " bash commands
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-commentary'	                    " gc + motion or line with gcc
 Plugin 'tpope/vim-fugitive'
-Plugin 'wincent/command-t'
 call vundle#end()             " required
 filetype plugin indent on     " required
 " ----------------------------------------------------------------------------------------
-set t_Co=256
-syntax enable
+set t_Co=256                                        " enable 256 color
+set t_ut=                                           " disbale background color erase (BCE)
+syntax enable                                       " syntax highlighting
+highlight clear                                     " clear highlighting
 colorscheme badwolf
 let g:badwolf_tabline = 0
 set laststatus=2
@@ -41,11 +43,11 @@ hi cursorlinenr ctermfg=blue
 hi cursorline cterm=NONE ctermbg=234 ctermfg=NONE
 hi cursorcolumn cterm=NONE ctermbg=234 ctermfg=NONE
 " ----------------------------------------------------------------------------------------
-let g:airline_theme='hybrid'
-let g:airline_section_c=""
-let g:airline_section_x=""
-let g:airline_section_b="%f"
-let g:airline_section_y=""
+let g:airline_theme ='hybrid'
+let g:airline_section_c = ""
+let g:airline_section_x = ""
+let g:airline_section_b = "%f"
+let g:airline_section_y = ""
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#tabline#left_sep = ''
@@ -88,7 +90,7 @@ set autoread                                        " set to auto read when file
 set autochdir
 set complete-=i
 set completeopt=menu,menuone                        " clang_complete without preview
-set pumheight=20                                    " limit popup menu height (supertab)
+set pumheight=20                                    " limit popup menu height (completion)
 set hidden
 set ttyfast                                         " smoother changer
 set lazyredraw                                      " don't update while executing macros
