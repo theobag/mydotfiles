@@ -14,6 +14,7 @@ Plugin 'raimondi/delimitmate'                       " jump c-g g or just repeat 
 Plugin 'ervandew/supertab'	                        " c-v + tab for real tab
 Plugin 'scrooloose/syntastic'
 Plugin 'darfink/starsearch.vim'                     " dont jump next on star search
+Plugin 'SearchComplete'                             " tab completion inside search
 Plugin 'ReplaceWithRegister'                        " gr and motion
 Plugin 'wincent/command-t'
 Plugin 'kana/vim-textobj-user'
