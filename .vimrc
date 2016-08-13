@@ -164,11 +164,11 @@ vnoremap <Leader>p "+p
 vnoremap <Leader>P "+P
 " ----------------------------------------------------------------------------------------
 " use C-Space to Esc out of any mode but Terminal sees <C-@> as <C-space> WTF, but ok
-nnoremap <C-@> <Esc>:noh<CR>
-vnoremap <C-@> <Esc>gV
-onoremap <C-@> <Esc>
-cnoremap <C-@> <C-c>
-inoremap <C-@> <Esc>`^
+nnoremap <silent> <C-@> <Esc>:noh<CR>
+vnoremap <silent> <C-@> <Esc>gV
+onoremap <silent> <C-@> <Esc>
+cnoremap <silent> <C-@> <C-c>
+inoremap <silent> <C-@> <Esc>`^
 " ----------------------------------------------------------------------------------------
 " hit enter to go end of line and hit 12 + enter to jump line 12
 noremap <CR> G
@@ -193,7 +193,7 @@ cnoremap <C-k> <S-Right>
 cnoremap <C-j> <S-Left>
 " ----------------------------------------------------------------------------------------
 " tagbar
-nnoremap <F8> :TagbarToggle<CR>
+nnoremap <silent> <F8> :TagbarToggle<CR>
 " ----------------------------------------------------------------------------------------
 " remove any trailing whitespace that is in the file
 autocmd BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
@@ -235,8 +235,6 @@ endfunction
 vmap <silent> <expr> p <sid>Repl()
 " ----------------------------------------------------------------------------------------
 " movement between tabs or buffers
-nnoremap <C-l> :call MyNext()<CR>
-nnoremap <C-h> :call MyPrev()<CR>
 function! MyNext()
     if exists( '*tabpagenr' ) && tabpagenr('$') != 1
         normal gt
@@ -251,6 +249,8 @@ function! MyPrev()
         execute ":bprev"
     endif
 endfunction
+nnoremap <silent> <C-l> :call MyNext()<CR>
+nnoremap <silent> <C-h> :call MyPrev()<CR>
 " ----------------------------------------------------------------------------------------
 let g:SuperTabDefaultCompletionType = "context"
 let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
