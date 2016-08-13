@@ -115,7 +115,6 @@ if [[ $TERM == xterm ]]; then
 TERM=xterm-256color
 fi
 
-# switch between vim and zsh with ctrl-z
 fancy-ctrl-z () {
   if [[ $#BUFFER -eq 0 ]]; then
     BUFFER="fg"
@@ -127,3 +126,9 @@ fancy-ctrl-z () {
 }
 zle -N fancy-ctrl-z
 bindkey '^Z' fancy-ctrl-z
+
+# 10ms for key sequences
+KEYTIMEOUT=1
+
+chmod +x ~/.vocab
+~/.vocab
