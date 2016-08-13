@@ -78,21 +78,21 @@ set expandtab
 set smarttab
 set textwidth=120
 set backspace=indent,eol,start
-set showmatch
 set comments=sl:/*,mb:\ *,elx:\ */
 set omnifunc=syntaxcomplete#Complete
 set wildmenu
 set wildignore=*.o,*~,*.pyc
+set hidden
+set nowrap                                          " dont wrap lines by default
+set showmatch
 set showcmd                                         " this shows what you are typing as a command
 set noshowmode                                      " hide insert status
-set nowrap                                          " dont wrap lines by default
 set autowrite                                       " Automatically save before commands like :next and :make
 set autoread                                        " set to auto read when file is changed from outside
 set autochdir
 set complete-=i
 set completeopt=menu,menuone                        " clang_complete without preview
 set pumheight=20                                    " limit popup menu height (completion)
-set hidden
 set ttyfast                                         " smoother changer
 set lazyredraw                                      " don't update while executing macros
 set title                                           " show title in console title bar
