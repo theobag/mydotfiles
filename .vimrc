@@ -28,10 +28,11 @@ Plugin 'tpope/vim-fugitive'
 call vundle#end()             " required
 filetype plugin indent on     " required
 " ----------------------------------------------------------------------------------------
+syntax enable                                       " syntax highlighting
 set t_Co=256                                        " enable 256 color
 set t_ut=                                           " disbale background color erase (BCE)
-syntax enable                                       " syntax highlighting
 highlight clear                                     " clear highlighting
+highlight clear SignColumn                          " SignColumn should match background
 colorscheme badwolf
 let g:badwolf_tabline = 0
 set laststatus=2
@@ -43,6 +44,8 @@ set cursorcolumn
 hi cursorlinenr ctermfg=blue
 hi cursorline cterm=NONE ctermbg=234 ctermfg=NONE
 hi cursorcolumn cterm=NONE ctermbg=234 ctermfg=NONE
+set re=1                                            " fixes slow speed due to syntax highlighting
+syntax sync minlines=256
 " ----------------------------------------------------------------------------------------
 let g:airline_theme ='hybrid'
 let g:airline_section_c = ""
@@ -67,7 +70,7 @@ set enc=utf-8
 set fenc=utf-8
 set termencoding=utf-8
 set timeoutlen=800
-set ttimeoutlen=50
+set ttimeoutlen=200
 set autoindent
 set cindent
 set smartindent
@@ -82,7 +85,7 @@ set comments=sl:/*,mb:\ *,elx:\ */
 set omnifunc=syntaxcomplete#Complete
 set wildmenu
 set wildignore=*.o,*~,*.pyc
-set hidden
+set hidden                                          " allow to have buffers with unsaved changes
 set nowrap                                          " dont wrap lines by default
 set showmatch
 set showcmd                                         " this shows what you are typing as a command
@@ -93,14 +96,16 @@ set autochdir
 set complete-=i
 set completeopt=menu,menuone                        " clang_complete without preview
 set pumheight=20                                    " limit popup menu height (completion)
-set ttyfast                                         " smoother changer
+set incsearch                                       " search as characters are entered
+set hlsearch                                        " highlight matches
+set confirm                                         " ask to save buffer
+set nojoinspaces	  	                            " Use only one space after '.' when joining
 set lazyredraw                                      " don't update while executing macros
+set ttyfast                                         " smoother changer
 set title                                           " show title in console title bar
 set titlestring=%t                                  " only title not PATH
 set scrolloff=1                                     " keep at least 1 lines above/below
 set sidescrolloff=5                                 " keep at least 5 lines left/right
-set incsearch                                       " search as characters are entered
-set hlsearch                                        " highlight matches
 set shortmess+=I                                    " don't display the intro message on starting vim.
 set titleold=                                       " don't display 'Thank for flaying Vim' when exiting
 set history=200
@@ -109,20 +114,19 @@ set backupdir=~/.vim/backup
 set directory=~/.vim/tmp
 " ----------------------------------------------------------------------------------------
 let mapleader = "\<Space>"
-" ----------------------------------------------------------------------------------------
 " ; == : in normal mode
 noremap ; :
 noremap : ;
 " make Y yank to end of line (like D, or C)
 noremap Y y$
-" jj == esc
-inoremap jj <Esc>
 " highlight last inserted text
 nnoremap gV `[v`]
 " go to position of last edit. mean: 'go to edit'
 nnoremap ge `.
 " split line with K
 nnoremap K i<CR><ESC>
+" man page
+nnoremap <F10> K
 " paste multiple lines multiple times with simple ppppp
 vnoremap <silent> y y`]
 vnoremap <silent> p p`]
@@ -178,11 +182,14 @@ noremap E g_
 " center screen on next/previous selection.
 nnoremap n nzz
 nnoremap N Nzz
+" easier horizontal scrolling
+nnoremap zl zL
+nnoremap zh zH
 " j == gj
-nnoremap j gj
-nnoremap k gk
-vnoremap j gj
-vnoremap k gk
+nnoremap <silent> j gj
+nnoremap <silent> k gk
+vnoremap <silent> j gj
+vnoremap <silent> k gk
 " move cursor together with the screen
 nnoremap <C-j> j<c-e>
 nnoremap <C-k> k<c-y>
