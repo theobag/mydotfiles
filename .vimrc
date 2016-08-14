@@ -32,7 +32,6 @@ syntax enable                                       " syntax highlighting
 set t_Co=256                                        " enable 256 color
 set t_ut=                                           " disbale background color erase (BCE)
 highlight clear                                     " clear highlighting
-highlight clear SignColumn                          " SignColumn should match background
 colorscheme badwolf
 let g:badwolf_tabline = 0
 set laststatus=2
@@ -41,9 +40,10 @@ set ruler                                           " show the line number on th
 set secure                                          " limit what modelines and autocmds can do
 set cursorline
 set cursorcolumn
-hi cursorlinenr ctermfg=blue
-hi cursorline cterm=NONE ctermbg=234 ctermfg=NONE
-hi cursorcolumn cterm=NONE ctermbg=234 ctermfg=NONE
+highlight cursorlinenr ctermfg=blue
+highlight cursorline cterm=NONE ctermbg=234 ctermfg=NONE
+highlight cursorcolumn cterm=NONE ctermbg=234 ctermfg=NONE
+highlight clear SignColumn                          " SignColumn should match background
 set re=1                                            " fixes slow speed due to syntax highlighting
 syntax sync minlines=256
 " ----------------------------------------------------------------------------------------
@@ -57,14 +57,6 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#tabline#left_sep = ''
 let g:airline#extensions#tabline#left_alt_sep = ''
 let g:airline_powerline_fonts = 1
-let g:airline_inactive_collapse = 0
-let g:airline_enable_fugitive = 1
-let g:airline_enable_syntastic = 1
-if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
-endif
-" ----------------------------------------------------------------------------------------
-let g:netrw_liststyle = 2
 " ----------------------------------------------------------------------------------------
 set enc=utf-8
 set fenc=utf-8
@@ -267,7 +259,11 @@ let g:SuperTabClosePreviewOnPopupClose = 1          " autoclose popup
 runtime! plugin/supertab.vim                        " real tabs with shift+tab
 inoremap <s-tab> <tab>
 " ----------------------------------------------------------------------------------------
+let g:netrw_liststyle = 2
+" ----------------------------------------------------------------------------------------
 highlight SyntasticError guibg=#2f0000
+" ----------------------------------------------------------------------------------------
+let g:CommandTMaxHeight = 0
 " ----------------------------------------------------------------------------------------
 let g:clang_library_path ='/usr/lib/x86_64-linux-gnu/libclang-3.8.so.1'
 let g:clang_close_preview = 1
