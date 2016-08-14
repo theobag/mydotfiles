@@ -99,7 +99,7 @@ set pumheight=20                                    " limit popup menu height (c
 set incsearch                                       " search as characters are entered
 set hlsearch                                        " highlight matches
 set confirm                                         " ask to save buffer
-set nojoinspaces	  	                            " Use only one space after '.' when joining
+set nojoinspaces	  	                            " use only one space after '.' when joining
 set lazyredraw                                      " don't update while executing macros
 set ttyfast                                         " smoother changer
 set title                                           " show title in console title bar
