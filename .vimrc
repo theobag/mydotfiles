@@ -36,7 +36,6 @@ let g:badwolf_tabline = 0
 set laststatus=2
 set number
 set ruler                                           " show the line number on the bar
-set tabpagemax=10                                   " only show 10 tabs
 set secure                                          " limit what modelines and autocmds can do
 set cursorline
 set cursorcolumn
@@ -44,6 +43,7 @@ highlight cursorlinenr ctermfg=blue
 highlight cursorline cterm=NONE ctermbg=234 ctermfg=NONE
 highlight cursorcolumn cterm=NONE ctermbg=234 ctermfg=NONE
 highlight clear SignColumn                          " SignColumn should match background
+set tabpagemax=10                                   " only show 10 tabs
 set re=1                                            " fixes slow speed due to syntax highlighting
 syntax sync minlines=256
 " ----------------------------------------------------------------------------------------
@@ -53,9 +53,9 @@ let g:airline_section_x = ""
 let g:airline_section_b = "%f"
 let g:airline_section_y = ""
 let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#tabline#left_sep = ''
 let g:airline#extensions#tabline#left_alt_sep = ''
+let g:airline#extensions#tabline#tab_nr_type = 1
 let g:airline_powerline_fonts = 1
 " ----------------------------------------------------------------------------------------
 set enc=utf-8
