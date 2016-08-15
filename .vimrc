@@ -25,6 +25,7 @@ Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-commentary'	                    " gc + motion or line with gcc
 Plugin 'tpope/vim-fugitive'
+Plugin 'ivalkeen/vim-simpledb'
 call vundle#end()             " required
 filetype plugin indent on     " required
 " ----------------------------------------------------------------------------------------
@@ -268,3 +269,4 @@ let g:clang_library_path ='/usr/lib/x86_64-linux-gnu/libclang-3.8.so.1'
 let g:clang_close_preview = 1
 let g:clang_user_options = '|| exit 0'
 " ----------------------------------------------------------------------------------------
+" let g:airline#extensions#tabline#show_tab_type = 1
