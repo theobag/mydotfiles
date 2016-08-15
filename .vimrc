@@ -31,12 +31,12 @@ filetype plugin indent on     " required
 syntax enable                                       " syntax highlighting
 set t_Co=256                                        " enable 256 color
 set t_ut=                                           " disbale background color erase (BCE)
-highlight clear                                     " clear highlighting
 colorscheme badwolf
 let g:badwolf_tabline = 0
 set laststatus=2
 set number
 set ruler                                           " show the line number on the bar
+set tabpagemax=10                                   " only show 10 tabs
 set secure                                          " limit what modelines and autocmds can do
 set cursorline
 set cursorcolumn
@@ -61,7 +61,6 @@ let g:airline_powerline_fonts = 1
 set enc=utf-8
 set fenc=utf-8
 set termencoding=utf-8
-set timeoutlen=800
 set ttimeoutlen=200
 set autoindent
 set cindent
