@@ -56,7 +56,9 @@ let g:airline_section_y = ""
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ''
 let g:airline#extensions#tabline#left_alt_sep = ''
+let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#tabline#tab_nr_type = 1
+let g:airline#extensions#tabline#show_tab_type = 1
 let g:airline_powerline_fonts = 1
 " ----------------------------------------------------------------------------------------
 set enc=utf-8
@@ -269,4 +271,3 @@ let g:clang_library_path ='/usr/lib/x86_64-linux-gnu/libclang-3.8.so.1'
 let g:clang_close_preview = 1
 let g:clang_user_options = '|| exit 0'
 " ----------------------------------------------------------------------------------------
-" let g:airline#extensions#tabline#show_tab_type = 1
