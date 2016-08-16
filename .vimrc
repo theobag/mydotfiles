@@ -29,9 +29,13 @@ Plugin 'ivalkeen/vim-simpledb'
 call vundle#end()             " required
 filetype plugin indent on     " required
 " ----------------------------------------------------------------------------------------
+highlight clear
 syntax enable                                       " syntax highlighting
+set synmaxcol=2048                                  " Syntax coloring lines that are too long just slows down the world
 set t_Co=256                                        " enable 256 color
 set t_ut=                                           " disbale background color erase (BCE)
+set t_ti=                                           " prevent vim from clobbering the scrollback buffer. See
+set t_te=                                           " http://www.shallowsky.com/linux/noaltscreen.html
 colorscheme badwolf
 let g:badwolf_tabline = 0
 set laststatus=2
@@ -74,6 +78,7 @@ set expandtab
 set smarttab
 set textwidth=120
 set backspace=indent,eol,start
+set whichwrap+=<,>,h,l
 set comments=sl:/*,mb:\ *,elx:\ */
 set omnifunc=syntaxcomplete#Complete
 set wildmenu
@@ -127,12 +132,13 @@ nnoremap <silent> p p`]
 " ----------------------------------------------------------------------------------------
 " type the leader++
 nnoremap <Leader>w :w!<CR>
+nnoremap <Leader>W :wa!<CR>
 nnoremap <Leader>x :x!<CR>
 nnoremap <Leader>q :q<CR>
+nnoremap <Leader>Q :q!<CR>
 nnoremap <Leader>r :bd<CR>
+nnoremap <Leader>R :bd!<CR>
 nnoremap <Leader>a :wqa!<CR>
-nnoremap <Leader>n :q!<CR>
-nnoremap <Leader>m :bd!<CR>
 nnoremap <Leader>o :Texplore<CR>
 nnoremap <Leader>e :tabedit<space>
 nnoremap <Leader>+ :tabm+<CR>
