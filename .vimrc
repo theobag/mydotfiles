@@ -34,8 +34,6 @@ syntax enable                                       " syntax highlighting
 set synmaxcol=2048                                  " Syntax coloring lines that are too long just slows down the world
 set t_Co=256                                        " enable 256 color
 set t_ut=                                           " disbale background color erase (BCE)
-set t_ti=                                           " prevent vim from clobbering the scrollback buffer. See
-set t_te=                                           " http://www.shallowsky.com/linux/noaltscreen.html
 colorscheme badwolf
 let g:badwolf_tabline = 0
 set laststatus=2
@@ -62,6 +60,7 @@ let g:airline#extensions#tabline#left_sep = ''
 let g:airline#extensions#tabline#left_alt_sep = ''
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#tabline#tab_nr_type = 1
+let g:airline#extensions#whitespace#enabled = 0     " Do not check for whitespaces
 let g:airline_powerline_fonts = 1
 " ----------------------------------------------------------------------------------------
 set enc=utf-8
