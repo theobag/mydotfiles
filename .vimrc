@@ -29,7 +29,6 @@ Plugin 'ivalkeen/vim-simpledb'
 call vundle#end()             " required
 filetype plugin indent on     " required
 " ----------------------------------------------------------------------------------------
-highlight clear
 syntax enable                                       " syntax highlighting
 set synmaxcol=2048                                  " Syntax coloring lines that are too long just slows down the world
 set t_Co=256                                        " enable 256 color
@@ -59,8 +58,8 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ''
 let g:airline#extensions#tabline#left_alt_sep = ''
 let g:airline#extensions#tabline#fnamemod = ':t'
-let g:airline#extensions#tabline#tab_nr_type = 1
-let g:airline#extensions#whitespace#enabled = 0     " Do not check for whitespaces
+let g:airline#extensions#tabline#tab_nr_type = 1    " tab number
+let g:airline#extensions#whitespace#enabled = 0     " do not check for whitespaces
 let g:airline_powerline_fonts = 1
 " ----------------------------------------------------------------------------------------
 set enc=utf-8
