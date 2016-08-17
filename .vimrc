@@ -285,7 +285,7 @@ let g:ctrlp_match_window = 'bottom,order:ttb,results:100'
 let g:ctrlp_switch_buffer = 0
 let g:ctrlp_working_path_mode = 0
 if executable('ag')
-    set grepprg=ag\ --nogroup\ --nocolor                " Use Ag over Grep
+    set grepprg=ag\ --nogroup\ --nocolor                " use ag over Grep
     let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
     let g:ctrlp_use_caching = 0                         " ag is fast enough that CtrlP doesn't need to cache
 endif
@@ -293,7 +293,7 @@ endif
 highlight SyntasticError guibg=#2f0000
 let g:netrw_liststyle = 2
 let g:netrw_banner = 0
-let g:CommandTMaxHeight = 0
+" ----------------------------------------------------------------------------------------
 let g:clang_library_path ='/usr/lib/x86_64-linux-gnu/libclang-3.8.so.1'
 let g:clang_close_preview = 1
 let g:clang_user_options = '|| exit 0'
