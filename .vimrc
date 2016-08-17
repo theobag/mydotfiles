@@ -150,7 +150,7 @@ nnoremap <silent> <Leader>Q :q!<CR>
 nnoremap <silent> <Leader>r :bd<CR>
 nnoremap <silent> <Leader>R :bd!<CR>
 nnoremap <silent> <Leader>a :wqa!<CR>
-nnoremap <silent> <Leader>o :Texplore<CR>
+nnoremap <silent> <Leader>t :Texplore<CR>
 nnoremap <silent> <Leader>e :e<space>
 nnoremap <silent> <Leader>E :tabedit<space>
 nnoremap <silent> <Leader>+ :tabm+<CR>
