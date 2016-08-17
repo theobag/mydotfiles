@@ -8,102 +8,115 @@ Plugin 'sjl/badwolf'
 Plugin 'bling/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'sheerun/vim-polyglot'
-Plugin 'majutsushi/tagbar'                          " sudo apt install exuberant-ctags
-Plugin 'rip-rip/clang_complete'                     " sudo apt install clang
-Plugin 'raimondi/delimitmate'                       " jump c-g g or just repeat the action
-Plugin 'ervandew/supertab'	                        " c-v + tab for real tab
+Plugin 'majutsushi/tagbar'                              " sudo apt install exuberant-ctags
+Plugin 'rip-rip/clang_complete'                         " sudo apt install clang
+Plugin 'raimondi/delimitmate'                           " jump c-g g or just repeat the action
+Plugin 'ervandew/supertab'	                            " c-v + tab for real tab
 Plugin 'scrooloose/syntastic'
-Plugin 'darfink/starsearch.vim'                     " dont jump next on star search
-Plugin 'SearchComplete'                             " tab completion inside search
-Plugin 'ReplaceWithRegister'                        " gr and motion
+Plugin 'darfink/starsearch.vim'                         " dont jump next on star search
+Plugin 'SearchComplete'                                 " tab completion inside search
+Plugin 'ReplaceWithRegister'                            " gr and motion
 Plugin 'wincent/command-t'
 Plugin 'kana/vim-textobj-user'
-Plugin 'kana/vim-textobj-entire'                    " motion plus ae or ie to select entire
-Plugin 'tpope/vim-unimpaired'                       " pair maps and stuff
-Plugin 'tpope/vim-eunuch'                           " bash commands
+Plugin 'kana/vim-textobj-entire'                        " motion plus ae or ie to select entire
+Plugin 'tpope/vim-unimpaired'                           " pair maps and stuff
+Plugin 'tpope/vim-eunuch'                               " bash commands
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-commentary'	                    " gc + motion or line with gcc
+Plugin 'tpope/vim-commentary'	                        " gc + motion or line with gcc
 Plugin 'tpope/vim-fugitive'
 Plugin 'ivalkeen/vim-simpledb'
 call vundle#end()             " required
 filetype plugin indent on     " required
 " ----------------------------------------------------------------------------------------
-syntax enable                                       " syntax highlighting
-set synmaxcol=2048                                  " Syntax coloring lines that are too long just slows down the world
-set t_Co=256                                        " enable 256 color
-set t_ut=                                           " disbale background color erase (BCE)
+syntax enable                                           " syntax highlighting
+set synmaxcol=2048                                      " Syntax coloring lines that are too long just slows down the world
+set t_Co=256                                            " enable 256 color
+set t_ut=                                               " disbale background color erase (BCE)
 colorscheme badwolf
 let g:badwolf_tabline = 0
 set laststatus=2
 set number
-set ruler                                           " show the line number on the bar
-set secure                                          " limit what modelines and autocmds can do
+set ruler                                               " show the line number on the bar
+set secure                                              " limit what modelines and autocmds can do
 set cursorline
 set cursorcolumn
-highlight cursorlinenr ctermfg=blue
-highlight cursorline cterm=NONE ctermbg=234 ctermfg=NONE
-highlight cursorcolumn cterm=NONE ctermbg=234 ctermfg=NONE
-highlight clear SignColumn                          " SignColumn should match background
-set tabpagemax=10                                   " only show 10 tabs
-set re=1                                            " fixes slow speed due to syntax highlighting
+set re=1                                                " fixes slow speed due to syntax highlighting
 syntax sync minlines=256
 " ----------------------------------------------------------------------------------------
-let g:airline_theme ='hybrid'
-let g:airline_section_c = ""
-let g:airline_section_x = ""
-let g:airline_section_b = "%f"
-let g:airline_section_y = ""
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#left_sep = ''
-let g:airline#extensions#tabline#left_alt_sep = ''
-let g:airline#extensions#tabline#fnamemod = ':t'
-let g:airline#extensions#tabline#tab_nr_type = 1    " tab number
-let g:airline#extensions#whitespace#enabled = 0     " do not check for whitespaces
-let g:airline_powerline_fonts = 1
+function! CustomHighlighting()
+    highlight clear Normal
+    highlight clear NonText
+    highlight clear SignColumn                          " SignColumn should match background
+    highlight ColorColumn ctermbg=lightGrey
+    highlight cursorlinenr ctermfg=blue
+    highlight cursorline cterm=NONE ctermbg=234 ctermfg=NONE
+    highlight cursorcolumn cterm=NONE ctermbg=234 ctermfg=NONE
+endfunction
+call CustomHighlighting()
+" ----------------------------------------------------------------------------------------
+function! MyAirline()
+    let g:airline_theme ='hybrid'
+    let g:airline_section_c = ""
+    let g:airline_section_x = ""
+    let g:airline_section_b = "%f"
+    let g:airline_section_y = ""
+    let g:airline#extensions#tabline#enabled = 1
+    let g:airline#extensions#tabline#left_sep = ''
+    let g:airline#extensions#tabline#left_alt_sep = ''
+    let g:airline#extensions#tabline#fnamemod = ':t'    " display only file name
+    let g:airline#extensions#tabline#tab_nr_type = 1    " tab number
+    let g:airline#extensions#whitespace#enabled = 0     " do not check for whitespaces
+    let g:airline#extensions#tabline#show_buffers = 0   " dont display buffers in tab-bar with single tab
+    let g:airline_powerline_fonts = 1
+endfunction
+call MyAirline()
 " ----------------------------------------------------------------------------------------
 set enc=utf-8
 set fenc=utf-8
 set termencoding=utf-8
 set ttimeoutlen=200
+set tabpagemax=10                                       " only show 10 tabs
 set autoindent
 set cindent
 set smartindent
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
+set shiftround
 set expandtab
 set smarttab
 set textwidth=120
 set backspace=indent,eol,start
-set whichwrap+=<,>,h,l
+set whichwrap+=<,>,h,l                                  " configure backspace so it acts as it should act
 set comments=sl:/*,mb:\ *,elx:\ */
 set omnifunc=syntaxcomplete#Complete
 set wildmenu
 set wildignore=*.o,*~,*.pyc
-set hidden                                          " allow to have buffers with unsaved changes
-set nowrap                                          " dont wrap lines by default
+set iskeyword+=.,#,-,_                                  " .,#,-,_ recognize as word
+set hidden                                              " allow to have buffers with unsaved changes
+set nowrap                                              " dont wrap lines by default
 set showmatch
-set showcmd                                         " this shows what you are typing as a command
-set noshowmode                                      " hide insert status
-set autowrite                                       " Automatically save before commands like :next and :make
-set autoread                                        " set to auto read when file is changed from outside
+set showcmd                                             " this shows what you are typing as a command
+set noshowmode                                          " hide insert status
+set autowrite                                           " Automatically save before commands like :next and :make
+set autoread                                            " set to auto read when file is changed from outside
 set autochdir
 set complete-=i
-set completeopt=menu,menuone                        " clang_complete without preview
-set pumheight=20                                    " limit popup menu height (completion)
-set incsearch                                       " search as characters are entered
-set hlsearch                                        " highlight matches
-set confirm                                         " ask to save buffer
-set nojoinspaces	  	                            " use only one space after '.' when joining
-set lazyredraw                                      " don't update while executing macros
-set ttyfast                                         " smoother changer
-set title                                           " show title in console title bar
-set titlestring=%t                                  " only title not PATH
-set scrolloff=1                                     " keep at least 1 lines above/below
-set sidescrolloff=5                                 " keep at least 5 lines left/right
-set shortmess+=I                                    " don't display the intro message on starting vim.
-set titleold=                                       " don't display 'Thank for flaying Vim' when exiting
+set completeopt=menu,menuone                            " clang_complete without preview
+set pumheight=20                                        " limit popup menu height (completion)
+set incsearch                                           " search as characters are entered
+set hlsearch                                            " highlight matches
+set confirm                                             " ask to save buffer
+set nojoinspaces	  	                                " use only one space after '.' when joining
+set lazyredraw                                          " don't update while executing macros
+set ttyfast                                             " smoother changer
+set title                                               " show title in console title bar
+set titlestring=%t                                      " only title not PATH
+set scrolloff=1                                         " keep at least 1 lines above/below
+set sidescrolloff=5                                     " keep at least 5 lines left/right
+set shortmess+=I                                        " don't display the intro message on starting vim.
+set titleold=                                           " don't display 'Thank for flaying Vim' when exiting
 set history=200
 set backup
 set backupdir=~/.vim/backup
@@ -256,20 +269,21 @@ endfunction
 nnoremap <silent> <C-l> :call MyNext()<CR>
 nnoremap <silent> <C-h> :call MyPrev()<CR>
 " ----------------------------------------------------------------------------------------
-let g:SuperTabDefaultCompletionType = "context"
-let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
-let g:SuperTabNoCompleteAfter = ['^', ',', '\s']
-let g:SuperTabCrMapping = 1                         " no newline on supertab
-let g:SuperTabClosePreviewOnPopupClose = 1          " autoclose popup
-runtime! plugin/supertab.vim                        " real tabs with shift+tab
-inoremap <s-tab> <tab>
-" ----------------------------------------------------------------------------------------
-let g:netrw_liststyle = 2
+function! MySuperTab()
+    let g:SuperTabDefaultCompletionType = "context"
+    let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
+    let g:SuperTabNoCompleteAfter = ['^', ',', '\s']
+    let g:SuperTabCrMapping = 1                         " no newline on supertab
+    let g:SuperTabClosePreviewOnPopupClose = 1          " autoclose popup
+    runtime! plugin/supertab.vim                        " real tabs with shift+tab
+    inoremap <s-tab> <tab>
+endfunction
+call MySuperTab()
 " ----------------------------------------------------------------------------------------
 highlight SyntasticError guibg=#2f0000
-" ----------------------------------------------------------------------------------------
+let g:netrw_liststyle = 2
+let g:netrw_banner = 0
 let g:CommandTMaxHeight = 0
-" ----------------------------------------------------------------------------------------
 let g:clang_library_path ='/usr/lib/x86_64-linux-gnu/libclang-3.8.so.1'
 let g:clang_close_preview = 1
 let g:clang_user_options = '|| exit 0'
