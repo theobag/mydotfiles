@@ -16,7 +16,7 @@ Plugin 'scrooloose/syntastic'
 Plugin 'darfink/starsearch.vim'                         " dont jump next on star search
 Plugin 'SearchComplete'                                 " tab completion inside search
 Plugin 'ReplaceWithRegister'                            " gr and motion
-Plugin 'wincent/command-t'
+Plugin 'kien/ctrlp.vim'
 Plugin 'kana/vim-textobj-user'
 Plugin 'kana/vim-textobj-entire'                        " motion plus ae or ie to select entire
 Plugin 'tpope/vim-unimpaired'                           " pair maps and stuff
@@ -142,24 +142,25 @@ vnoremap <silent> p p`]
 nnoremap <silent> p p`]
 " ----------------------------------------------------------------------------------------
 " type the leader++
-nnoremap <Leader>w :w!<CR>
-nnoremap <Leader>W :wa!<CR>
-nnoremap <Leader>x :x!<CR>
-nnoremap <Leader>q :q<CR>
-nnoremap <Leader>Q :q!<CR>
-nnoremap <Leader>r :bd<CR>
-nnoremap <Leader>R :bd!<CR>
-nnoremap <Leader>a :wqa!<CR>
-nnoremap <Leader>o :Texplore<CR>
-nnoremap <Leader>e :tabedit<space>
-nnoremap <Leader>+ :tabm+<CR>
-nnoremap <Leader>- :tabm-<CR>
-nnoremap <Leader>! :au! BufWritePost *.c :!<space>
+nnoremap <silent> <Leader>w :w!<CR>
+nnoremap <silent> <Leader>W :wa!<CR>
+nnoremap <silent> <Leader>x :x!<CR>
+nnoremap <silent> <Leader>q :q<CR>
+nnoremap <silent> <Leader>Q :q!<CR>
+nnoremap <silent> <Leader>r :bd<CR>
+nnoremap <silent> <Leader>R :bd!<CR>
+nnoremap <silent> <Leader>a :wqa!<CR>
+nnoremap <silent> <Leader>o :Texplore<CR>
+nnoremap <silent> <Leader>e :e<space>
+nnoremap <silent> <Leader>E :tabedit<space>
+nnoremap <silent> <Leader>+ :tabm+<CR>
+nnoremap <silent> <Leader>- :tabm-<CR>
+nnoremap <silent> <Leader>! :au! BufWritePost *.c :!<space>
 " visual mode with leader twice
 nnoremap <Leader><Leader> V
 " syntastic shortcut
-nnoremap <Leader>so :Errors<CR>
-nnoremap <Leader>sl :lclose<CR>
+nnoremap <silent> <Leader>so :Errors<CR>
+nnoremap <silent> <Leader>sl :lclose<CR>
 noremap <silent> <leader>sy :SyntasticToggleMode<cr>
 " save mysql last query
 noremap <Leader>z :w! /tmp/query.sql\| w!<CR>
@@ -279,6 +280,15 @@ function! MySuperTab()
     inoremap <s-tab> <tab>
 endfunction
 call MySuperTab()
+" ----------------------------------------------------------------------------------------
+let g:ctrlp_match_window = 'bottom,order:ttb,results:100'
+let g:ctrlp_switch_buffer = 0
+let g:ctrlp_working_path_mode = 0
+if executable('ag')
+    set grepprg=ag\ --nogroup\ --nocolor                " Use Ag over Grep
+    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+    let g:ctrlp_use_caching = 0                         " ag is fast enough that CtrlP doesn't need to cache
+endif
 " ----------------------------------------------------------------------------------------
 highlight SyntasticError guibg=#2f0000
 let g:netrw_liststyle = 2
