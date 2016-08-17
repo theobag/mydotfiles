@@ -281,7 +281,8 @@ function! MySuperTab()
 endfunction
 call MySuperTab()
 " ----------------------------------------------------------------------------------------
-let g:ctrlp_match_window = 'bottom,order:ttb,results:100'
+noremap <c-d> :CtrlP ~<cr>
+let g:ctrlp_match_window = 'bottom,order:ttb,results:15'
 let g:ctrlp_switch_buffer = 0
 let g:ctrlp_working_path_mode = 0
 if executable('ag')
