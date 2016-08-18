@@ -30,7 +30,7 @@ call vundle#end()             " required
 filetype plugin indent on     " required
 " ----------------------------------------------------------------------------------------
 syntax enable                                           " syntax highlighting
-set synmaxcol=2048                                      " Syntax coloring lines that are too long just slows down the world
+set synmaxcol=1000                                      " Syntax coloring lines that are too long just slows down the world
 set t_Co=256                                            " enable 256 color
 set t_ut=                                               " disbale background color erase (BCE)
 colorscheme badwolf
@@ -92,7 +92,7 @@ set comments=sl:/*,mb:\ *,elx:\ */
 set omnifunc=syntaxcomplete#Complete
 set wildmenu
 set wildignore=*.o,*~,*.pyc
-set iskeyword+=.,#,-,_                                  " .,#,-,_ recognize as word
+set iskeyword+=#                                        " # recognize as word
 set hidden                                              " allow to have buffers with unsaved changes
 set nowrap                                              " dont wrap lines by default
 set showmatch
@@ -150,8 +150,6 @@ nnoremap <silent> <Leader>r :bd<CR>
 nnoremap <silent> <Leader>R :bd!<CR>
 nnoremap <silent> <Leader>a :wqa!<CR>
 nnoremap <silent> <Leader>t :Texplore<CR>
-nnoremap <silent> <Leader>+ :tabm+<CR>
-nnoremap <silent> <Leader>- :tabm-<CR>
 nnoremap <Leader>e :e<space>
 nnoremap <Leader>E :tabedit<space>
 nnoremap <Leader>! :au! BufWritePost *.c :!<space>
@@ -160,20 +158,20 @@ nnoremap <Leader><Leader> V
 " syntastic shortcut
 nnoremap <silent> <Leader>so :Errors<CR>
 nnoremap <silent> <Leader>sl :lclose<CR>
-noremap <silent> <leader>sy :SyntasticToggleMode<cr>
+noremap <silent> <Leader>sy :SyntasticToggleMode<cr>
 " save mysql last query
 noremap <Leader>z :w! /tmp/query.sql\| w!<CR>
 noremap <Leader>Z :w! /tmp/query.sql\| wq!<CR>
 " ----------------------------------------------------------------------------------------
 " copy and paste to system clipboard
-noremap <Leader>y "+y
-noremap <Leader>Y "+y$
+nnoremap <Leader>y "+y
+nnoremap <Leader>Y "+y$
 vnoremap <Leader>y "+y
-noremap <Leader>d "+d
-noremap <Leader>D "+D
+nnoremap <Leader>d "+d
+nnoremap <Leader>D "+D
 vnoremap <Leader>d "+d
-noremap <Leader>p "+p
-noremap <Leader>P "+P
+nnoremap <Leader>p "+p
+nnoremap <Leader>P "+P
 vnoremap <Leader>p "+p
 vnoremap <Leader>P "+P
 " ----------------------------------------------------------------------------------------
@@ -195,6 +193,9 @@ nnoremap N Nzz
 " easier horizontal scrolling
 nnoremap zl zL
 nnoremap zh zH
+" move tab
+nnoremap <silent> + :tabm+<CR>
+nnoremap <silent> - :tabm-<CR>
 " j == gj
 nnoremap <silent> j gj
 nnoremap <silent> k gk
@@ -280,8 +281,9 @@ function! MySuperTab()
 endfunction
 call MySuperTab()
 " ----------------------------------------------------------------------------------------
-noremap <c-d> :CtrlP ~<cr>
-noremap <c-b> :CtrlPBuffer<cr>
+noremap <Leader>p :CtrlP ~<cr>
+noremap <Leader>b :CtrlPBuffer<cr>
+noremap <Leader>m :CtrlPMRUFiles<cr>
 let g:ctrlp_match_window = 'bottom,order:ttb,results:15'
 if executable('ag')
     set grepprg=ag\ --nogroup\ --nocolor                " use ag over grep
