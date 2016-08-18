@@ -281,9 +281,9 @@ function! MySuperTab()
 endfunction
 call MySuperTab()
 " ----------------------------------------------------------------------------------------
-noremap <Leader>p :CtrlP ~<cr>
-noremap <Leader>b :CtrlPBuffer<cr>
-noremap <Leader>m :CtrlPMRUFiles<cr>
+nnoremap <silent> <Leader>p :CtrlP ~<cr>
+nnoremap <silent> <Leader>b :CtrlPBuffer<cr>
+nnoremap <silent> <Leader>m :CtrlPMRUFiles<cr>
 let g:ctrlp_match_window = 'bottom,order:ttb,results:15'
 if executable('ag')
     set grepprg=ag\ --nogroup\ --nocolor                " use ag over grep
