@@ -16,7 +16,7 @@ Plugin 'scrooloose/syntastic'
 Plugin 'darfink/starsearch.vim'                         " dont jump next on star search
 Plugin 'SearchComplete'                                 " tab completion inside search
 Plugin 'ReplaceWithRegister'                            " gr and motion
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'kana/vim-textobj-user'
 Plugin 'kana/vim-textobj-entire'                        " motion plus ae or ie to select entire
 Plugin 'tpope/vim-unimpaired'                           " pair maps and stuff
@@ -83,12 +83,11 @@ set smartindent
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
-set shiftround
+set shiftround                                          " use multiple of shiftwidth when indenting with '<' and '>'
 set expandtab
 set smarttab
 set textwidth=120
 set backspace=indent,eol,start
-set whichwrap+=<,>,h,l                                  " configure backspace so it acts as it should act
 set comments=sl:/*,mb:\ *,elx:\ */
 set omnifunc=syntaxcomplete#Complete
 set wildmenu
@@ -282,16 +281,16 @@ endfunction
 call MySuperTab()
 " ----------------------------------------------------------------------------------------
 noremap <c-d> :CtrlP ~<cr>
+noremap <c-b> :CtrlPBuffer<cr>
 let g:ctrlp_match_window = 'bottom,order:ttb,results:15'
-let g:ctrlp_switch_buffer = 0
-let g:ctrlp_working_path_mode = 0
 if executable('ag')
-    set grepprg=ag\ --nogroup\ --nocolor                " use ag over Grep
+    set grepprg=ag\ --nogroup\ --nocolor                " use ag over grep
     let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
     let g:ctrlp_use_caching = 0                         " ag is fast enough that CtrlP doesn't need to cache
 endif
 " ----------------------------------------------------------------------------------------
 highlight SyntasticError guibg=#2f0000
+" ----------------------------------------------------------------------------------------
 let g:netrw_liststyle = 2
 let g:netrw_banner = 0
 " ----------------------------------------------------------------------------------------
