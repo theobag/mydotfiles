@@ -45,11 +45,9 @@ set re=1                                                " fixes slow speed due t
 syntax sync minlines=256
 " ----------------------------------------------------------------------------------------
 function! CustomHighlighting()
-    highlight clear Normal
-    highlight clear NonText
     highlight clear SignColumn                          " SignColumn should match background
     highlight ColorColumn ctermbg=lightGrey
-    highlight cursorlinenr ctermfg=blue
+    highlight cursorlinenr ctermfg=lightblue
     highlight cursorline cterm=NONE ctermbg=234 ctermfg=NONE
     highlight cursorcolumn cterm=NONE ctermbg=234 ctermfg=NONE
 endfunction
@@ -92,7 +90,6 @@ set comments=sl:/*,mb:\ *,elx:\ */
 set omnifunc=syntaxcomplete#Complete
 set wildmenu
 set wildignore=*.o,*~,*.pyc
-set iskeyword+=#                                        " # recognize as word
 set hidden                                              " allow to have buffers with unsaved changes
 set nowrap                                              " dont wrap lines by default
 set showmatch
@@ -155,10 +152,6 @@ nnoremap <Leader>E :tabedit<space>
 nnoremap <Leader>! :au! BufWritePost *.c :!<space>
 " visual mode with leader twice
 nnoremap <Leader><Leader> V
-" syntastic shortcut
-nnoremap <silent> <Leader>so :Errors<CR>
-nnoremap <silent> <Leader>sl :lclose<CR>
-noremap <silent> <Leader>sy :SyntasticToggleMode<cr>
 " save mysql last query
 noremap <Leader>z :w! /tmp/query.sql\| w!<CR>
 noremap <Leader>Z :w! /tmp/query.sql\| wq!<CR>
@@ -281,6 +274,7 @@ function! MySuperTab()
 endfunction
 call MySuperTab()
 " ----------------------------------------------------------------------------------------
+"  ctrlp stuff
 nnoremap <silent> <Leader>p :CtrlP ~<cr>
 nnoremap <silent> <Leader>b :CtrlPBuffer<cr>
 nnoremap <silent> <Leader>m :CtrlPMRUFiles<cr>
@@ -291,6 +285,10 @@ if executable('ag')
     let g:ctrlp_use_caching = 0                         " ag is fast enough that CtrlP doesn't need to cache
 endif
 " ----------------------------------------------------------------------------------------
+" syntastic shortcut
+nnoremap <silent> <Leader>so :Errors<CR>
+nnoremap <silent> <Leader>sl :lclose<CR>
+noremap <silent> <Leader>sy :SyntasticToggleMode<cr>
 highlight SyntasticError guibg=#2f0000
 " ----------------------------------------------------------------------------------------
 let g:netrw_liststyle = 2
