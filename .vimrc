@@ -10,13 +10,14 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'majutsushi/tagbar'                              " sudo apt install exuberant-ctags
 Plugin 'rip-rip/clang_complete'                         " sudo apt install clang
+Plugin 'scrooloose/syntastic'
 Plugin 'raimondi/delimitmate'                           " jump c-g g or just repeat the action
 Plugin 'ervandew/supertab'	                            " c-v + tab for real tab
-Plugin 'scrooloose/syntastic'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'darfink/starsearch.vim'                         " dont jump next on star search
 Plugin 'SearchComplete'                                 " tab completion inside search
+Plugin 'terryma/vim-smooth-scroll'
 Plugin 'ReplaceWithRegister'                            " gr and motion
-Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'kana/vim-textobj-user'
 Plugin 'kana/vim-textobj-entire'                        " motion plus ae or ie to select entire
 Plugin 'tpope/vim-unimpaired'                           " pair maps and stuff
@@ -117,6 +118,7 @@ set history=200
 set backup
 set backupdir=~/.vim/backup
 set directory=~/.vim/tmp
+set viminfo='20,\"50                                    " read/write a .viminfo file, don't store more than 50 lines
 " ----------------------------------------------------------------------------------------
 let mapleader = "\<Space>"
 " ; == : in normal mode
@@ -203,6 +205,12 @@ cnoremap <C-h> <left>
 cnoremap <C-k> <S-Right>
 cnoremap <C-j> <S-Left>
 " ----------------------------------------------------------------------------------------
+"  vim smoother-scrolling
+noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
+noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
+noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
+noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
+" ----------------------------------------------------------------------------------------
 " tagbar
 nnoremap <silent> <F8> :TagbarToggle<CR>
 " ----------------------------------------------------------------------------------------
@@ -274,18 +282,16 @@ function! MySuperTab()
 endfunction
 call MySuperTab()
 " ----------------------------------------------------------------------------------------
-"  ctrlp stuff
-nnoremap <silent> <Leader>p :CtrlP ~<cr>
+nnoremap <silent> <Leader>n :CtrlP ~<cr>
 nnoremap <silent> <Leader>b :CtrlPBuffer<cr>
 nnoremap <silent> <Leader>m :CtrlPMRUFiles<cr>
-let g:ctrlp_match_window = 'bottom,order:ttb,results:15'
+let g:ctrlp_match_window = 'bottom,order:ttb,results:35'
 if executable('ag')
     set grepprg=ag\ --nogroup\ --nocolor                " use ag over grep
     let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
     let g:ctrlp_use_caching = 0                         " ag is fast enough that CtrlP doesn't need to cache
 endif
 " ----------------------------------------------------------------------------------------
-" syntastic shortcut
 nnoremap <silent> <Leader>so :Errors<CR>
 nnoremap <silent> <Leader>sl :lclose<CR>
 noremap <silent> <Leader>sy :SyntasticToggleMode<cr>
