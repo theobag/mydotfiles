@@ -5,6 +5,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'sjl/badwolf'
+Plugin 'mhinz/vim-startify'
 Plugin 'bling/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'sheerun/vim-polyglot'
@@ -205,29 +206,35 @@ cnoremap <C-h> <left>
 cnoremap <C-k> <S-Right>
 cnoremap <C-j> <S-Left>
 " ----------------------------------------------------------------------------------------
+" tagbar
+nnoremap <silent> <F8> :TagbarToggle<CR>
+" ----------------------------------------------------------------------------------------
+" auto indent delimitmate after enter and expand with space
+imap <expr> <CR> pumvisible() ? "\<c-y>" : "<Plug>delimitMateCR"
+let delimitMate_expand_space = 1
+" ----------------------------------------------------------------------------------------
 "  vim smoother-scrolling
 noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
 noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
 noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
 noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
 " ----------------------------------------------------------------------------------------
-" tagbar
-nnoremap <silent> <F8> :TagbarToggle<CR>
-" ----------------------------------------------------------------------------------------
-" remove any trailing whitespace that is in the file
-autocmd BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
-" ----------------------------------------------------------------------------------------
 " use j/k to start, then scroll through autocomplete options
 inoremap <expr> <C-j> ((pumvisible())?("\<C-n>"):("\<C-x><c-n>"))
 inoremap <expr> <C-k> ((pumvisible())?("\<C-p>"):("\<C-x><c-k>"))
 " ----------------------------------------------------------------------------------------
+" remove any trailing whitespace that is in the file
+autocmd BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
+" ----------------------------------------------------------------------------------------
+" remove multiple empty lines
+function! DeleteMultipleEmptyLines()
+    g/^\_$\n\_^$/d
+endfunction
+nnoremap <leader>ld :call DeleteMultipleEmptyLines()<CR>
+" ----------------------------------------------------------------------------------------
 " stop autocomment on nextline
 nnoremap <expr> O getline('.') =~ '^\s*//' ? 'O<esc>S' : 'O'
 nnoremap <expr> o getline('.') =~ '^\s*//' ? 'o<esc>S' : 'o'
-" ----------------------------------------------------------------------------------------
-" auto indent delimitmate after enter and expand with space
-imap <expr> <CR> pumvisible() ? "\<c-y>" : "<Plug>delimitMateCR"
-let delimitMate_expand_space = 1
 " ----------------------------------------------------------------------------------------
 " by default, vim assumes all .h files to be C++ files
 augroup project
@@ -296,6 +303,7 @@ nnoremap <silent> <Leader>so :Errors<CR>
 nnoremap <silent> <Leader>sl :lclose<CR>
 noremap <silent> <Leader>sy :SyntasticToggleMode<cr>
 highlight SyntasticError guibg=#2f0000
+let g:syntastic_check_on_wq = 0                         " skip check on :wq, :x, :ZZ etc
 " ----------------------------------------------------------------------------------------
 let g:netrw_liststyle = 2
 let g:netrw_banner = 0
