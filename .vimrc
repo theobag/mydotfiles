@@ -1,6 +1,6 @@
 set nocompatible              " be improved, required
 filetype off                  " required
-" ----------------------------------------------------------------------------------------
+
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
@@ -30,48 +30,20 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'ivalkeen/vim-simpledb'
 call vundle#end()             " required
 filetype plugin indent on     " required
-" ----------------------------------------------------------------------------------------
+
+let mapleader = "\<Space>"
 syntax enable                                           " syntax highlighting
+syntax sync minlines=256
+set re=1                                                " fixes slow speed due to syntax highlighting
 set synmaxcol=1000                                      " syntax coloring lines that are too long just slows down the world
-set t_Co=256                                            " enable 256 color
 set t_ut=                                               " disbale background color erase (BCE)
-colorscheme badwolf
-let g:badwolf_tabline = 0
+set t_Co=256                                            " enable 256 color
 set laststatus=2
 set number
 set ruler                                               " show the line number on the bar
 set secure                                              " limit what modelines and autocmds can do
 set cursorline
 set cursorcolumn
-set re=1                                                " fixes slow speed due to syntax highlighting
-syntax sync minlines=256
-" ----------------------------------------------------------------------------------------
-function! CustomHighlighting()
-    highlight clear SignColumn                          " SignColumn should match background
-    highlight ColorColumn ctermbg=lightGrey
-    highlight cursorlinenr ctermfg=lightblue
-    highlight cursorline cterm=NONE ctermbg=234 ctermfg=NONE
-    highlight cursorcolumn cterm=NONE ctermbg=234 ctermfg=NONE
-endfunction
-call CustomHighlighting()
-" ----------------------------------------------------------------------------------------
-function! MyAirline()
-    let g:airline_theme ='hybrid'
-    let g:airline_section_c = ""
-    let g:airline_section_x = ""
-    let g:airline_section_b = "%f"
-    let g:airline_section_y = ""
-    let g:airline#extensions#tabline#enabled = 1
-    let g:airline#extensions#tabline#left_sep = ''
-    let g:airline#extensions#tabline#left_alt_sep = ''
-    let g:airline#extensions#tabline#fnamemod = ':t'    " display only file name
-    let g:airline#extensions#tabline#tab_nr_type = 1    " tab number
-    let g:airline#extensions#whitespace#enabled = 0     " do not check for whitespaces
-    let g:airline#extensions#tabline#show_buffers = 0   " dont display buffers in tab-bar with single tab
-    let g:airline_powerline_fonts = 1
-endfunction
-call MyAirline()
-" ----------------------------------------------------------------------------------------
 set enc=utf-8                                           " encoding used for displaying file
 set fenc=utf-8                                          " encoding used when saving file
 set termencoding=utf-8
@@ -97,11 +69,11 @@ set nowrap                                              " dont wrap lines by def
 set showmatch
 set showcmd                                             " this shows what you are typing as a command
 set noshowmode                                          " hide insert status
-set autowrite                                           " Automatically save before commands like :next and :make
+set autowrite                                           " automatically save before commands like :next and :make
 set autoread                                            " set to auto read when file is changed from outside
 set autochdir
 set complete-=i
-set completeopt=menu,menuone                            " clang_complete without preview
+set completeopt=menu,menuone                            " clang complete without preview
 set pumheight=20                                        " limit popup menu height (completion)
 set incsearch                                           " search as characters are entered
 set hlsearch                                            " highlight matches
@@ -121,9 +93,76 @@ set backupdir=~/.vim/backup
 set directory=~/.vim/tmp
 set viminfo='20,\"50                                    " read/write a .viminfo file, don't store more than 50 lines
 " ----------------------------------------------------------------------------------------
-                                        MAPS
+                                        " PLUGINS
 " ----------------------------------------------------------------------------------------
-let mapleader = "\<Space>"
+" color scheme
+colorscheme badwolf
+let g:badwolf_tabline = 0
+" highlight
+highlight clear SignColumn                              " signcolumn should match background
+highlight ColorColumn ctermbg=lightGrey
+highlight cursorlinenr ctermfg=lightblue
+highlight cursorline cterm=NONE ctermbg=234 ctermfg=NONE
+highlight cursorcolumn cterm=NONE ctermbg=234 ctermfg=NONE
+" airline
+let g:airline_theme ='hybrid'
+let g:airline_section_c = ""
+let g:airline_section_x = ""
+let g:airline_section_b = "%f"
+let g:airline_section_y = ""
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ''
+let g:airline#extensions#tabline#left_alt_sep = ''
+let g:airline#extensions#tabline#fnamemod = ':t'        " display only file name
+let g:airline#extensions#tabline#tab_nr_type = 1        " tab number
+let g:airline#extensions#whitespace#enabled = 0         " do not check for whitespaces
+let g:airline#extensions#tabline#show_buffers = 0       " dont display buffers in tab-bar with single tab
+let g:airline_powerline_fonts = 1
+" tagbar
+nnoremap <silent> <F8> :TagbarToggle<CR>
+" netrw
+let g:netrw_liststyle = 2
+let g:netrw_banner = 0
+" delimitmate
+imap <expr> <CR> pumvisible() ? "\<c-y>" : "<Plug>delimitMateCR"
+let delimitMate_expand_space = 1
+" clang
+let g:clang_library_path ='/usr/lib/x86_64-linux-gnu/libclang-3.8.so.1'
+let g:clang_close_preview = 1
+let g:clang_user_options = '|| exit 0'
+" smooth_scroll
+noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
+noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
+noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
+noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
+" syntastic
+nnoremap <silent> <Leader>so :Errors<CR>
+nnoremap <silent> <Leader>sl :lclose<CR>
+noremap <silent> <Leader>sy :SyntasticToggleMode<cr>
+highlight SyntasticError guibg=#2f0000
+let g:syntastic_check_on_wq = 0                         " skip check on :wq, :x, :ZZ etc
+" supertab
+let g:SuperTabDefaultCompletionType = "context"
+let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
+let g:SuperTabNoCompleteAfter = ['^', ',', '\s']
+let g:SuperTabCrMapping = 1                             " no newline on supertab
+let g:SuperTabClosePreviewOnPopupClose = 1              " autoclose popup
+runtime! plugin/supertab.vim                            " real tabs with shift+tab
+inoremap <s-tab> <tab>
+" ctrlp
+nnoremap <silent> <Leader>n :CtrlP ~<cr>
+nnoremap <silent> <Leader>b :CtrlPBuffer<cr>
+nnoremap <silent> <Leader>m :CtrlPMRUFiles<cr>
+let g:ctrlp_match_window = 'bottom,order:ttb,results:35'
+if executable('ag')
+    set grepprg=ag\ --nogroup\ --nocolor                " use ag over grep
+    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+    let g:ctrlp_use_caching = 0                         " ag is fast enough that CtrlP doesn't need to cache
+endif
+
+" ----------------------------------------------------------------------------------------
+                                        " MAPS
+" ----------------------------------------------------------------------------------------
 " ; == : in normal mode
 noremap ; :
 noremap : ;
@@ -141,7 +180,7 @@ nnoremap <F10> K
 vnoremap <silent> y y`]
 vnoremap <silent> p p`]
 nnoremap <silent> p p`]
-" ----------------------------------------------------------------------------------------
+
 " type the leader++
 nnoremap <silent> <Leader>w :w!<CR>
 nnoremap <silent> <Leader>W :wa!<CR>
@@ -160,7 +199,7 @@ nnoremap <Leader><Leader> V
 " save mysql last query
 noremap <Leader>z :w! /tmp/query.sql\| w!<CR>
 noremap <Leader>Z :w! /tmp/query.sql\| wq!<CR>
-" ----------------------------------------------------------------------------------------
+
 " copy and paste to system clipboard
 nnoremap <Leader>y "+y
 nnoremap <Leader>Y "+y$
@@ -172,14 +211,14 @@ nnoremap <Leader>p "+p
 nnoremap <Leader>P "+P
 vnoremap <Leader>p "+p
 vnoremap <Leader>P "+P
-" ----------------------------------------------------------------------------------------
+
 " use C-Space to Esc out of any mode but Terminal sees <C-@> as <C-space> WTF, but ok
 nnoremap <silent> <C-@> <Esc>:noh<CR>
 vnoremap <silent> <C-@> <Esc>gV
 onoremap <silent> <C-@> <Esc>
 cnoremap <silent> <C-@> <C-c>
 inoremap <silent> <C-@> <Esc>`^
-" ----------------------------------------------------------------------------------------
+
 " hit enter to go end of line and hit 12 + enter to jump line 12
 noremap <CR> G
 " move the beginning/end of line
@@ -207,37 +246,31 @@ cnoremap <C-l> <right>
 cnoremap <C-h> <left>
 cnoremap <C-k> <S-Right>
 cnoremap <C-j> <S-Left>
-" ----------------------------------------------------------------------------------------
+
 " use j/k to start, then scroll through autocomplete options
 inoremap <expr> <C-j> ((pumvisible())?("\<C-n>"):("\<C-x><c-n>"))
 inoremap <expr> <C-k> ((pumvisible())?("\<C-p>"):("\<C-x><c-k>"))
-" ----------------------------------------------------------------------------------------
 " stop autocomment on nextline
 nnoremap <expr> O getline('.') =~ '^\s*//' ? 'O<esc>S' : 'O'
 nnoremap <expr> o getline('.') =~ '^\s*//' ? 'o<esc>S' : 'o'
-" ----------------------------------------------------------------------------------------
 " remove any trailing whitespace that is in the file
 autocmd BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
-" ----------------------------------------------------------------------------------------
 " remove multiple empty lines
 function! DeleteMultipleEmptyLines()
     g/^\_$\n\_^$/d
 endfunction
 nnoremap <leader>ld :call DeleteMultipleEmptyLines()<CR>
-" ----------------------------------------------------------------------------------------
 " by default, vim assumes all .h files to be C++ files
 augroup project
     autocmd!
     autocmd BufRead,BufNewFile *.h,*.c set filetype=c.doxygen
 augroup END
-" ----------------------------------------------------------------------------------------
 " activate alt
 for i in range(65,90) + range(97,122)
     let c = nr2char(i)
     exec "map \e".c." <M-".c.">"
     exec "map! \e".c." <M-".c.">"
 endfor
-" ----------------------------------------------------------------------------------------
 " vp doesn't replace paste buffer
 function! RestoreRegister()
     let @" = s:restore_reg
@@ -248,7 +281,6 @@ function! s:Repl()
     return "p@=RestoreRegister()\<cr>"
 endfunction
 vmap <silent> <expr> p <sid>Repl()
-" ----------------------------------------------------------------------------------------
 " movement between tabs or buffers
 function! MyNext()
     if exists( '*tabpagenr' ) && tabpagenr('$') != 1
@@ -266,55 +298,3 @@ function! MyPrev()
 endfunction
 nnoremap <silent> <C-l> :call MyNext()<CR>
 nnoremap <silent> <C-h> :call MyPrev()<CR>
-" ----------------------------------------------------------------------------------------
-                                        PLUGINS
-" ----------------------------------------------------------------------------------------
-" tagbar
-nnoremap <silent> <F8> :TagbarToggle<CR>
-" ----------------------------------------------------------------------------------------
-" netrw
-let g:netrw_liststyle = 2
-let g:netrw_banner = 0
-" ----------------------------------------------------------------------------------------
-" delimitmate
-imap <expr> <CR> pumvisible() ? "\<c-y>" : "<Plug>delimitMateCR"
-let delimitMate_expand_space = 1
-" ----------------------------------------------------------------------------------------
-" clang
-let g:clang_library_path ='/usr/lib/x86_64-linux-gnu/libclang-3.8.so.1'
-let g:clang_close_preview = 1
-let g:clang_user_options = '|| exit 0'
-" ----------------------------------------------------------------------------------------
-" smooth_scroll
-noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
-noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
-noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
-noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
-" ----------------------------------------------------------------------------------------
-" syntastic
-nnoremap <silent> <Leader>so :Errors<CR>
-nnoremap <silent> <Leader>sl :lclose<CR>
-noremap <silent> <Leader>sy :SyntasticToggleMode<cr>
-highlight SyntasticError guibg=#2f0000
-let g:syntastic_check_on_wq = 0                         " skip check on :wq, :x, :ZZ etc
-" ----------------------------------------------------------------------------------------
-" supertab
-let g:SuperTabDefaultCompletionType = "context"
-let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
-let g:SuperTabNoCompleteAfter = ['^', ',', '\s']
-let g:SuperTabCrMapping = 1                             " no newline on supertab
-let g:SuperTabClosePreviewOnPopupClose = 1              " autoclose popup
-runtime! plugin/supertab.vim                            " real tabs with shift+tab
-inoremap <s-tab> <tab>
-" ----------------------------------------------------------------------------------------
-" ctrlp
-nnoremap <silent> <Leader>n :CtrlP ~<cr>
-nnoremap <silent> <Leader>b :CtrlPBuffer<cr>
-nnoremap <silent> <Leader>m :CtrlPMRUFiles<cr>
-let g:ctrlp_match_window = 'bottom,order:ttb,results:35'
-if executable('ag')
-    set grepprg=ag\ --nogroup\ --nocolor                " use ag over grep
-    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-    let g:ctrlp_use_caching = 0                         " ag is fast enough that CtrlP doesn't need to cache
-endif
-" ----------------------------------------------------------------------------------------
