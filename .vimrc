@@ -32,7 +32,7 @@ call vundle#end()             " required
 filetype plugin indent on     " required
 " ----------------------------------------------------------------------------------------
 syntax enable                                           " syntax highlighting
-set synmaxcol=1000                                      " Syntax coloring lines that are too long just slows down the world
+set synmaxcol=1000                                      " syntax coloring lines that are too long just slows down the world
 set t_Co=256                                            " enable 256 color
 set t_ut=                                               " disbale background color erase (BCE)
 colorscheme badwolf
@@ -72,10 +72,10 @@ function! MyAirline()
 endfunction
 call MyAirline()
 " ----------------------------------------------------------------------------------------
-set enc=utf-8
-set fenc=utf-8
+set enc=utf-8                                           " encoding used for displaying file
+set fenc=utf-8                                          " encoding used when saving file
 set termencoding=utf-8
-set ttimeoutlen=200
+set ttimeoutlen=200                                     " speed esc
 set tabpagemax=10                                       " only show 10 tabs
 set autoindent
 set cindent
@@ -120,6 +120,8 @@ set backup
 set backupdir=~/.vim/backup
 set directory=~/.vim/tmp
 set viminfo='20,\"50                                    " read/write a .viminfo file, don't store more than 50 lines
+" ----------------------------------------------------------------------------------------
+                                        MAPS
 " ----------------------------------------------------------------------------------------
 let mapleader = "\<Space>"
 " ; == : in normal mode
@@ -206,22 +208,13 @@ cnoremap <C-h> <left>
 cnoremap <C-k> <S-Right>
 cnoremap <C-j> <S-Left>
 " ----------------------------------------------------------------------------------------
-" tagbar
-nnoremap <silent> <F8> :TagbarToggle<CR>
-" ----------------------------------------------------------------------------------------
-" auto indent delimitmate after enter and expand with space
-imap <expr> <CR> pumvisible() ? "\<c-y>" : "<Plug>delimitMateCR"
-let delimitMate_expand_space = 1
-" ----------------------------------------------------------------------------------------
-"  vim smoother-scrolling
-noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
-noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
-noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
-noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
-" ----------------------------------------------------------------------------------------
 " use j/k to start, then scroll through autocomplete options
 inoremap <expr> <C-j> ((pumvisible())?("\<C-n>"):("\<C-x><c-n>"))
 inoremap <expr> <C-k> ((pumvisible())?("\<C-p>"):("\<C-x><c-k>"))
+" ----------------------------------------------------------------------------------------
+" stop autocomment on nextline
+nnoremap <expr> O getline('.') =~ '^\s*//' ? 'O<esc>S' : 'O'
+nnoremap <expr> o getline('.') =~ '^\s*//' ? 'o<esc>S' : 'o'
 " ----------------------------------------------------------------------------------------
 " remove any trailing whitespace that is in the file
 autocmd BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
@@ -231,10 +224,6 @@ function! DeleteMultipleEmptyLines()
     g/^\_$\n\_^$/d
 endfunction
 nnoremap <leader>ld :call DeleteMultipleEmptyLines()<CR>
-" ----------------------------------------------------------------------------------------
-" stop autocomment on nextline
-nnoremap <expr> O getline('.') =~ '^\s*//' ? 'O<esc>S' : 'O'
-nnoremap <expr> o getline('.') =~ '^\s*//' ? 'o<esc>S' : 'o'
 " ----------------------------------------------------------------------------------------
 " by default, vim assumes all .h files to be C++ files
 augroup project
@@ -278,17 +267,47 @@ endfunction
 nnoremap <silent> <C-l> :call MyNext()<CR>
 nnoremap <silent> <C-h> :call MyPrev()<CR>
 " ----------------------------------------------------------------------------------------
-function! MySuperTab()
-    let g:SuperTabDefaultCompletionType = "context"
-    let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
-    let g:SuperTabNoCompleteAfter = ['^', ',', '\s']
-    let g:SuperTabCrMapping = 1                         " no newline on supertab
-    let g:SuperTabClosePreviewOnPopupClose = 1          " autoclose popup
-    runtime! plugin/supertab.vim                        " real tabs with shift+tab
-    inoremap <s-tab> <tab>
-endfunction
-call MySuperTab()
+                                        PLUGINS
 " ----------------------------------------------------------------------------------------
+" tagbar
+nnoremap <silent> <F8> :TagbarToggle<CR>
+" ----------------------------------------------------------------------------------------
+" netrw
+let g:netrw_liststyle = 2
+let g:netrw_banner = 0
+" ----------------------------------------------------------------------------------------
+" delimitmate
+imap <expr> <CR> pumvisible() ? "\<c-y>" : "<Plug>delimitMateCR"
+let delimitMate_expand_space = 1
+" ----------------------------------------------------------------------------------------
+" clang
+let g:clang_library_path ='/usr/lib/x86_64-linux-gnu/libclang-3.8.so.1'
+let g:clang_close_preview = 1
+let g:clang_user_options = '|| exit 0'
+" ----------------------------------------------------------------------------------------
+" smooth_scroll
+noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
+noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
+noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
+noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
+" ----------------------------------------------------------------------------------------
+" syntastic
+nnoremap <silent> <Leader>so :Errors<CR>
+nnoremap <silent> <Leader>sl :lclose<CR>
+noremap <silent> <Leader>sy :SyntasticToggleMode<cr>
+highlight SyntasticError guibg=#2f0000
+let g:syntastic_check_on_wq = 0                         " skip check on :wq, :x, :ZZ etc
+" ----------------------------------------------------------------------------------------
+" supertab
+let g:SuperTabDefaultCompletionType = "context"
+let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
+let g:SuperTabNoCompleteAfter = ['^', ',', '\s']
+let g:SuperTabCrMapping = 1                             " no newline on supertab
+let g:SuperTabClosePreviewOnPopupClose = 1              " autoclose popup
+runtime! plugin/supertab.vim                            " real tabs with shift+tab
+inoremap <s-tab> <tab>
+" ----------------------------------------------------------------------------------------
+" ctrlp
 nnoremap <silent> <Leader>n :CtrlP ~<cr>
 nnoremap <silent> <Leader>b :CtrlPBuffer<cr>
 nnoremap <silent> <Leader>m :CtrlPMRUFiles<cr>
@@ -298,17 +317,4 @@ if executable('ag')
     let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
     let g:ctrlp_use_caching = 0                         " ag is fast enough that CtrlP doesn't need to cache
 endif
-" ----------------------------------------------------------------------------------------
-nnoremap <silent> <Leader>so :Errors<CR>
-nnoremap <silent> <Leader>sl :lclose<CR>
-noremap <silent> <Leader>sy :SyntasticToggleMode<cr>
-highlight SyntasticError guibg=#2f0000
-let g:syntastic_check_on_wq = 0                         " skip check on :wq, :x, :ZZ etc
-" ----------------------------------------------------------------------------------------
-let g:netrw_liststyle = 2
-let g:netrw_banner = 0
-" ----------------------------------------------------------------------------------------
-let g:clang_library_path ='/usr/lib/x86_64-linux-gnu/libclang-3.8.so.1'
-let g:clang_close_preview = 1
-let g:clang_user_options = '|| exit 0'
 " ----------------------------------------------------------------------------------------
