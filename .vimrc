@@ -1,6 +1,8 @@
 set nocompatible              " be improved, required
 filetype off                  " required
 
+let mapleader = "\<Space>"
+
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
@@ -16,6 +18,7 @@ Plugin 'raimondi/delimitmate'                           " jump c-g g or just rep
 Plugin 'ervandew/supertab'	                            " c-v + tab for real tab
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'darfink/starsearch.vim'                         " dont jump next on star search
+Plugin 'henrik/vim-indexed-search'
 Plugin 'SearchComplete'                                 " tab completion inside search
 Plugin 'terryma/vim-smooth-scroll'
 Plugin 'ReplaceWithRegister'                            " gr and motion
@@ -31,7 +34,6 @@ Plugin 'ivalkeen/vim-simpledb'
 call vundle#end()             " required
 filetype plugin indent on     " required
 
-let mapleader = "\<Space>"
 syntax enable                                           " syntax highlighting
 syntax sync minlines=256
 set re=1                                                " fixes slow speed due to syntax highlighting
@@ -92,6 +94,7 @@ set backup
 set backupdir=~/.vim/backup
 set directory=~/.vim/tmp
 set viminfo='20,\"50                                    " read/write a .viminfo file, don't store more than 50 lines
+
 " ----------------------------------------------------------------------------------------
                                         " PLUGINS
 " ----------------------------------------------------------------------------------------
@@ -163,9 +166,6 @@ endif
 " ----------------------------------------------------------------------------------------
                                         " MAPS
 " ----------------------------------------------------------------------------------------
-" ; == : in normal mode
-noremap ; :
-noremap : ;
 " make Y yank to end of line (like D, or C)
 noremap Y y$
 " highlight last inserted text
