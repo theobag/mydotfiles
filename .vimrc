@@ -17,6 +17,7 @@ Plugin 'scrooloose/syntastic'
 Plugin 'raimondi/delimitmate'                           " jump c-g g or just repeat the action
 Plugin 'ervandew/supertab'	                            " c-v + tab for real tab
 Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'rking/ag.vim'
 Plugin 'darfink/starsearch.vim'                         " dont jump next on star search
 Plugin 'henrik/vim-indexed-search'
 Plugin 'SearchComplete'                                 " tab completion inside search
@@ -180,18 +181,24 @@ nnoremap <F10> K
 vnoremap <silent> y y`]
 vnoremap <silent> p p`]
 nnoremap <silent> p p`]
+" use C-Space to Esc out of any mode but Terminal sees <C-@> as <C-space> WTF, but ok
+inoremap <C-@> <Esc>`^
+vnoremap <C-@> <Esc>gV
+onoremap <C-@> <Esc>
+cnoremap <C-@> <C-c>
+nnoremap <C-@> <Esc>:noh<CR>
 
 " type the leader++
 nnoremap <silent> <Leader>w :w!<CR>
-nnoremap <silent> <Leader>W :wa!<CR>
+nnoremap <silent> <Leader>W :wqa!<CR>
 nnoremap <silent> <Leader>x :x!<CR>
 nnoremap <silent> <Leader>q :q<CR>
 nnoremap <silent> <Leader>Q :q!<CR>
 nnoremap <silent> <Leader>r :bd<CR>
 nnoremap <silent> <Leader>R :bd!<CR>
-nnoremap <silent> <Leader>a :wqa!<CR>
 nnoremap <silent> <Leader>t :Texplore<CR>
 nnoremap <silent> <Leader>T :Texplore.<CR>
+nnoremap <Leader>a :Ag<space>
 nnoremap <Leader>e :e<space>
 nnoremap <Leader>E :tabedit<space>
 nnoremap <Leader>! :au! BufWritePost *.c :!<space>
@@ -211,13 +218,6 @@ nnoremap <Leader>p "+p
 nnoremap <Leader>P "+P
 vnoremap <Leader>p "+p
 vnoremap <Leader>P "+P
-
-" use C-Space to Esc out of any mode but Terminal sees <C-@> as <C-space> WTF, but ok
-inoremap <C-@> <Esc>`^
-vnoremap <C-@> <Esc>gV
-onoremap <C-@> <Esc>
-cnoremap <C-@> <C-c>
-nnoremap <C-@> <Esc>:noh<CR>
 
 " hit enter to go end of line and hit 12 + enter to jump line 12
 noremap <CR> G
