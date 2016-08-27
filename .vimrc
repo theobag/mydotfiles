@@ -168,10 +168,10 @@ endif
 " ----------------------------------------------------------------------------------------
 " make Y yank to end of line (like D, or C)
 noremap Y y$
-" highlight last inserted text
-nnoremap gV `[v`]
 " go to position of last edit. mean: 'go to edit'
 nnoremap ge `.
+" highlight last inserted text
+nnoremap gV `[v`]
 " split line with K
 nnoremap K i<CR><ESC>
 " man page
@@ -191,6 +191,7 @@ nnoremap <silent> <Leader>r :bd<CR>
 nnoremap <silent> <Leader>R :bd!<CR>
 nnoremap <silent> <Leader>a :wqa!<CR>
 nnoremap <silent> <Leader>t :Texplore<CR>
+nnoremap <silent> <Leader>T :Texplore.<CR>
 nnoremap <Leader>e :e<space>
 nnoremap <Leader>E :tabedit<space>
 nnoremap <Leader>! :au! BufWritePost *.c :!<space>
@@ -199,7 +200,6 @@ nnoremap <Leader><Leader> V
 " save mysql last query
 noremap <Leader>z :w! /tmp/query.sql\| w!<CR>
 noremap <Leader>Z :w! /tmp/query.sql\| wq!<CR>
-
 " copy and paste to system clipboard
 nnoremap <Leader>y "+y
 nnoremap <Leader>Y "+y$
@@ -213,11 +213,11 @@ vnoremap <Leader>p "+p
 vnoremap <Leader>P "+P
 
 " use C-Space to Esc out of any mode but Terminal sees <C-@> as <C-space> WTF, but ok
-nnoremap <silent> <C-@> <Esc>:noh<CR>
-vnoremap <silent> <C-@> <Esc>gV
-onoremap <silent> <C-@> <Esc>
-cnoremap <silent> <C-@> <C-c>
-inoremap <silent> <C-@> <Esc>`^
+inoremap <C-@> <Esc>`^
+vnoremap <C-@> <Esc>gV
+onoremap <C-@> <Esc>
+cnoremap <C-@> <C-c>
+nnoremap <C-@> <Esc>:noh<CR>
 
 " hit enter to go end of line and hit 12 + enter to jump line 12
 noremap <CR> G
