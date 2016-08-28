@@ -92,8 +92,13 @@ set shortmess+=I                                        " don't display the intr
 set titleold=                                           " don't display 'Thank for flaying Vim' when exiting
 set history=200
 set backup
+set backupext=.bak                                      " save backup with bak extension
 set backupdir=~/.vim/backup
 set directory=~/.vim/tmp
+set backupskip+=*/shm/*                                 " don't back up anything in a shared memory filesystem either
+set undofile
+set undolevels=1000
+set undodir^=~/.vim/undo
 set viminfo='20,\"50                                    " read/write a .viminfo file, don't store more than 50 lines
 
 " ----------------------------------------------------------------------------------------
