@@ -1,7 +1,7 @@
+let mapleader = "\<Space>"
+set shell=/bin/sh
 set nocompatible              " be improved, required
 filetype off                  " required
-
-let mapleader = "\<Space>"
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -18,9 +18,8 @@ Plugin 'raimondi/delimitmate'                           " jump c-g g or just rep
 Plugin 'ervandew/supertab'	                            " c-v + tab for real tab
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'rking/ag.vim'
-Plugin 'darfink/starsearch.vim'                         " dont jump next on star search
 Plugin 'henrik/vim-indexed-search'
-Plugin 'SearchComplete'                                 " tab completion inside search
+Plugin 'darfink/starsearch.vim'                         " dont jump next on star search
 Plugin 'terryma/vim-smooth-scroll'
 Plugin 'ReplaceWithRegister'                            " gr and motion
 Plugin 'kana/vim-textobj-user'
@@ -52,6 +51,7 @@ set fenc=utf-8                                          " encoding used when sav
 set termencoding=utf-8
 set ttimeoutlen=200                                     " speed esc
 set tabpagemax=10                                       " only show 10 tabs
+set switchbuf=usetab                                    " if opening buffer, search first in opened windows.
 set autoindent
 set cindent
 set smartindent
@@ -97,10 +97,8 @@ set backupdir=~/.vim/backup
 set directory=~/.vim/tmp
 set backupskip+=*/shm/*                                 " don't back up anything in a shared memory filesystem either
 set undofile
-set undolevels=1000
 set undodir^=~/.vim/undo
-set viminfo='20,\"50                                    " read/write a .viminfo file, don't store more than 50 lines
-
+set viminfo='20,\"100                                   " read/write a .viminfo file, don't store more than 100 lines
 " ----------------------------------------------------------------------------------------
                                         " PLUGINS
 " ----------------------------------------------------------------------------------------
@@ -127,6 +125,8 @@ let g:airline#extensions#tabline#tab_nr_type = 1        " tab number
 let g:airline#extensions#whitespace#enabled = 0         " do not check for whitespaces
 let g:airline#extensions#tabline#show_buffers = 0       " dont display buffers in tab-bar with single tab
 let g:airline_powerline_fonts = 1
+" man page, use leader K to open it
+runtime! ftplugin/man.vim
 " tagbar
 nnoremap <silent> <F8> :TagbarToggle<CR>
 " netrw
@@ -168,7 +168,6 @@ if executable('ag')
     let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
     let g:ctrlp_use_caching = 0                         " ag is fast enough that CtrlP doesn't need to cache
 endif
-
 " ----------------------------------------------------------------------------------------
                                         " MAPS
 " ----------------------------------------------------------------------------------------
@@ -178,10 +177,6 @@ noremap Y y$
 nnoremap ge `.
 " highlight last inserted text
 nnoremap gV `[v`]
-" split line with K
-nnoremap K i<CR><ESC>
-" man page
-nnoremap <F10> K
 " paste multiple lines multiple times with simple ppppp
 vnoremap <silent> y y`]
 vnoremap <silent> p p`]
