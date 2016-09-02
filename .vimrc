@@ -71,6 +71,7 @@ set wildignore=*.o,*~,*.pyc
 set hidden                                              " allow to have buffers with unsaved changes
 set nowrap                                              " dont wrap lines by default
 set showmatch
+set matchtime=2
 set showcmd                                             " this shows what you are typing as a command
 set noshowmode                                          " hide insert status
 set autowrite                                           " automatically save before commands like :next and :make
@@ -92,7 +93,7 @@ set scrolloff=1                                         " keep at least 1 lines 
 set sidescrolloff=5                                     " keep at least 5 lines left/right
 set shortmess+=I                                        " don't display the intro message on starting vim.
 set titleold=                                           " don't display 'Thank for flaying Vim' when exiting
-set history=200
+set history=1000
 set backup
 set backupext=.bak                                      " save backup with bak extension
 set backupdir=~/.vim/backup
@@ -100,6 +101,7 @@ set directory=~/.vim/tmp
 set undofile
 set undodir^=~/.vim/undo
 set viminfo='20,\"100                                   " read/write a .viminfo file, don't store more than 100 lines
+set tags=tags;~/                                        " look for the file in the current directory, then south until you reach home.
 " ----------------------------------------------------------------------------------------
                                         " PLUGINS
 " ----------------------------------------------------------------------------------------
@@ -126,7 +128,7 @@ let g:airline#extensions#tabline#tab_nr_type = 1        " tab number
 let g:airline#extensions#whitespace#enabled = 0         " do not check for whitespaces
 let g:airline#extensions#tabline#show_buffers = 0       " dont display buffers in tab-bar with single tab
 let g:airline_powerline_fonts = 1
-" man page, use leader K to open it
+" man page, use leader K to open it or Man 3 option in command mode
 runtime! ftplugin/man.vim
 " tagbar
 nnoremap <silent> <F8> :TagbarToggle<CR>
@@ -218,7 +220,6 @@ nnoremap <Leader><Leader> V
 " save mysql last query
 noremap <Leader>z :w! /tmp/query.sql\| w!<CR>
 noremap <Leader>Z :w! /tmp/query.sql\| wq!<CR>
-
 " hit enter to go end of line and hit 12 + enter to jump line 12
 noremap <CR> G
 " move the beginning/end of line
@@ -246,7 +247,6 @@ cnoremap <C-l> <right>
 cnoremap <C-h> <left>
 cnoremap <C-k> <S-Right>
 cnoremap <C-j> <S-Left>
-
 " use j/k to start, then scroll through autocomplete options
 inoremap <expr> <C-j> ((pumvisible())?("\<C-n>"):("\<C-x><c-n>"))
 inoremap <expr> <C-k> ((pumvisible())?("\<C-p>"):("\<C-x><c-k>"))
