@@ -1,7 +1,8 @@
-let mapleader = "\<Space>"
 set shell=/bin/sh
 set nocompatible              " be improved, required
 filetype off                  " required
+
+let mapleader = "\<Space>"
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -49,7 +50,7 @@ set cursorcolumn
 set enc=utf-8                                           " encoding used for displaying file
 set fenc=utf-8                                          " encoding used when saving file
 set termencoding=utf-8
-set ttimeoutlen=200                                     " speed esc
+set ttimeoutlen=100                                     " speed esc
 set tabpagemax=10                                       " only show 10 tabs
 set switchbuf=usetab                                    " if opening buffer, search first in opened windows.
 set autoindent
@@ -80,6 +81,7 @@ set completeopt=menu,menuone                            " clang complete without
 set pumheight=20                                        " limit popup menu height (completion)
 set incsearch                                           " search as characters are entered
 set hlsearch                                            " highlight matches
+set gdefault                                            " for search and replace
 set confirm                                             " ask to save buffer
 set nojoinspaces	  	                                " use only one space after '.' when joining
 set lazyredraw                                          " don't update while executing macros
@@ -95,7 +97,6 @@ set backup
 set backupext=.bak                                      " save backup with bak extension
 set backupdir=~/.vim/backup
 set directory=~/.vim/tmp
-set backupskip+=*/shm/*                                 " don't back up anything in a shared memory filesystem either
 set undofile
 set undodir^=~/.vim/undo
 set viminfo='20,\"100                                   " read/write a .viminfo file, don't store more than 100 lines
@@ -106,8 +107,8 @@ set viminfo='20,\"100                                   " read/write a .viminfo 
 colorscheme badwolf
 let g:badwolf_tabline = 0
 " highlight
-highlight clear SignColumn                              " signcolumn should match background
-highlight ColorColumn ctermbg=lightGrey
+highlight clear signcolumn                              " signcolumn should match background
+highlight colorcolumn ctermbg=lightgrey
 highlight cursorlinenr ctermfg=lightblue
 highlight cursorline cterm=NONE ctermbg=234 ctermfg=NONE
 highlight cursorcolumn cterm=NONE ctermbg=234 ctermfg=NONE
@@ -187,10 +188,20 @@ vnoremap <C-@> <Esc>gV
 onoremap <C-@> <Esc>
 cnoremap <C-@> <C-c>
 nnoremap <C-@> <Esc>:noh<CR>
-
+" copy and paste to system clipboard
+nnoremap <Leader>y "+y
+nnoremap <Leader>Y "+y$
+vnoremap <Leader>y "+y
+nnoremap <Leader>d "+d
+nnoremap <Leader>D "+D
+vnoremap <Leader>d "+d
+nnoremap <Leader>p "+p
+nnoremap <Leader>P "+P
+vnoremap <Leader>p "+p
+vnoremap <Leader>P "+P
 " type the leader++
 nnoremap <silent> <Leader>w :w!<CR>
-nnoremap <silent> <Leader>W :wqa!<CR>
+nnoremap <silent> <Leader>W :wa!<CR>
 nnoremap <silent> <Leader>x :x!<CR>
 nnoremap <silent> <Leader>q :q<CR>
 nnoremap <silent> <Leader>Q :q!<CR>
@@ -207,17 +218,6 @@ nnoremap <Leader><Leader> V
 " save mysql last query
 noremap <Leader>z :w! /tmp/query.sql\| w!<CR>
 noremap <Leader>Z :w! /tmp/query.sql\| wq!<CR>
-" copy and paste to system clipboard
-nnoremap <Leader>y "+y
-nnoremap <Leader>Y "+y$
-vnoremap <Leader>y "+y
-nnoremap <Leader>d "+d
-nnoremap <Leader>D "+D
-vnoremap <Leader>d "+d
-nnoremap <Leader>p "+p
-nnoremap <Leader>P "+P
-vnoremap <Leader>p "+p
-vnoremap <Leader>P "+P
 
 " hit enter to go end of line and hit 12 + enter to jump line 12
 noremap <CR> G
@@ -239,8 +239,8 @@ nnoremap <silent> k gk
 vnoremap <silent> j gj
 vnoremap <silent> k gk
 " move cursor together with the screen
-nnoremap <C-j> j<c-e>
-nnoremap <C-k> k<c-y>
+nnoremap <C-j> 3<c-e>
+nnoremap <C-k> 3<c-y>
 " moving around in command mode
 cnoremap <C-l> <right>
 cnoremap <C-h> <left>
