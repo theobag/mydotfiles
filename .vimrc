@@ -128,6 +128,7 @@ let g:airline#extensions#tabline#tab_nr_type = 1        " tab number
 let g:airline#extensions#whitespace#enabled = 0         " do not check for whitespaces
 let g:airline#extensions#tabline#show_buffers = 0       " dont display buffers in tab-bar with single tab
 let g:airline_powerline_fonts = 1
+
 " man page, use leader K to open it or Man 3 option in command mode
 runtime! ftplugin/man.vim
 " tagbar
@@ -188,7 +189,6 @@ vnoremap <C-@> <Esc>gV
 onoremap <C-@> <Esc>
 cnoremap <C-@> <C-c>
 nnoremap <C-@> <Esc>:noh<CR>
-
 " hit enter to go end of line and hit 12 + enter to jump line 12
 noremap <CR> G
 " move the beginning/end of line
@@ -209,13 +209,22 @@ nnoremap <silent> k gk
 vnoremap <silent> j gj
 vnoremap <silent> k gk
 " move cursor together with the screen
-nnoremap <C-j> 3<c-e>
-nnoremap <C-k> 3<c-y>
+nnoremap <C-j> j<c-e>
+nnoremap <C-k> k<c-y>
 " moving around in command mode
 cnoremap <C-l> <right>
 cnoremap <C-h> <left>
 cnoremap <C-k> <S-Right>
 cnoremap <C-j> <S-Left>
+" disable arrow and prevent show weird characters
+nnoremap <silent> <ESC>OA <Nop>
+nnoremap <silent> <ESC>OB <Nop>
+nnoremap <silent> <ESC>OC <Nop>
+nnoremap <silent> <ESC>OD <Nop>
+inoremap <silent> <ESC>OA <Nop>
+inoremap <silent> <ESC>OB <Nop>
+inoremap <silent> <ESC>OC <Nop>
+inoremap <silent> <ESC>OD <Nop>
 
 " copy and paste to system clipboard
 nnoremap <Leader>y "+y
@@ -256,20 +265,16 @@ nnoremap <expr> O getline('.') =~ '^\s*//' ? 'O<esc>S' : 'O'
 nnoremap <expr> o getline('.') =~ '^\s*//' ? 'o<esc>S' : 'o'
 " remove any trailing whitespace that is in the file
 autocmd BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
-" remove multiple empty lines
+" auto remove multiple empty lines on c files
 function! DeleteMultipleEmptyLines()
     g/^\_$\n\_^$/d
 endfunction
-nnoremap <leader>ld :call DeleteMultipleEmptyLines()<CR>
+autocmd BufWrite *.c :call DeleteMultipleEmptyLines()
 " by default, vim assumes all .h files to be C++ files
 augroup project
     autocmd!
     autocmd BufRead,BufNewFile *.h,*.c set filetype=c.doxygen
 augroup END
-" stop arrow key to show weird characters
-if &term[:4] == "xterm" || &term[:5] == 'screen' || &term[:3] == 'rxvt'
-    inoremap <silent> <C-[>OC <RIGHT>
-endif
 " activate alt
 for i in range(65,90) + range(97,122)
     let c = nr2char(i)
