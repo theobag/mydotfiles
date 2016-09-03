@@ -33,7 +33,9 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'ivalkeen/vim-simpledb'
 call vundle#end()             " required
 filetype plugin indent on     " required
-
+" ----------------------------------------------------------------------------------------
+                                        " GENERAL
+" ----------------------------------------------------------------------------------------
 syntax enable                                           " syntax highlighting
 syntax sync minlines=256
 set re=1                                                " fixes slow speed due to syntax highlighting
@@ -103,7 +105,7 @@ set undodir^=~/.vim/undo
 set viminfo='20,\"100                                   " read/write a .viminfo file, don't store more than 100 lines
 set tags=tags;~/                                        " look for the file in the current directory, then south until you reach home.
 " ----------------------------------------------------------------------------------------
-                                        " PLUGINS
+                                        " COLORS
 " ----------------------------------------------------------------------------------------
 " color scheme
 colorscheme badwolf
@@ -128,8 +130,9 @@ let g:airline#extensions#tabline#tab_nr_type = 1        " tab number
 let g:airline#extensions#whitespace#enabled = 0         " do not check for whitespaces
 let g:airline#extensions#tabline#show_buffers = 0       " dont display buffers in tab-bar with single tab
 let g:airline_powerline_fonts = 1
-" man page, use leader K to open it or Man 3 option in command mode
-runtime! ftplugin/man.vim
+" ----------------------------------------------------------------------------------------
+                                        " PLUGINS
+" ----------------------------------------------------------------------------------------
 " tagbar
 nnoremap <silent> <F8> :TagbarToggle<CR>
 " netrw
@@ -262,7 +265,11 @@ inoremap <expr> <C-k> ((pumvisible())?("\<C-p>"):("\<C-x><c-k>"))
 " stop autocomment on nextline
 nnoremap <expr> O getline('.') =~ '^\s*//' ? 'O<esc>S' : 'O'
 nnoremap <expr> o getline('.') =~ '^\s*//' ? 'o<esc>S' : 'o'
-
+" ----------------------------------------------------------------------------------------
+                                        " FUNCTIONS
+" ----------------------------------------------------------------------------------------
+" man page, use leader K to open it or :Man 3 {option} in command mode
+runtime! ftplugin/man.vim
 " remove any trailing whitespace that is in the file
 autocmd BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
 " auto remove multiple empty lines on c files
@@ -308,3 +315,6 @@ function! MyPrev()
 endfunction
 nnoremap <silent> <C-l> :call MyNext()<CR>
 nnoremap <silent> <C-h> :call MyPrev()<CR>
+" toogle tabs and buffers
+let notabs = 0
+nnoremap <silent> <F10> :let notabs=!notabs<Bar>:if notabs<Bar>:tabo<Bar>:else<Bar>:tab ball<Bar>:tabn<Bar>:endif<CR>
