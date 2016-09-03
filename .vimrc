@@ -189,6 +189,34 @@ onoremap <C-@> <Esc>
 cnoremap <C-@> <C-c>
 nnoremap <C-@> <Esc>:noh<CR>
 
+" hit enter to go end of line and hit 12 + enter to jump line 12
+noremap <CR> G
+" move the beginning/end of line
+noremap B ^
+noremap E g_
+" center screen on next/previous selection.
+nnoremap n nzz
+nnoremap N Nzz
+" easier horizontal scrolling
+nnoremap zl zL
+nnoremap zh zH
+" move tab
+nnoremap <silent> + :tabm+<CR>
+nnoremap <silent> - :tabm-<CR>
+" j == gj
+nnoremap <silent> j gj
+nnoremap <silent> k gk
+vnoremap <silent> j gj
+vnoremap <silent> k gk
+" move cursor together with the screen
+nnoremap <C-j> 3<c-e>
+nnoremap <C-k> 3<c-y>
+" moving around in command mode
+cnoremap <C-l> <right>
+cnoremap <C-h> <left>
+cnoremap <C-k> <S-Right>
+cnoremap <C-j> <S-Left>
+
 " copy and paste to system clipboard
 nnoremap <Leader>y "+y
 nnoremap <Leader>Y "+y$
@@ -219,33 +247,6 @@ nnoremap <Leader><Leader> V
 " save mysql last query
 noremap <Leader>z :w! /tmp/query.sql\| w!<CR>
 noremap <Leader>Z :w! /tmp/query.sql\| wq!<CR>
-" hit enter to go end of line and hit 12 + enter to jump line 12
-noremap <CR> G
-" move the beginning/end of line
-noremap B ^
-noremap E g_
-" center screen on next/previous selection.
-nnoremap n nzz
-nnoremap N Nzz
-" easier horizontal scrolling
-nnoremap zl zL
-nnoremap zh zH
-" move tab
-nnoremap <silent> + :tabm+<CR>
-nnoremap <silent> - :tabm-<CR>
-" j == gj
-nnoremap <silent> j gj
-nnoremap <silent> k gk
-vnoremap <silent> j gj
-vnoremap <silent> k gk
-" move cursor together with the screen
-nnoremap <C-j> 3<c-e>
-nnoremap <C-k> 3<c-y>
-" moving around in command mode
-cnoremap <C-l> <right>
-cnoremap <C-h> <left>
-cnoremap <C-k> <S-Right>
-cnoremap <C-j> <S-Left>
 
 " use j/k to start, then scroll through autocomplete options
 inoremap <expr> <C-j> ((pumvisible())?("\<C-n>"):("\<C-x><c-n>"))
@@ -265,6 +266,10 @@ augroup project
     autocmd!
     autocmd BufRead,BufNewFile *.h,*.c set filetype=c.doxygen
 augroup END
+" stop arrow key to show weird characters
+if &term[:4] == "xterm" || &term[:5] == 'screen' || &term[:3] == 'rxvt'
+    inoremap <silent> <C-[>OC <RIGHT>
+endif
 " activate alt
 for i in range(65,90) + range(97,122)
     let c = nr2char(i)
