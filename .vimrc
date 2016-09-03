@@ -1,4 +1,3 @@
-set shell=/bin/sh
 set nocompatible              " be improved, required
 filetype off                  " required
 
@@ -47,6 +46,7 @@ set ruler                                               " show the line number o
 set secure                                              " limit what modelines and autocmds can do
 set cursorline
 set cursorcolumn
+set nostartofline                                       " keep cursor column pos
 set enc=utf-8                                           " encoding used for displaying file
 set fenc=utf-8                                          " encoding used when saving file
 set termencoding=utf-8
@@ -71,7 +71,7 @@ set wildignore=*.o,*~,*.pyc
 set hidden                                              " allow to have buffers with unsaved changes
 set nowrap                                              " dont wrap lines by default
 set showmatch
-set matchtime=2
+set matchtime=3
 set showcmd                                             " this shows what you are typing as a command
 set noshowmode                                          " hide insert status
 set autowrite                                           " automatically save before commands like :next and :make
@@ -136,8 +136,8 @@ nnoremap <silent> <F8> :TagbarToggle<CR>
 let g:netrw_liststyle = 2
 let g:netrw_banner = 0
 " delimitmate
-imap <expr> <CR> pumvisible() ? "\<c-y>" : "<Plug>delimitMateCR"
 let delimitMate_expand_space = 1
+imap <expr> <CR> pumvisible() ? "\<c-y>" : "<Plug>delimitMateCR"
 " clang
 let g:clang_library_path ='/usr/lib/x86_64-linux-gnu/libclang-3.8.so.1'
 let g:clang_close_preview = 1
@@ -148,11 +148,11 @@ noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
 noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
 noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
 " syntastic
+let g:syntastic_check_on_wq = 0                         " skip check on :wq, :x, :ZZ etc
+highlight SyntasticError guibg=#2f0000
 nnoremap <silent> <Leader>so :Errors<CR>
 nnoremap <silent> <Leader>sl :lclose<CR>
 noremap <silent> <Leader>sy :SyntasticToggleMode<cr>
-highlight SyntasticError guibg=#2f0000
-let g:syntastic_check_on_wq = 0                         " skip check on :wq, :x, :ZZ etc
 " supertab
 let g:SuperTabDefaultCompletionType = "context"
 let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
@@ -162,15 +162,13 @@ let g:SuperTabClosePreviewOnPopupClose = 1              " autoclose popup
 runtime! plugin/supertab.vim                            " real tabs with shift+tab
 inoremap <s-tab> <tab>
 " ctrlp
+set grepprg=ag\ --nogroup\ --nocolor                    " use ag over grep
+let g:ctrlp_match_window = 'bottom,order:ttb,results:35'
+let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+let g:ctrlp_use_caching = 0                             " ag is fast enough that CtrlP doesn't need to cache
 nnoremap <silent> <Leader>n :CtrlP ~<cr>
 nnoremap <silent> <Leader>b :CtrlPBuffer<cr>
 nnoremap <silent> <Leader>m :CtrlPMRUFiles<cr>
-let g:ctrlp_match_window = 'bottom,order:ttb,results:35'
-if executable('ag')
-    set grepprg=ag\ --nogroup\ --nocolor                " use ag over grep
-    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-    let g:ctrlp_use_caching = 0                         " ag is fast enough that CtrlP doesn't need to cache
-endif
 " ----------------------------------------------------------------------------------------
                                         " MAPS
 " ----------------------------------------------------------------------------------------
@@ -190,6 +188,7 @@ vnoremap <C-@> <Esc>gV
 onoremap <C-@> <Esc>
 cnoremap <C-@> <C-c>
 nnoremap <C-@> <Esc>:noh<CR>
+
 " copy and paste to system clipboard
 nnoremap <Leader>y "+y
 nnoremap <Leader>Y "+y$
@@ -211,7 +210,7 @@ nnoremap <silent> <Leader>r :bd<CR>
 nnoremap <silent> <Leader>R :bd!<CR>
 nnoremap <silent> <Leader>t :Texplore<CR>
 nnoremap <silent> <Leader>T :Texplore.<CR>
-nnoremap <Leader>a :Ag<space>
+nnoremap <Leader>a :Ag!<space>
 nnoremap <Leader>e :e<space>
 nnoremap <Leader>E :tabedit<space>
 nnoremap <Leader>! :au! BufWritePost *.c :!<space>
@@ -247,6 +246,7 @@ cnoremap <C-l> <right>
 cnoremap <C-h> <left>
 cnoremap <C-k> <S-Right>
 cnoremap <C-j> <S-Left>
+
 " use j/k to start, then scroll through autocomplete options
 inoremap <expr> <C-j> ((pumvisible())?("\<C-n>"):("\<C-x><c-n>"))
 inoremap <expr> <C-k> ((pumvisible())?("\<C-p>"):("\<C-x><c-k>"))
