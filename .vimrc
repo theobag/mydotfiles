@@ -128,7 +128,6 @@ let g:airline#extensions#tabline#tab_nr_type = 1        " tab number
 let g:airline#extensions#whitespace#enabled = 0         " do not check for whitespaces
 let g:airline#extensions#tabline#show_buffers = 0       " dont display buffers in tab-bar with single tab
 let g:airline_powerline_fonts = 1
-
 " man page, use leader K to open it or Man 3 option in command mode
 runtime! ftplugin/man.vim
 " tagbar
@@ -136,6 +135,9 @@ nnoremap <silent> <F8> :TagbarToggle<CR>
 " netrw
 let g:netrw_liststyle = 2
 let g:netrw_banner = 0
+" ag disbale message
+let g:ag_mapping_message=0
+nnoremap <Leader>a :Ag!<space>
 " delimitmate
 let delimitMate_expand_space = 1
 imap <expr> <CR> pumvisible() ? "\<c-y>" : "<Plug>delimitMateCR"
@@ -225,7 +227,6 @@ inoremap <silent> <ESC>OA <Nop>
 inoremap <silent> <ESC>OB <Nop>
 inoremap <silent> <ESC>OC <Nop>
 inoremap <silent> <ESC>OD <Nop>
-
 " copy and paste to system clipboard
 nnoremap <Leader>y "+y
 nnoremap <Leader>Y "+y$
@@ -247,7 +248,6 @@ nnoremap <silent> <Leader>r :bd<CR>
 nnoremap <silent> <Leader>R :bd!<CR>
 nnoremap <silent> <Leader>t :Texplore<CR>
 nnoremap <silent> <Leader>T :Texplore.<CR>
-nnoremap <Leader>a :Ag!<space>
 nnoremap <Leader>e :e<space>
 nnoremap <Leader>E :tabedit<space>
 nnoremap <Leader>! :au! BufWritePost *.c :!<space>
@@ -256,13 +256,13 @@ nnoremap <Leader><Leader> V
 " save mysql last query
 noremap <Leader>z :w! /tmp/query.sql\| w!<CR>
 noremap <Leader>Z :w! /tmp/query.sql\| wq!<CR>
-
 " use j/k to start, then scroll through autocomplete options
 inoremap <expr> <C-j> ((pumvisible())?("\<C-n>"):("\<C-x><c-n>"))
 inoremap <expr> <C-k> ((pumvisible())?("\<C-p>"):("\<C-x><c-k>"))
 " stop autocomment on nextline
 nnoremap <expr> O getline('.') =~ '^\s*//' ? 'O<esc>S' : 'O'
 nnoremap <expr> o getline('.') =~ '^\s*//' ? 'o<esc>S' : 'o'
+
 " remove any trailing whitespace that is in the file
 autocmd BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
 " auto remove multiple empty lines on c files
