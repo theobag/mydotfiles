@@ -194,6 +194,7 @@ vnoremap <C-@> <Esc>gV
 onoremap <C-@> <Esc>
 cnoremap <C-@> <C-c>
 nnoremap <C-@> <Esc>:noh<CR>
+
 " hit enter to go end of line and hit 12 + enter to jump line 12
 noremap <CR> G
 " move the beginning/end of line
@@ -221,15 +222,7 @@ cnoremap <C-l> <right>
 cnoremap <C-h> <left>
 cnoremap <C-k> <S-Right>
 cnoremap <C-j> <S-Left>
-" disable arrow and prevent show weird characters
-nnoremap <silent> <ESC>OA <Nop>
-nnoremap <silent> <ESC>OB <Nop>
-nnoremap <silent> <ESC>OC <Nop>
-nnoremap <silent> <ESC>OD <Nop>
-inoremap <silent> <ESC>OA <Nop>
-inoremap <silent> <ESC>OB <Nop>
-inoremap <silent> <ESC>OC <Nop>
-inoremap <silent> <ESC>OD <Nop>
+
 " copy and paste to system clipboard
 nnoremap <Leader>y "+y
 nnoremap <Leader>Y "+y$
@@ -265,6 +258,23 @@ inoremap <expr> <C-k> ((pumvisible())?("\<C-p>"):("\<C-x><c-k>"))
 " stop autocomment on nextline
 nnoremap <expr> O getline('.') =~ '^\s*//' ? 'O<esc>S' : 'O'
 nnoremap <expr> o getline('.') =~ '^\s*//' ? 'o<esc>S' : 'o'
+" disable arrow and prevent show weird characters
+nnoremap <silent> <ESC>OA <Nop>
+nnoremap <silent> <ESC>OB <Nop>
+nnoremap <silent> <ESC>OC <Nop>
+nnoremap <silent> <ESC>OD <Nop>
+inoremap <silent> <ESC>OA <Nop>
+inoremap <silent> <ESC>OB <Nop>
+inoremap <silent> <ESC>OC <Nop>
+inoremap <silent> <ESC>OD <Nop>
+cnoremap <silent> <ESC>OA <Nop>
+cnoremap <silent> <ESC>OB <Nop>
+cnoremap <silent> <ESC>OC <Nop>
+cnoremap <silent> <ESC>OD <Nop>
+vnoremap <silent> <ESC>OA <Nop>
+vnoremap <silent> <ESC>OB <Nop>
+vnoremap <silent> <ESC>OC <Nop>
+vnoremap <silent> <ESC>OD <Nop>
 " ----------------------------------------------------------------------------------------
                                         " FUNCTIONS
 " ----------------------------------------------------------------------------------------
