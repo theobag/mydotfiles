@@ -22,6 +22,7 @@ Plugin 'henrik/vim-indexed-search'
 Plugin 'darfink/starsearch.vim'                         " dont jump next on star search
 Plugin 'terryma/vim-smooth-scroll'
 Plugin 'ReplaceWithRegister'                            " gr and motion
+Plugin 'argtextobj.vim'                                 " argument text object eg. dia, cia, via, daa
 Plugin 'kana/vim-textobj-user'
 Plugin 'kana/vim-textobj-entire'                        " motion plus ae or ie to select entire
 Plugin 'tpope/vim-unimpaired'                           " pair maps and stuff
@@ -194,7 +195,6 @@ vnoremap <C-@> <Esc>gV
 onoremap <C-@> <Esc>
 cnoremap <C-@> <C-c>
 nnoremap <C-@> <Esc>:noh<CR>
-
 " hit enter to go end of line and hit 12 + enter to jump line 12
 noremap <CR> G
 " move the beginning/end of line
