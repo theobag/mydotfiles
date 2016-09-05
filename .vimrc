@@ -12,6 +12,7 @@ Plugin 'bling/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'majutsushi/tagbar'                              " sudo apt install exuberant-ctags
+Plugin 'brookhong/cscope.vim'                           " sudo apt install cscope
 Plugin 'rip-rip/clang_complete'                         " sudo apt install clang
 Plugin 'scrooloose/syntastic'
 Plugin 'raimondi/delimitmate'                           " jump c-g g or just repeat the action
@@ -22,7 +23,7 @@ Plugin 'henrik/vim-indexed-search'
 Plugin 'darfink/starsearch.vim'                         " dont jump next on star search
 Plugin 'terryma/vim-smooth-scroll'
 Plugin 'ReplaceWithRegister'                            " gr and motion
-Plugin 'argtextobj.vim'                                 " argument text object eg. dia, cia, via, daa
+Plugin 'argtextobj.vim'                                 " argument text object eg. dia, cia, via, daa ..etc
 Plugin 'kana/vim-textobj-user'
 Plugin 'kana/vim-textobj-entire'                        " motion plus ae or ie to select entire
 Plugin 'tpope/vim-unimpaired'                           " pair maps and stuff
@@ -222,7 +223,6 @@ cnoremap <C-l> <right>
 cnoremap <C-h> <left>
 cnoremap <C-k> <S-Right>
 cnoremap <C-j> <S-Left>
-
 " copy and paste to system clipboard
 nnoremap <Leader>y "+y
 nnoremap <Leader>Y "+y$
@@ -280,6 +280,8 @@ vnoremap <silent> <ESC>OD <Nop>
 " ----------------------------------------------------------------------------------------
 " man page, use leader K to open it or :Man 3 {option} in command mode
 runtime! ftplugin/man.vim
+" more match on %
+runtime! macros/matchit.vim
 " remove any trailing whitespace that is in the file
 autocmd BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
 " auto remove multiple empty lines on c files
