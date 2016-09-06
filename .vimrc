@@ -23,15 +23,15 @@ Plugin 'henrik/vim-indexed-search'
 Plugin 'darfink/starsearch.vim'                         " dont jump next on star search
 Plugin 'terryma/vim-smooth-scroll'
 Plugin 'ReplaceWithRegister'                            " gr and motion
-Plugin 'argtextobj.vim'                                 " argument text object eg. dia, cia, via, daa ..etc
+Plugin 'argtextobj.vim'                                 " argument text object eg. dia, cia, via, daa
 Plugin 'kana/vim-textobj-user'
 Plugin 'kana/vim-textobj-entire'                        " motion plus ae or ie to select entire
-Plugin 'tpope/vim-unimpaired'                           " pair maps and stuff
 Plugin 'tpope/vim-eunuch'                               " bash commands
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-commentary'	                        " gc + motion or line with gcc
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-commentary'	                        " gc + motion or line with gcc
+Plugin 'tpope/vim-unimpaired'                           " pair maps and stuff
 Plugin 'ivalkeen/vim-simpledb'
 call vundle#end()             " required
 filetype plugin indent on     " required
@@ -137,6 +137,7 @@ let g:airline_powerline_fonts = 1
 " ----------------------------------------------------------------------------------------
 " tagbar
 nnoremap <silent> <F8> :TagbarToggle<CR>
+let g:tagbar_sort = 0                                   " order tags based on file order; don't sort alphabetically
 " netrw
 let g:netrw_liststyle = 2
 let g:netrw_banner = 0
@@ -216,8 +217,8 @@ nnoremap <silent> k gk
 vnoremap <silent> j gj
 vnoremap <silent> k gk
 " move cursor together with the screen
-nnoremap <C-j> j<c-e>
-nnoremap <C-k> k<c-y>
+nnoremap <C-j> gj<c-e>
+nnoremap <C-k> gk<c-y>
 " moving around in command mode
 cnoremap <C-l> <right>
 cnoremap <C-h> <left>
