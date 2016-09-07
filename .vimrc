@@ -147,6 +147,10 @@ nnoremap <Leader>a :Ag!<space>
 " delimitmate
 let delimitMate_expand_space = 1
 imap <expr> <CR> pumvisible() ? "\<c-y>" : "<Plug>delimitMateCR"
+" toogle tabs and buffers
+let notabs = 0
+nnoremap <silent> <F10> :let notabs=!notabs<Bar>:if
+            \ notabs<Bar>:tabo<Bar>:else<Bar>:tab ball<Bar>:tabn<Bar>:endif<CR>
 " clang
 let g:clang_library_path ='/usr/lib/x86_64-linux-gnu/libclang-3.8.so.1'
 let g:clang_close_preview = 1
@@ -276,23 +280,17 @@ vnoremap <silent> <ESC>OA <Nop>
 vnoremap <silent> <ESC>OB <Nop>
 vnoremap <silent> <ESC>OC <Nop>
 vnoremap <silent> <ESC>OD <Nop>
-" toogle tabs and buffers
-let notabs = 0
-nnoremap <silent> <F10> :let notabs=!notabs<Bar>:if
-            \ notabs<Bar>:tabo<Bar>:else<Bar>:tab ball<Bar>:tabn<Bar>:endif<CR>
 " ----------------------------------------------------------------------------------------
                                         " AUTOCMD
 " ----------------------------------------------------------------------------------------
 " man page, use leader K to open it or :Man 3 {option} in command mode
 runtime! ftplugin/man.vim
-" more match on %
-runtime! macros/matchit.vim
 " remove any trailing whitespace that is in the file
-autocmd BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
+autocmd BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
 " auto remove multiple empty lines at the end of line
-autocmd BufRead,BufWrite * :%s/\(\s*\n\)\+\%$//ge
+autocmd BufWrite * :%s/\(\s*\n\)\+\%$//ge
 " replace groups or function of empty or whitespaces-only lines with one empty line
-autocmd BufRead,BufWrite * :%s/\(\s*\n\)\{3,}/\r\r/ge
+autocmd BufWrite * :%s/\(\s*\n\)\{3,}/\r\r/ge
 " by default, vim assumes all .h files to be C++ files
 augroup project
     autocmd!
@@ -334,3 +332,4 @@ function! MyPrev()
 endfunction
 nnoremap <silent> <C-l> :call MyNext()<CR>
 nnoremap <silent> <C-h> :call MyPrev()<CR>
+" ----------------------------------------------------------------------------------------
