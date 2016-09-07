@@ -83,7 +83,7 @@ set autoread                                            " set to auto read when 
 set autochdir
 set complete-=i
 set completeopt=menu,menuone                            " clang complete without preview
-set pumheight=20                                        " limit popup menu height (completion)
+set pumheight=20                                        " limit popup menu height (completion) or max 20 whatever
 set incsearch                                           " search as characters are entered
 set hlsearch                                            " highlight matches
 set gdefault                                            " for search and replace
@@ -195,7 +195,9 @@ nnoremap gV `[v`]
 nnoremap K <Nop>
 " too much accident, please use leader J instead
 nnoremap J <Nop>
-nnoremap <leader>J J
+nnoremap <Leader>J J
+" add one space
+nnoremap \ a<space><esc>
 " paste multiple lines multiple times with simple ppppp
 vnoremap <silent> y y`]
 vnoremap <silent> p p`]
