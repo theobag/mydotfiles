@@ -55,7 +55,7 @@ set enc=utf-8                                           " encoding used for disp
 set fenc=utf-8                                          " encoding used when saving file
 set termencoding=utf-8
 set ttimeoutlen=100                                     " speed esc
-set tabpagemax=10                                       " only show 10 tabs
+set tabpagemax=12                                       " only show 10 tabs
 set switchbuf=usetab                                    " if opening buffer, search first in opened windows.
 set autoindent
 set cindent
@@ -142,7 +142,7 @@ let g:tagbar_sort = 0                                   " order tags based on fi
 let g:netrw_liststyle = 2
 let g:netrw_banner = 0
 " ag disbale message
-let g:ag_mapping_message=0
+let g:ag_mapping_message = 0
 nnoremap <Leader>a :Ag!<space>
 " delimitmate
 let delimitMate_expand_space = 1
@@ -276,8 +276,12 @@ vnoremap <silent> <ESC>OA <Nop>
 vnoremap <silent> <ESC>OB <Nop>
 vnoremap <silent> <ESC>OC <Nop>
 vnoremap <silent> <ESC>OD <Nop>
+" toogle tabs and buffers
+let notabs = 0
+nnoremap <silent> <F10> :let notabs=!notabs<Bar>:if
+            \ notabs<Bar>:tabo<Bar>:else<Bar>:tab ball<Bar>:tabn<Bar>:endif<CR>
 " ----------------------------------------------------------------------------------------
-                                        " FUNCTIONS
+                                        " AUTOCMD
 " ----------------------------------------------------------------------------------------
 " man page, use leader K to open it or :Man 3 {option} in command mode
 runtime! ftplugin/man.vim
@@ -285,11 +289,10 @@ runtime! ftplugin/man.vim
 runtime! macros/matchit.vim
 " remove any trailing whitespace that is in the file
 autocmd BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
-" auto remove multiple empty lines on c files
-function! DeleteMultipleEmptyLines()
-    g/^\_$\n\_^$/d
-endfunction
-autocmd BufWrite *.c :call DeleteMultipleEmptyLines()
+" auto remove multiple empty lines at the end of line
+autocmd BufRead,BufWrite * :%s/\(\s*\n\)\+\%$//ge
+" replace groups or function of empty or whitespaces-only lines with one empty line
+autocmd BufRead,BufWrite * :%s/\(\s*\n\)\{3,}/\r\r/ge
 " by default, vim assumes all .h files to be C++ files
 augroup project
     autocmd!
@@ -301,6 +304,9 @@ for i in range(65,90) + range(97,122)
     exec "map \e".c." <M-".c.">"
     exec "map! \e".c." <M-".c.">"
 endfor
+" ----------------------------------------------------------------------------------------
+                                        " FUNCTIONS
+" ----------------------------------------------------------------------------------------
 " vp doesn't replace paste buffer
 function! RestoreRegister()
     let @" = s:restore_reg
@@ -328,6 +334,3 @@ function! MyPrev()
 endfunction
 nnoremap <silent> <C-l> :call MyNext()<CR>
 nnoremap <silent> <C-h> :call MyPrev()<CR>
-" toogle tabs and buffers
-let notabs = 0
-nnoremap <silent> <F10> :let notabs=!notabs<Bar>:if notabs<Bar>:tabo<Bar>:else<Bar>:tab ball<Bar>:tabn<Bar>:endif<CR>
