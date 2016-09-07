@@ -36,7 +36,7 @@ Plugin 'ivalkeen/vim-simpledb'
 call vundle#end()             " required
 filetype plugin indent on     " required
 " ----------------------------------------------------------------------------------------
-                                        " GENERAL
+" GENERAL
 " ----------------------------------------------------------------------------------------
 syntax enable                                           " syntax highlighting
 syntax sync minlines=256
@@ -107,7 +107,7 @@ set undodir^=~/.vim/undo
 set viminfo='20,\"100                                   " read/write a .viminfo file, don't store more than 100 lines
 set tags=tags;~/                                        " look for the file in the current directory, then south until you reach home.
 " ----------------------------------------------------------------------------------------
-                                        " COLORS
+" COLORS
 " ----------------------------------------------------------------------------------------
 " color scheme
 colorscheme badwolf
@@ -129,11 +129,11 @@ let g:airline#extensions#tabline#left_sep = ''
 let g:airline#extensions#tabline#left_alt_sep = ''
 let g:airline#extensions#tabline#fnamemod = ':t'        " display only file name
 let g:airline#extensions#tabline#tab_nr_type = 1        " tab number
-let g:airline#extensions#whitespace#enabled = 0         " do not check for whitespaces
 let g:airline#extensions#tabline#show_buffers = 0       " dont display buffers in tab-bar with single tab
+let g:airline#extensions#whitespace#enabled = 0         " do not check for whitespaces
 let g:airline_powerline_fonts = 1
 " ----------------------------------------------------------------------------------------
-                                        " PLUGINS
+" PLUGINS
 " ----------------------------------------------------------------------------------------
 " tagbar
 nnoremap <silent> <F8> :TagbarToggle<CR>
@@ -183,7 +183,7 @@ nnoremap <silent> <Leader>n :CtrlP ~<cr>
 nnoremap <silent> <Leader>b :CtrlPBuffer<cr>
 nnoremap <silent> <Leader>m :CtrlPMRUFiles<cr>
 " ----------------------------------------------------------------------------------------
-                                        " MAPS
+" MAPS
 " ----------------------------------------------------------------------------------------
 " make Y yank to end of line (like D, or C)
 noremap Y y$
@@ -191,11 +191,16 @@ noremap Y y$
 nnoremap ge `.
 " highlight last inserted text
 nnoremap gV `[v`]
+" please use leader K to see man page
+nnoremap K <Nop>
+" too much accident, please use leader J instead
+nnoremap J <Nop>
+nnoremap <leader>J J
 " paste multiple lines multiple times with simple ppppp
 vnoremap <silent> y y`]
 vnoremap <silent> p p`]
 nnoremap <silent> p p`]
-" use C-Space to Esc out of any mode but Terminal sees <C-@> as <C-space> WTF, but ok
+" use C-Space to Esc out of any mode but terminal sees <C-@> as <C-space> WTF, but ok
 inoremap <C-@> <Esc>`^
 vnoremap <C-@> <Esc>gV
 onoremap <C-@> <Esc>
@@ -281,16 +286,16 @@ vnoremap <silent> <ESC>OB <Nop>
 vnoremap <silent> <ESC>OC <Nop>
 vnoremap <silent> <ESC>OD <Nop>
 " ----------------------------------------------------------------------------------------
-                                        " AUTOCMD
+" AUTOCMD
 " ----------------------------------------------------------------------------------------
 " man page, use leader K to open it or :Man 3 {option} in command mode
 runtime! ftplugin/man.vim
 " remove any trailing whitespace that is in the file
 autocmd BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
 " auto remove multiple empty lines at the end of line
-autocmd BufWrite * :%s/\(\s*\n\)\+\%$//ge
+autocmd BufWrite *.c :%s/\(\s*\n\)\+\%$//ge
 " replace groups or function of empty or whitespaces-only lines with one empty line
-autocmd BufWrite * :%s/\(\s*\n\)\{3,}/\r\r/ge
+autocmd BufWrite *.c :%s/\(\s*\n\)\{3,}/\r\r/ge
 " by default, vim assumes all .h files to be C++ files
 augroup project
     autocmd!
@@ -303,7 +308,7 @@ for i in range(65,90) + range(97,122)
     exec "map! \e".c." <M-".c.">"
 endfor
 " ----------------------------------------------------------------------------------------
-                                        " FUNCTIONS
+" FUNCTIONS
 " ----------------------------------------------------------------------------------------
 " vp doesn't replace paste buffer
 function! RestoreRegister()
