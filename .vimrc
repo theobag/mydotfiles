@@ -197,7 +197,8 @@ nnoremap K <Nop>
 nnoremap J <Nop>
 nnoremap <Leader>J J
 " add one space
-nnoremap \ a<space><esc>
+nnoremap \ i<space><esc>
+nnoremap <Leader>\ a<space><esc>
 " paste multiple lines multiple times with simple ppppp
 vnoremap <silent> y y`]
 vnoremap <silent> p p`]
