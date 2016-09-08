@@ -288,6 +288,10 @@ vnoremap <silent> <ESC>OA <Nop>
 vnoremap <silent> <ESC>OB <Nop>
 vnoremap <silent> <ESC>OC <Nop>
 vnoremap <silent> <ESC>OD <Nop>
+onoremap <silent> <ESC>OA <Nop>
+onoremap <silent> <ESC>OB <Nop>
+onoremap <silent> <ESC>OC <Nop>
+onoremap <silent> <ESC>OD <Nop>
 " ----------------------------------------------------------------------------------------
 " AUTOCMD
 " ----------------------------------------------------------------------------------------
