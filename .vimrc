@@ -2,7 +2,6 @@ set nocompatible              " be improved, required
 filetype off                  " required
 
 let mapleader = "\<Space>"
-
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
@@ -17,6 +16,7 @@ Plugin 'rip-rip/clang_complete'                         " sudo apt install clang
 Plugin 'scrooloose/syntastic'
 Plugin 'raimondi/delimitmate'                           " jump c-g g or just repeat the action
 Plugin 'ervandew/supertab'	                            " c-v + tab for real tab
+Plugin 'rhysd/clever-f.vim'                             " use f or F repeat last command
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'rking/ag.vim'
 Plugin 'henrik/vim-indexed-search'
@@ -86,6 +86,8 @@ set completeopt=menu,menuone                            " clang complete without
 set pumheight=20                                        " limit popup menu height (completion) or max 20 whatever
 set incsearch                                           " search as characters are entered
 set hlsearch                                            " highlight matches
+set ignorecase
+set smartcase
 set gdefault                                            " for search and replace
 set confirm                                             " ask to save buffer
 set nojoinspaces	  	                                " use only one space after '.' when joining
@@ -135,15 +137,17 @@ let g:airline_powerline_fonts = 1
 " ----------------------------------------------------------------------------------------
 " PLUGINS
 " ----------------------------------------------------------------------------------------
-" tagbar
-nnoremap <silent> <F8> :TagbarToggle<CR>
-let g:tagbar_sort = 0                                   " order tags based on file order; don't sort alphabetically
+"clear tab only one line search
+let g:clever_f_across_no_line = 1
 " netrw
 let g:netrw_liststyle = 2
 let g:netrw_banner = 0
 " ag disbale message
 let g:ag_mapping_message = 0
 nnoremap <Leader>a :Ag!<space>
+" tagbar
+let g:tagbar_sort = 0                                   " order tags based on file order; don't sort alphabetically
+nnoremap <silent> <F8> :TagbarToggle<CR>
 " delimitmate
 let delimitMate_expand_space = 1
 imap <expr> <CR> pumvisible() ? "\<c-y>" : "<Plug>delimitMateCR"
@@ -344,4 +348,3 @@ function! MyPrev()
 endfunction
 nnoremap <silent> <C-l> :call MyNext()<CR>
 nnoremap <silent> <C-h> :call MyPrev()<CR>
-" ----------------------------------------------------------------------------------------
