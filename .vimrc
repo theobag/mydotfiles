@@ -2,6 +2,7 @@ set nocompatible              " be improved, required
 filetype off                  " required
 
 let mapleader = "\<Space>"
+
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
@@ -22,6 +23,7 @@ Plugin 'rking/ag.vim'
 Plugin 'henrik/vim-indexed-search'
 Plugin 'darfink/starsearch.vim'                         " dont jump next on star search
 Plugin 'terryma/vim-smooth-scroll'
+Plugin 'matze/vim-move'
 Plugin 'ReplaceWithRegister'                            " gr and motion
 Plugin 'argtextobj.vim'                                 " argument text object eg. dia, cia, via, daa
 Plugin 'kana/vim-textobj-user'
@@ -35,6 +37,7 @@ Plugin 'tpope/vim-unimpaired'                           " pair maps and stuff
 Plugin 'ivalkeen/vim-simpledb'
 call vundle#end()             " required
 filetype plugin indent on     " required
+
 " ----------------------------------------------------------------------------------------
 " GENERAL
 " ----------------------------------------------------------------------------------------
@@ -60,9 +63,9 @@ set switchbuf=usetab                                    " if opening buffer, sea
 set autoindent
 set cindent
 set smartindent
-set tabstop=4
+set tabstop=4                                           " size of a hard tabstop
 set softtabstop=4
-set shiftwidth=4
+set shiftwidth=4                                        " size of indent
 set shiftround                                          " use multiple of shiftwidth when indenting with '<' and '>'
 set expandtab
 set smarttab
@@ -86,8 +89,6 @@ set completeopt=menu,menuone                            " clang complete without
 set pumheight=20                                        " limit popup menu height (completion) or max 20 whatever
 set incsearch                                           " search as characters are entered
 set hlsearch                                            " highlight matches
-set ignorecase
-set smartcase
 set gdefault                                            " for search and replace
 set confirm                                             " ask to save buffer
 set nojoinspaces	  	                                " use only one space after '.' when joining
@@ -137,7 +138,9 @@ let g:airline_powerline_fonts = 1
 " ----------------------------------------------------------------------------------------
 " PLUGINS
 " ----------------------------------------------------------------------------------------
-"clear tab only one line search
+" vim move : use c-k and c-j to move current line/selection to up and down
+let g:move_key_modifier = 'C'
+" clever tab only one line search
 let g:clever_f_across_no_line = 1
 " netrw
 let g:netrw_liststyle = 2
@@ -232,9 +235,6 @@ nnoremap <silent> j gj
 nnoremap <silent> k gk
 vnoremap <silent> j gj
 vnoremap <silent> k gk
-" move cursor together with the screen
-nnoremap <C-j> gj<c-e>
-nnoremap <C-k> gk<c-y>
 " moving around in command mode
 cnoremap <C-l> <right>
 cnoremap <C-h> <left>
