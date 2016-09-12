@@ -1,6 +1,5 @@
 set nocompatible              " be improved, required
 filetype off                  " required
-
 let mapleader = "\<Space>"
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -25,7 +24,7 @@ Plugin 'terryma/vim-smooth-scroll'
 Plugin 'matze/vim-move'
 Plugin 'sickill/vim-pasta'
 Plugin 'ReplaceWithRegister'                            " gr and motion
-Plugin 'argtextobj.vim'                                 " argument text object eg. dia, cia, via, daa etc
+Plugin 'argtextobj.vim'                                 " argument text object eg. dia, cia, via, daa
 Plugin 'kana/vim-textobj-user'
 Plugin 'kana/vim-textobj-entire'                        " motion plus ae or ie to select entire
 Plugin 'tpope/vim-eunuch'                               " bash commands
@@ -141,6 +140,7 @@ let g:airline_powerline_fonts = 1
 let g:move_key_modifier = 'C'
 " clever tab only one line search
 let g:clever_f_across_no_line = 1
+let g:clever_f_fix_key_direction = 1
 " netrw
 let g:netrw_liststyle = 2
 let g:netrw_banner = 0
@@ -254,8 +254,8 @@ nnoremap <silent> <Leader>q :q<CR>
 nnoremap <silent> <Leader>Q :q!<CR>
 nnoremap <silent> <Leader>r :bd<CR>
 nnoremap <silent> <Leader>R :bd!<CR>
-nnoremap <silent> <Leader>t :Texplore<CR>
-nnoremap <silent> <Leader>T :Texplore.<CR>
+nnoremap <silent> <Leader>t :e .<CR>
+nnoremap <silent> <Leader>T :e ~/<CR>
 nnoremap <Leader>e :e<space>
 nnoremap <Leader>E :tabedit<space>
 nnoremap <Leader>! :au! BufWritePost *.c :!<space>
