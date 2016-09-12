@@ -25,7 +25,7 @@ Plugin 'terryma/vim-smooth-scroll'
 Plugin 'matze/vim-move'
 Plugin 'sickill/vim-pasta'
 Plugin 'ReplaceWithRegister'                            " gr and motion
-Plugin 'argtextobj.vim'                                 " argument text object eg. dia, cia, via, daa
+Plugin 'argtextobj.vim'                                 " argument text object eg. dia, cia, via, daa etc
 Plugin 'kana/vim-textobj-user'
 Plugin 'kana/vim-textobj-entire'                        " motion plus ae or ie to select entire
 Plugin 'tpope/vim-eunuch'                               " bash commands
