@@ -12,22 +12,22 @@ READNULLCMD=${PAGER:-/usr/bin/pager}
 typeset -ga debian_missing_features
 
 if [[ -z "$DEBIAN_PREVENT_KEYBOARD_CHANGES" ]] &&
-   [[ "$TERM" != 'emacs' ]]
+    [[ "$TERM" != 'emacs' ]]
 then
 
     typeset -A key
     key=(
-        BackSpace  "${terminfo[kbs]}"
-        Home       "${terminfo[khome]}"
-        End        "${terminfo[kend]}"
-        Insert     "${terminfo[kich1]}"
-        Delete     "${terminfo[kdch1]}"
-        Up         "${terminfo[kcuu1]}"
-        Down       "${terminfo[kcud1]}"
-        Left       "${terminfo[kcub1]}"
-        Right      "${terminfo[kcuf1]}"
-        PageUp     "${terminfo[kpp]}"
-        PageDown   "${terminfo[knp]}"
+    BackSpace  "${terminfo[kbs]}"
+    Home       "${terminfo[khome]}"
+    End        "${terminfo[kend]}"
+    Insert     "${terminfo[kich1]}"
+    Delete     "${terminfo[kdch1]}"
+    Up         "${terminfo[kcuu1]}"
+    Down       "${terminfo[kcud1]}"
+    Left       "${terminfo[kcub1]}"
+    Right      "${terminfo[kcuf1]}"
+    PageUp     "${terminfo[kpp]}"
+    PageDown   "${terminfo[knp]}"
     )
 
     function bind2maps () {
@@ -93,12 +93,12 @@ then
 fi # [[ -z "$DEBIAN_PREVENT_KEYBOARD_CHANGES" ]] && [[ "$TERM" != 'emacs' ]]
 
 zstyle ':completion:*:sudo:*' command-path /usr/local/sbin \
-                                           /usr/local/bin  \
-                                           /usr/sbin       \
-                                           /usr/bin        \
-                                           /sbin           \
-                                           /bin            \
-                                           /usr/X11R6/bin
+    /usr/local/bin  \
+    /usr/sbin       \
+    /usr/bin        \
+    /sbin           \
+    /bin            \
+    /usr/X11R6/bin
 
 (( ${+aliases[run-help]} )) && unalias run-help
 autoload -Uz run-help
@@ -107,22 +107,23 @@ autoload -Uz run-help
 # skip_global_compinit=1
 # in your $ZDOTDIR/.zshenv or $ZDOTDIR/.zprofile
 if [[ -z "$skip_global_compinit" ]]; then
-  autoload -U compinit
-  compinit
+    autoload -U compinit
+    compinit
 fi
 
 if [[ $TERM == xterm ]]; then
-TERM=xterm-256color
+    TERM=xterm-256color
 fi
 
+# ctrl-z for switching between vim n zsh
 fancy-ctrl-z () {
-  if [[ $#BUFFER -eq 0 ]]; then
+if [[ $#BUFFER -eq 0 ]]; then
     BUFFER="fg"
     zle accept-line
-  else
+else
     zle push-input
     zle clear-screen
-  fi
+fi
 }
 zle -N fancy-ctrl-z
 bindkey '^Z' fancy-ctrl-z
@@ -130,5 +131,16 @@ bindkey '^Z' fancy-ctrl-z
 # 10ms for key sequences
 KEYTIMEOUT=1
 
+# dictionary
 chmod +x ~/.vocab
 ~/.vocab
+
+# default broser zsh
+export BROWSER=w3m
+
+# use vim on man page instead vi
+man() {
+    /usr/bin/man $* | \
+        col -b | \
+        vim -R -c 'set ft=man nomod nolist' -
+}
