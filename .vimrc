@@ -153,7 +153,7 @@ nnoremap <silent> <F8> :TagbarToggle<CR>
 " delimitmate
 let delimitMate_expand_space = 1
 imap <expr> <CR> pumvisible() ? "\<c-y>" : "<Plug>delimitMateCR"
-" toogle tabs and buffers
+" toggle tabs and buffers
 let notabs = 0
 nnoremap <silent> <F10> :let notabs=!notabs<Bar>:if
             \ notabs<Bar>:tabo<Bar>:else<Bar>:tab ball<Bar>:tabn<Bar>:endif<CR>
@@ -225,11 +225,6 @@ nnoremap zh zH
 " move tab
 nnoremap <silent> + :tabm+<CR>
 nnoremap <silent> - :tabm-<CR>
-" j == gj
-nnoremap <silent> j gj
-nnoremap <silent> k gk
-vnoremap <silent> j gj
-vnoremap <silent> k gk
 " moving around in command mode
 cnoremap <C-l> <right>
 cnoremap <C-h> <left>
