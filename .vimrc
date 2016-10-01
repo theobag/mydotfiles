@@ -1,6 +1,8 @@
 set nocompatible              " be improved, required
 filetype off                  " required
+
 let mapleader = "\<Space>"
+
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
@@ -24,7 +26,7 @@ Plugin 'terryma/vim-smooth-scroll'
 Plugin 'matze/vim-move'
 Plugin 'sickill/vim-pasta'
 Plugin 'ReplaceWithRegister'                            " gr and motion
-Plugin 'argtextobj.vim'                                 " argument text object eg. dia, cia, via, daa
+Plugin 'argtextobj.vim'                                 " argument text object eg. dia, cia, via, daa ..
 Plugin 'kana/vim-textobj-user'
 Plugin 'kana/vim-textobj-entire'                        " motion plus ae or ie to select entire
 Plugin 'tpope/vim-eunuch'                               " bash commands
@@ -36,6 +38,7 @@ Plugin 'tpope/vim-unimpaired'                           " pair maps and stuff
 Plugin 'ivalkeen/vim-simpledb'
 call vundle#end()             " required
 filetype plugin indent on     " required
+
 " ----------------------------------------------------------------------------------------
 " GENERAL
 " ----------------------------------------------------------------------------------------
@@ -47,6 +50,7 @@ set t_ut=                                               " disbale background col
 set t_Co=256                                            " enable 256 color
 set laststatus=2
 set number
+set relativenumber
 set ruler                                               " show the line number on the bar
 set secure                                              " limit what modelines and autocmds can do
 set cursorline
@@ -107,6 +111,7 @@ set undofile
 set undodir^=~/.vim/undo
 set viminfo='20,\"100                                   " read/write a .viminfo file, don't store more than 100 lines
 set tags=tags;~/                                        " look for the file in the current directory, then south until you reach home.
+set listchars=tab:▸\ ,trail:·,extends:❯,precedes:❮,nbsp:×
 " ----------------------------------------------------------------------------------------
 " COLORS
 " ----------------------------------------------------------------------------------------
