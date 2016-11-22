@@ -1,6 +1,5 @@
 set nocompatible              " be improved, required
 filetype off                  " required
-
 let mapleader = "\<Space>"
 
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -190,8 +189,9 @@ set grepprg=ag\ --nogroup\ --nocolor                    " use ag over grep
 let g:ctrlp_match_window = 'bottom,order:ttb,results:35'
 let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 let g:ctrlp_use_caching = 0                             " ag is fast enough that CtrlP doesn't need to cache
-nnoremap <silent> <Leader>n :CtrlP ~<cr>
+nnoremap <silent> <C-p> :CtrlP .<cr>
 nnoremap <silent> <Leader>b :CtrlPBuffer<cr>
+nnoremap <silent> <Leader>n :CtrlP ~<cr>
 nnoremap <silent> <Leader>m :CtrlPMRUFiles<cr>
 " ----------------------------------------------------------------------------------------
 " MAPS
