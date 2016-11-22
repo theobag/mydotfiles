@@ -150,7 +150,7 @@ let g:netrw_liststyle = 2
 let g:netrw_banner = 0
 " ag disbale message
 let g:ag_mapping_message = 0
-nnoremap <Leader>a :Ag!<space>
+nnoremap <Leader>A :Ag!<space>
 " tagbar
 let g:tagbar_sort = 0                                   " order tags based on file order; don't sort alphabetically
 nnoremap <silent> <F8> :TagbarToggle<CR>
