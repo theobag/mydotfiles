@@ -23,7 +23,6 @@ Plugin 'henrik/vim-indexed-search'
 Plugin 'darfink/starsearch.vim'                         " dont jump next on star search
 Plugin 'terryma/vim-smooth-scroll'
 Plugin 'matze/vim-move'
-Plugin 'sickill/vim-pasta'
 Plugin 'ReplaceWithRegister'                            " gr and motion
 Plugin 'argtextobj.vim'                                 " argument text object eg. dia, cia, via, daa ..
 Plugin 'kana/vim-textobj-user'
@@ -37,7 +36,6 @@ Plugin 'tpope/vim-unimpaired'                           " pair maps and stuff
 Plugin 'ivalkeen/vim-simpledb'
 call vundle#end()             " required
 filetype plugin indent on     " required
-
 " ----------------------------------------------------------------------------------------
 " GENERAL
 " ----------------------------------------------------------------------------------------
@@ -235,6 +233,10 @@ cnoremap <C-l> <right>
 cnoremap <C-h> <left>
 cnoremap <C-k> <S-Right>
 cnoremap <C-j> <S-Left>
+" paste multiple lines multiple times with simple ppppp
+vnoremap <silent> y y`]
+vnoremap <silent> p p`]
+nnoremap <silent> p p`]
 " copy and paste to system clipboard
 nnoremap <Leader>y "+y
 nnoremap <Leader>Y "+y$
