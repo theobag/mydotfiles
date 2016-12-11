@@ -1,5 +1,6 @@
 set nocompatible              " be improved, required
 filetype off                  " required
+
 let mapleader = "\<Space>"
 
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -214,6 +215,12 @@ vnoremap <C-@> <Esc>gV
 onoremap <C-@> <Esc>
 cnoremap <C-@> <C-c>
 nnoremap <C-@> <Esc>:noh<CR>
+" works in gvim
+inoremap <C-Space> <Esc>`^
+vnoremap <C-Space> <Esc>gV
+onoremap <C-Space> <Esc>
+cnoremap <C-Space> <C-c>
+nnoremap <C-Space> <Esc>:noh<CR>
 " hit enter to go end of line and hit 12 + enter to jump line 12
 noremap <CR> G
 " move the beginning/end of line
@@ -345,3 +352,4 @@ function! MyPrev()
 endfunction
 nnoremap <silent> <C-l> :call MyNext()<CR>
 nnoremap <silent> <C-h> :call MyPrev()<CR>
+" ----------------------------------------------------------------------------------------
