@@ -1,6 +1,5 @@
 set nocompatible              " be improved, required
 filetype off                  " required
-
 let mapleader = "\<Space>"
 
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -201,6 +200,8 @@ noremap Y y$
 nnoremap ge `.
 " highlight last inserted text
 nnoremap gV `[v`]
+" select last pasted text
+nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
 " please use leader K to see man page
 nnoremap K <Nop>
 " too much accident, please use leader J instead
@@ -215,12 +216,6 @@ vnoremap <C-@> <Esc>gV
 onoremap <C-@> <Esc>
 cnoremap <C-@> <C-c>
 nnoremap <C-@> <Esc>:noh<CR>
-" works in gvim
-inoremap <C-Space> <Esc>`^
-vnoremap <C-Space> <Esc>gV
-onoremap <C-Space> <Esc>
-cnoremap <C-Space> <C-c>
-nnoremap <C-Space> <Esc>:noh<CR>
 " hit enter to go end of line and hit 12 + enter to jump line 12
 noremap <CR> G
 " move the beginning/end of line
@@ -235,7 +230,7 @@ nnoremap zh zH
 " move tab
 nnoremap <silent> + :tabm+<CR>
 nnoremap <silent> - :tabm-<CR>
-" moving around in command mode
+" moving around in command mode ctrl+b & ctrl+e move beginning and end
 cnoremap <C-l> <right>
 cnoremap <C-h> <left>
 cnoremap <C-k> <S-Right>
