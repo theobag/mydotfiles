@@ -2,7 +2,7 @@
 "set noguipty
 
 " Hide tool and menu bar
-set guioptions-=T guioptions-=m
+set guioptions-=T guioptions-=m guioptions=Ace
 " You can also specify a different font, overriding the default font
 if has('gui_gtk2')
   " set guifont=Bitstream\ Vera\ Sans\ Mono\ 12
