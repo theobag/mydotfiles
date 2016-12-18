@@ -260,8 +260,8 @@ nnoremap <silent> <Leader>r :bd<CR>
 nnoremap <silent> <Leader>R :bd!<CR>
 nnoremap <silent> <Leader>t :e .<CR>
 nnoremap <silent> <Leader>T :e ~/<CR>
-nnoremap <Leader>e :e<space>
-nnoremap <Leader>E :tabedit<space>
+nnoremap <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
+nnoremap <leader>E :tabedit <C-R>=expand("%:p:h") . "/" <CR>
 nnoremap <Leader>! :au! BufWritePost *.c :!<space>
 " visual mode with leader twice
 nnoremap <Leader><Leader> V
