@@ -140,12 +140,12 @@ let g:airline_powerline_fonts = 1
 " ----------------------------------------------------------------------------------------
 " vim move : use c-k and c-j to move current line/selection to up and down
 let g:move_key_modifier = 'C'
-" clever tab only one line search
-let g:clever_f_across_no_line = 1
-let g:clever_f_fix_key_direction = 1
 " netrw
 let g:netrw_liststyle = 2
 let g:netrw_banner = 0
+" clever tab only one line search
+let g:clever_f_across_no_line = 1
+let g:clever_f_fix_key_direction = 1
 " ag disbale message
 let g:ag_mapping_message = 0
 nnoremap <Leader>A :Ag!<space>
@@ -227,18 +227,30 @@ nnoremap N Nzz
 " easier horizontal scrolling
 nnoremap zl zL
 nnoremap zh zH
+" re-select visual block after indenting
+vnoremap < <gv
+vnoremap > >gv
 " move tab
 nnoremap <silent> + :tabm+<CR>
 nnoremap <silent> - :tabm-<CR>
+" paste multiple lines multiple times with simple ppppp
+vnoremap <silent> y y`]
+vnoremap <silent> p p`]
+nnoremap <silent> p p`]
 " moving around in command mode ctrl+b & ctrl+e move beginning and end
 cnoremap <C-l> <right>
 cnoremap <C-h> <left>
 cnoremap <C-k> <S-Right>
 cnoremap <C-j> <S-Left>
-" paste multiple lines multiple times with simple ppppp
-vnoremap <silent> y y`]
-vnoremap <silent> p p`]
-nnoremap <silent> p p`]
+" save mysql last query
+noremap <Leader>z :w! /tmp/query.sql\| w!<CR>
+noremap <Leader>Z :w! /tmp/query.sql\| wq!<CR>
+" use j/k to start, then scroll through autocomplete options
+inoremap <expr> <C-j> ((pumvisible())?("\<C-n>"):("\<C-x><c-n>"))
+inoremap <expr> <C-k> ((pumvisible())?("\<C-p>"):("\<C-x><c-k>"))
+" stop autocomment on nextline
+nnoremap <expr> O getline('.') =~ '^\s*//' ? 'O<esc>S' : 'O'
+nnoremap <expr> o getline('.') =~ '^\s*//' ? 'o<esc>S' : 'o'
 " copy and paste to system clipboard
 nnoremap <Leader>y "+y
 nnoremap <Leader>Y "+y$
@@ -260,20 +272,10 @@ nnoremap <silent> <Leader>r :bd<CR>
 nnoremap <silent> <Leader>R :bd!<CR>
 nnoremap <silent> <Leader>t :e .<CR>
 nnoremap <silent> <Leader>T :e ~/<CR>
-nnoremap <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 nnoremap <leader>E :e ~/
+nnoremap <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 nnoremap <Leader>! :au! BufWritePost *.c :!<space>
-" visual mode with leader twice
 nnoremap <Leader><Leader> V
-" save mysql last query
-noremap <Leader>z :w! /tmp/query.sql\| w!<CR>
-noremap <Leader>Z :w! /tmp/query.sql\| wq!<CR>
-" use j/k to start, then scroll through autocomplete options
-inoremap <expr> <C-j> ((pumvisible())?("\<C-n>"):("\<C-x><c-n>"))
-inoremap <expr> <C-k> ((pumvisible())?("\<C-p>"):("\<C-x><c-k>"))
-" stop autocomment on nextline
-nnoremap <expr> O getline('.') =~ '^\s*//' ? 'O<esc>S' : 'O'
-nnoremap <expr> o getline('.') =~ '^\s*//' ? 'o<esc>S' : 'o'
 " disable arrow and prevent show weird characters
 nnoremap <silent> <ESC>OA <Nop>
 nnoremap <silent> <ESC>OB <Nop>
@@ -296,14 +298,14 @@ onoremap <silent> <ESC>OB <Nop>
 onoremap <silent> <ESC>OC <Nop>
 onoremap <silent> <ESC>OD <Nop>
 " ----------------------------------------------------------------------------------------
-" AUTOCMD
+" AUTOCMD & FUNCTIONS
 " ----------------------------------------------------------------------------------------
 " man page, use leader K to open it or :Man 3 {option} in command mode
 runtime! ftplugin/man.vim
 " remove any trailing whitespace that is in the file
 autocmd BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
 " auto remove multiple empty lines at the end of line
-autocmd BufWrite *.c :%s/\(\s*\n\)\+\%$//ge
+autocmd BufWrite * :%s/\(\s*\n\)\+\%$//ge
 " replace groups or function of empty or whitespaces-only lines with one empty line
 autocmd BufWrite *.c :%s/\(\s*\n\)\{3,}/\r\r/ge
 " by default, vim assumes all .h files to be C++ files
@@ -317,9 +319,6 @@ for i in range(65,90) + range(97,122)
     exec "map \e".c." <M-".c.">"
     exec "map! \e".c." <M-".c.">"
 endfor
-" ----------------------------------------------------------------------------------------
-" FUNCTIONS
-" ----------------------------------------------------------------------------------------
 " vp doesn't replace paste buffer
 function! RestoreRegister()
     let @" = s:restore_reg
@@ -330,6 +329,17 @@ function! s:Repl()
     return "p@=RestoreRegister()\<cr>"
 endfunction
 vmap <silent> <expr> p <sid>Repl()
+" display the numbered register(:Reg), press a key and paste it to the buffer
+function! Reg()
+    reg
+    echo "Register: "
+    let char = nr2char(getchar())
+    if char != "\<Esc>"
+        execute "normal! \"".char."p"
+    endif
+    redraw
+endfunction
+command! -nargs=0 Reg call Reg()
 " movement between tabs or buffers
 function! MyNext()
     if exists( '*tabpagenr' ) && tabpagenr('$') != 1
