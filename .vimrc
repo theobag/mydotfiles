@@ -1,7 +1,6 @@
 set nocompatible              " be improved, required
 filetype off                  " required
 let mapleader = "\<Space>"
-
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
@@ -115,7 +114,6 @@ set listchars=tab:▸\ ,trail:·,extends:❯,precedes:❮,nbsp:×
 " color scheme
 colorscheme badwolf
 let g:badwolf_tabline = 0
-" highlight
 highlight clear signcolumn                              " signcolumn should match background
 highlight colorcolumn ctermbg=lightgrey
 highlight cursorlinenr ctermfg=lightblue
@@ -123,10 +121,7 @@ highlight cursorline cterm=NONE ctermbg=234 ctermfg=NONE
 highlight cursorcolumn cterm=NONE ctermbg=234 ctermfg=NONE
 " airline
 let g:airline_theme ='hybrid'
-let g:airline_section_c = ""
-let g:airline_section_x = ""
-let g:airline_section_b = "%f"
-let g:airline_section_y = ""
+let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ''
 let g:airline#extensions#tabline#left_alt_sep = ''
@@ -134,7 +129,10 @@ let g:airline#extensions#tabline#fnamemod = ':t'        " display only file name
 let g:airline#extensions#tabline#tab_nr_type = 1        " tab number
 let g:airline#extensions#tabline#show_buffers = 0       " dont display buffers in tab-bar with single tab
 let g:airline#extensions#whitespace#enabled = 0         " do not check for whitespaces
-let g:airline_powerline_fonts = 1
+let g:airline_section_x = ""
+let g:airline_section_b = "%f"
+let g:airline_section_y = ""
+let g:airline_section_c = '%<%F%m %#__accent_red#%{airline#util#wrap(airline#parts#readonly(),0)}%#__restore__#'
 " ----------------------------------------------------------------------------------------
 " PLUGINS
 " ----------------------------------------------------------------------------------------
@@ -275,6 +273,9 @@ nnoremap <silent> <Leader>T :e ~/<CR>
 nnoremap <leader>E :e ~/
 nnoremap <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 nnoremap <Leader>! :au! BufWritePost *.c :!<space>
+nnoremap <Leader>@ :au! BufWritePost *.pas :! fpc<space>
+nnoremap <Leader># :au! BufWritePost *.py :! python<space>
+nnoremap <Leader>$ :au! BufWritePost *.pl :! perl<space>
 nnoremap <Leader><Leader> V
 " disable arrow and prevent show weird characters
 nnoremap <silent> <ESC>OA <Nop>
@@ -357,4 +358,3 @@ function! MyPrev()
 endfunction
 nnoremap <silent> <C-l> :call MyNext()<CR>
 nnoremap <silent> <C-h> :call MyPrev()<CR>
-" ----------------------------------------------------------------------------------------
