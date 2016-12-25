@@ -69,7 +69,6 @@ set expandtab
 set smarttab
 set textwidth=120
 set backspace=indent,eol,start
-set comments=sl:/*,mb:\ *,elx:\ */
 set omnifunc=syntaxcomplete#Complete
 set wildmenu
 set wildignore=*.o,*~,*.pyc
@@ -114,6 +113,7 @@ set listchars=tab:▸\ ,trail:·,extends:❯,precedes:❮,nbsp:×
 " color scheme
 colorscheme badwolf
 let g:badwolf_tabline = 0
+" highlight
 highlight clear signcolumn                              " signcolumn should match background
 highlight colorcolumn ctermbg=lightgrey
 highlight cursorlinenr ctermfg=lightblue
