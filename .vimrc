@@ -1,3 +1,4 @@
+" ----------------------------------------------------------------------------------------
 set nocompatible              " be improved, required
 filetype off                  " required
 let mapleader = "\<Space>"
@@ -38,7 +39,6 @@ filetype plugin indent on     " required
 " ----------------------------------------------------------------------------------------
 " GENERAL
 " ----------------------------------------------------------------------------------------
-syntax enable                                           " syntax highlighting
 syntax sync minlines=256
 set re=1                                                " fixes slow speed due to syntax highlighting
 set synmaxcol=1000                                      " syntax coloring lines that are too long just slows down the world
@@ -52,11 +52,9 @@ set secure                                              " limit what modelines a
 set cursorline
 set cursorcolumn
 set nostartofline                                       " keep cursor column pos
-set enc=utf-8                                           " encoding used for displaying file
-set fenc=utf-8                                          " encoding used when saving file
 set termencoding=utf-8
 set ttimeoutlen=100                                     " speed esc
-set tabpagemax=12                                       " only show 10 tabs
+set tabpagemax=12                                       " only show 12 tabs
 set switchbuf=usetab                                    " if opening buffer, search first in opened windows.
 set autoindent
 set cindent
@@ -113,7 +111,7 @@ set listchars=tab:▸\ ,trail:·,extends:❯,precedes:❮,nbsp:×
 " color scheme
 colorscheme badwolf
 let g:badwolf_tabline = 0
-" highlight
+" highlight and stuff
 highlight clear signcolumn                              " signcolumn should match background
 highlight colorcolumn ctermbg=lightgrey
 highlight cursorlinenr ctermfg=lightblue
@@ -276,6 +274,7 @@ nnoremap <Leader>! :au! BufWritePost *.c :!<space>
 nnoremap <Leader>@ :au! BufWritePost *.pas :! fpc<space>
 nnoremap <Leader># :au! BufWritePost *.py :! python<space>
 nnoremap <Leader>$ :au! BufWritePost *.pl :! perl<space>
+nnoremap <Leader>% :au! BufWritePost *.go :! go build<space>
 nnoremap <Leader><Leader> V
 " disable arrow and prevent show weird characters
 nnoremap <silent> <ESC>OA <Nop>
@@ -358,3 +357,4 @@ function! MyPrev()
 endfunction
 nnoremap <silent> <C-l> :call MyNext()<CR>
 nnoremap <silent> <C-h> :call MyPrev()<CR>
+" ----------------------------------------------------------------------------------------
