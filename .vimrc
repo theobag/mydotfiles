@@ -1,7 +1,6 @@
 set nocompatible              " be improved, required
 filetype off                  " required
 let mapleader = "\<Space>"
-
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
@@ -23,11 +22,11 @@ Plugin 'henrik/vim-indexed-search'
 Plugin 'darfink/starsearch.vim'                         " dont jump next on star search
 Plugin 'terryma/vim-smooth-scroll'
 Plugin 'matze/vim-move'
-Plugin 'sickill/vim-pasta'
 Plugin 'ReplaceWithRegister'                            " gr and motion
 Plugin 'argtextobj.vim'                                 " argument text object eg. dia, cia, via, daa ..
 Plugin 'kana/vim-textobj-user'
 Plugin 'kana/vim-textobj-entire'                        " motion plus ae or ie to select entire
+Plugin 'kana/vim-textobj-function'
 Plugin 'tpope/vim-eunuch'                               " bash commands
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
@@ -37,11 +36,9 @@ Plugin 'tpope/vim-unimpaired'                           " pair maps and stuff
 Plugin 'ivalkeen/vim-simpledb'
 call vundle#end()             " required
 filetype plugin indent on     " required
-
 " ----------------------------------------------------------------------------------------
 " GENERAL
 " ----------------------------------------------------------------------------------------
-syntax enable                                           " syntax highlighting
 syntax sync minlines=256
 set re=1                                                " fixes slow speed due to syntax highlighting
 set synmaxcol=1000                                      " syntax coloring lines that are too long just slows down the world
@@ -55,11 +52,9 @@ set secure                                              " limit what modelines a
 set cursorline
 set cursorcolumn
 set nostartofline                                       " keep cursor column pos
-set enc=utf-8                                           " encoding used for displaying file
-set fenc=utf-8                                          " encoding used when saving file
 set termencoding=utf-8
 set ttimeoutlen=100                                     " speed esc
-set tabpagemax=12                                       " only show 10 tabs
+set tabpagemax=12                                       " only show 12 tabs
 set switchbuf=usetab                                    " if opening buffer, search first in opened windows.
 set autoindent
 set cindent
@@ -70,9 +65,8 @@ set shiftwidth=4                                        " size of indent
 set shiftround                                          " use multiple of shiftwidth when indenting with '<' and '>'
 set expandtab
 set smarttab
-set textwidth=120
+set textwidth=106
 set backspace=indent,eol,start
-set comments=sl:/*,mb:\ *,elx:\ */
 set omnifunc=syntaxcomplete#Complete
 set wildmenu
 set wildignore=*.o,*~,*.pyc
@@ -117,18 +111,16 @@ set listchars=tab:▸\ ,trail:·,extends:❯,precedes:❮,nbsp:×
 " color scheme
 colorscheme badwolf
 let g:badwolf_tabline = 0
-" highlight
 highlight clear signcolumn                              " signcolumn should match background
 highlight colorcolumn ctermbg=lightgrey
 highlight cursorlinenr ctermfg=lightblue
 highlight cursorline cterm=NONE ctermbg=234 ctermfg=NONE
 highlight cursorcolumn cterm=NONE ctermbg=234 ctermfg=NONE
+highlight OverLength cterm=NONE ctermbg=NONE ctermfg=red guibg=#592929
+match OverLength /\%106v.\+/
 " airline
 let g:airline_theme ='hybrid'
-let g:airline_section_c = ""
-let g:airline_section_x = ""
-let g:airline_section_b = "%f"
-let g:airline_section_y = ""
+let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ''
 let g:airline#extensions#tabline#left_alt_sep = ''
@@ -136,18 +128,21 @@ let g:airline#extensions#tabline#fnamemod = ':t'        " display only file name
 let g:airline#extensions#tabline#tab_nr_type = 1        " tab number
 let g:airline#extensions#tabline#show_buffers = 0       " dont display buffers in tab-bar with single tab
 let g:airline#extensions#whitespace#enabled = 0         " do not check for whitespaces
-let g:airline_powerline_fonts = 1
+let g:airline_section_x = ""
+let g:airline_section_b = "%f"
+let g:airline_section_y = ""
+let g:airline_section_c = '%<%F%m %#__accent_red#%{airline#util#wrap(airline#parts#readonly(),0)}%#__restore__#'
 " ----------------------------------------------------------------------------------------
 " PLUGINS
 " ----------------------------------------------------------------------------------------
 " vim move : use c-k and c-j to move current line/selection to up and down
 let g:move_key_modifier = 'C'
-" clever tab only one line search
-let g:clever_f_across_no_line = 1
-let g:clever_f_fix_key_direction = 1
 " netrw
 let g:netrw_liststyle = 2
 let g:netrw_banner = 0
+" clever tab only one line search
+let g:clever_f_across_no_line = 1
+let g:clever_f_fix_key_direction = 1
 " ag disbale message
 let g:ag_mapping_message = 0
 nnoremap <Leader>A :Ag!<space>
@@ -202,6 +197,8 @@ noremap Y y$
 nnoremap ge `.
 " highlight last inserted text
 nnoremap gV `[v`]
+" select last pasted text
+nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
 " please use leader K to see man page
 nnoremap K <Nop>
 " too much accident, please use leader J instead
@@ -227,14 +224,30 @@ nnoremap N Nzz
 " easier horizontal scrolling
 nnoremap zl zL
 nnoremap zh zH
+" re-select visual block after indenting
+vnoremap < <gv
+vnoremap > >gv
 " move tab
 nnoremap <silent> + :tabm+<CR>
 nnoremap <silent> - :tabm-<CR>
-" moving around in command mode
+" paste multiple lines multiple times with simple ppppp
+vnoremap <silent> y y`]
+vnoremap <silent> p p`]
+nnoremap <silent> p p`]
+" moving around in command mode ctrl+b & ctrl+e move beginning and end
 cnoremap <C-l> <right>
 cnoremap <C-h> <left>
 cnoremap <C-k> <S-Right>
 cnoremap <C-j> <S-Left>
+" save mysql last query
+noremap <Leader>z :w! /tmp/query.sql\| w!<CR>
+noremap <Leader>Z :w! /tmp/query.sql\| wq!<CR>
+" use j/k to start, then scroll through autocomplete options
+inoremap <expr> <C-j> ((pumvisible())?("\<C-n>"):("\<C-x><c-n>"))
+inoremap <expr> <C-k> ((pumvisible())?("\<C-p>"):("\<C-x><c-k>"))
+" stop autocomment on nextline
+nnoremap <expr> O getline('.') =~ '^\s*//' ? 'O<esc>S' : 'O'
+nnoremap <expr> o getline('.') =~ '^\s*//' ? 'o<esc>S' : 'o'
 " copy and paste to system clipboard
 nnoremap <Leader>y "+y
 nnoremap <Leader>Y "+y$
@@ -256,20 +269,14 @@ nnoremap <silent> <Leader>r :bd<CR>
 nnoremap <silent> <Leader>R :bd!<CR>
 nnoremap <silent> <Leader>t :e .<CR>
 nnoremap <silent> <Leader>T :e ~/<CR>
-nnoremap <Leader>e :e<space>
-nnoremap <Leader>E :tabedit<space>
+nnoremap <leader>E :e ~/
+nnoremap <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 nnoremap <Leader>! :au! BufWritePost *.c :!<space>
-" visual mode with leader twice
+nnoremap <Leader>@ :au! BufWritePost *.pas :! fpc<space>
+nnoremap <Leader># :au! BufWritePost *.py :! python<space>
+nnoremap <Leader>$ :au! BufWritePost *.pl :! perl<space>
+nnoremap <Leader>% :au! BufWritePost *.go :! go build<space>
 nnoremap <Leader><Leader> V
-" save mysql last query
-noremap <Leader>z :w! /tmp/query.sql\| w!<CR>
-noremap <Leader>Z :w! /tmp/query.sql\| wq!<CR>
-" use j/k to start, then scroll through autocomplete options
-inoremap <expr> <C-j> ((pumvisible())?("\<C-n>"):("\<C-x><c-n>"))
-inoremap <expr> <C-k> ((pumvisible())?("\<C-p>"):("\<C-x><c-k>"))
-" stop autocomment on nextline
-nnoremap <expr> O getline('.') =~ '^\s*//' ? 'O<esc>S' : 'O'
-nnoremap <expr> o getline('.') =~ '^\s*//' ? 'o<esc>S' : 'o'
 " disable arrow and prevent show weird characters
 nnoremap <silent> <ESC>OA <Nop>
 nnoremap <silent> <ESC>OB <Nop>
@@ -292,14 +299,14 @@ onoremap <silent> <ESC>OB <Nop>
 onoremap <silent> <ESC>OC <Nop>
 onoremap <silent> <ESC>OD <Nop>
 " ----------------------------------------------------------------------------------------
-" AUTOCMD
+" AUTOCMD & FUNCTIONS
 " ----------------------------------------------------------------------------------------
 " man page, use leader K to open it or :Man 3 {option} in command mode
 runtime! ftplugin/man.vim
 " remove any trailing whitespace that is in the file
 autocmd BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
 " auto remove multiple empty lines at the end of line
-autocmd BufWrite *.c :%s/\(\s*\n\)\+\%$//ge
+autocmd BufWrite * :%s/\(\s*\n\)\+\%$//ge
 " replace groups or function of empty or whitespaces-only lines with one empty line
 autocmd BufWrite *.c :%s/\(\s*\n\)\{3,}/\r\r/ge
 " by default, vim assumes all .h files to be C++ files
@@ -313,9 +320,6 @@ for i in range(65,90) + range(97,122)
     exec "map \e".c." <M-".c.">"
     exec "map! \e".c." <M-".c.">"
 endfor
-" ----------------------------------------------------------------------------------------
-" FUNCTIONS
-" ----------------------------------------------------------------------------------------
 " vp doesn't replace paste buffer
 function! RestoreRegister()
     let @" = s:restore_reg
@@ -326,6 +330,17 @@ function! s:Repl()
     return "p@=RestoreRegister()\<cr>"
 endfunction
 vmap <silent> <expr> p <sid>Repl()
+" display the numbered register(:Reg), press a key and paste it to the buffer
+function! Reg()
+    reg
+    echo "Register: "
+    let char = nr2char(getchar())
+    if char != "\<Esc>"
+        execute "normal! \"".char."p"
+    endif
+    redraw
+endfunction
+command! -nargs=0 Reg call Reg()
 " movement between tabs or buffers
 function! MyNext()
     if exists( '*tabpagenr' ) && tabpagenr('$') != 1
