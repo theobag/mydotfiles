@@ -1,3 +1,4 @@
+" ----------------------------------------------------------------------------------------
 set nocompatible              " be improved, required
 filetype off                  " required
 let mapleader = "\<Space>"
@@ -111,10 +112,6 @@ set listchars=tab:▸\ ,trail:·,extends:❯,precedes:❮,nbsp:×
 " color scheme
 colorscheme badwolf
 let g:badwolf_tabline = 0
-<<<<<<< HEAD
-=======
-" highlight and stuff
->>>>>>> refs/remotes/origin/master
 highlight clear signcolumn                              " signcolumn should match background
 highlight colorcolumn ctermbg=lightgrey
 highlight cursorlinenr ctermfg=lightblue
@@ -273,13 +270,16 @@ nnoremap <silent> <Leader>r :bd<CR>
 nnoremap <silent> <Leader>R :bd!<CR>
 nnoremap <silent> <Leader>t :e .<CR>
 nnoremap <silent> <Leader>T :e ~/<CR>
-nnoremap <leader>E :e ~/
-nnoremap <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
+nnoremap <leader>e :e<space>
+nnoremap <leader>E :e <C-R>=expand("%:p:h") . "/" <CR>
 nnoremap <Leader>! :au! BufWritePost *.c :!<space>
 nnoremap <Leader>@ :au! BufWritePost *.pas :! fpc<space>
 nnoremap <Leader># :au! BufWritePost *.py :! python<space>
 nnoremap <Leader>$ :au! BufWritePost *.pl :! perl<space>
 nnoremap <Leader>% :au! BufWritePost *.go :! go build<space>
+nnoremap <Leader>^ :au! BufWritePost *.js :! nodejs<space>
+nnoremap <Leader>& :au! BufWritePost *.hs :! runhaskell<space>
+nnoremap <Leader>* :au! BufWritePost *.hs :! ghc<space>
 nnoremap <Leader><Leader> V
 " disable arrow and prevent show weird characters
 nnoremap <silent> <ESC>OA <Nop>
