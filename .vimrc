@@ -1,4 +1,3 @@
-" ----------------------------------------------------------------------------------------
 set nocompatible              " be improved, required
 filetype off                  " required
 let mapleader = "\<Space>"
@@ -272,14 +271,15 @@ nnoremap <silent> <Leader>t :e .<CR>
 nnoremap <silent> <Leader>T :e ~/<CR>
 nnoremap <leader>e :e<space>
 nnoremap <leader>E :e <C-R>=expand("%:p:h") . "/" <CR>
-nnoremap <Leader>! :au! BufWritePost *.c :!<space>
-nnoremap <Leader>@ :au! BufWritePost *.pas :! fpc<space>
-nnoremap <Leader># :au! BufWritePost *.py :! python<space>
-nnoremap <Leader>$ :au! BufWritePost *.pl :! perl<space>
-nnoremap <Leader>% :au! BufWritePost *.go :! go build<space>
-nnoremap <Leader>^ :au! BufWritePost *.js :! nodejs<space>
-nnoremap <Leader>& :au! BufWritePost *.hs :! runhaskell<space>
-nnoremap <Leader>* :au! BufWritePost *.hs :! ghc<space>
+nnoremap <Leader>1 :au! BufWritePost *.c :!<space>
+nnoremap <Leader>2 :au! BufWritePost *.pas :! fpc<space>
+nnoremap <Leader>3 :au! BufWritePost *.py :! python<space>
+nnoremap <Leader>4 :au! BufWritePost *.pl :! perl<space>
+nnoremap <Leader>5 :au! BufWritePost *.go :! go build<space>
+nnoremap <Leader>6 :au! BufWritePost *.js :! nodejs<space>
+nnoremap <Leader>7 :au! BufWritePost *.hs :! runhaskell<space>
+nnoremap <Leader>8 :au! BufWritePost *.hs :! ghc<space>
+nnoremap <Leader>9 :au! BufWritePost *.rb :! ruby<space>
 nnoremap <Leader><Leader> V
 " disable arrow and prevent show weird characters
 nnoremap <silent> <ESC>OA <Nop>
