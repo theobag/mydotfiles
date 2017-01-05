@@ -273,13 +273,13 @@ nnoremap <leader>e :e<space>
 nnoremap <leader>E :e <C-R>=expand("%:p:h") . "/" <CR>
 nnoremap <Leader>1 :au! BufWritePost *.c :!<space>
 nnoremap <Leader>2 :au! BufWritePost *.pas :! fpc<space>
-nnoremap <Leader>3 :au! BufWritePost *.py :! python<space>
-nnoremap <Leader>4 :au! BufWritePost *.pl :! perl<space>
-nnoremap <Leader>5 :au! BufWritePost *.go :! go build<space>
-nnoremap <Leader>6 :au! BufWritePost *.js :! nodejs<space>
-nnoremap <Leader>7 :au! BufWritePost *.hs :! runhaskell<space>
-nnoremap <Leader>8 :au! BufWritePost *.hs :! ghc<space>
-nnoremap <Leader>9 :au! BufWritePost *.rb :! ruby<space>
+nnoremap <Leader>3 :au! BufWritePost *.rb :! ruby<space>
+nnoremap <Leader>4 :au! BufWritePost *.py :! python<space>
+nnoremap <Leader>5 :au! BufWritePost *.pl :! perl<space>
+nnoremap <Leader>6 :au! BufWritePost *.go :! go build<space>
+nnoremap <Leader>7 :au! BufWritePost *.js :! nodejs<space>
+nnoremap <Leader>8 :au! BufWritePost *.hs :! runhaskell<space>
+nnoremap <Leader>9 :au! BufWritePost *.hs :! ghc<space>
 nnoremap <Leader><Leader> V
 " disable arrow and prevent show weird characters
 nnoremap <silent> <ESC>OA <Nop>
