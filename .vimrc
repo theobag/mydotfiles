@@ -1,6 +1,7 @@
 set nocompatible              " be improved, required
 filetype off                  " required
 let mapleader = "\<Space>"
+
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
@@ -197,8 +198,6 @@ noremap Y y$
 nnoremap ge `.
 " highlight last inserted text
 nnoremap gV `[v`]
-" select last pasted text
-nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
 " please use leader K to see man page
 nnoremap K <Nop>
 " too much accident, please use leader J instead
@@ -280,6 +279,7 @@ nnoremap <Leader>6 :au! BufWritePost *.go :! go build<space>
 nnoremap <Leader>7 :au! BufWritePost *.js :! nodejs<space>
 nnoremap <Leader>8 :au! BufWritePost *.hs :! runhaskell<space>
 nnoremap <Leader>9 :au! BufWritePost *.hs :! ghc<space>
+nnoremap <Leader>0 :au! BufWritePost *.lisp :! clisp<space>
 nnoremap <Leader><Leader> V
 " disable arrow and prevent show weird characters
 nnoremap <silent> <ESC>OA <Nop>
