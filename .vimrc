@@ -1,7 +1,6 @@
 set nocompatible              " be improved, required
 filetype off                  " required
 let mapleader = "\<Space>"
-
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
@@ -119,6 +118,12 @@ highlight cursorline cterm=NONE ctermbg=234 ctermfg=NONE
 highlight cursorcolumn cterm=NONE ctermbg=234 ctermfg=NONE
 highlight OverLength cterm=NONE ctermbg=NONE ctermfg=red guibg=#592929
 match OverLength /\%106v.\+/
+if &diff
+    highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
+    highlight DiffDelete cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
+    highlight DiffChange cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
+    highlight DiffText   cterm=bold ctermfg=10 ctermbg=88 gui=none guifg=bg guibg=Red
+endif
 " airline
 let g:airline_theme ='hybrid'
 let g:airline_powerline_fonts = 1
