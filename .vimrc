@@ -30,7 +30,6 @@ Plugin 'kana/vim-textobj-function'
 Plugin 'tpope/vim-eunuch'                               " bash commands
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-commentary'	                        " gc + motion or line with gcc
 Plugin 'tpope/vim-unimpaired'                           " pair maps and stuff
 Plugin 'ivalkeen/vim-simpledb'
@@ -118,14 +117,11 @@ highlight cursorline cterm=NONE ctermbg=234 ctermfg=NONE
 highlight cursorcolumn cterm=NONE ctermbg=234 ctermfg=NONE
 highlight OverLength cterm=NONE ctermbg=NONE ctermfg=red guibg=#592929
 match OverLength /\%106v.\+/
-if &diff
-    highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
-    highlight DiffDelete cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
-    highlight DiffChange cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
-    highlight DiffText   cterm=bold ctermfg=10 ctermbg=88 gui=none guifg=bg guibg=Red
-endif
-" airline
-let g:airline_theme ='hybrid'
+highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
+highlight DiffDelete cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
+highlight DiffChange cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
+highlight DiffText   cterm=bold ctermfg=10 ctermbg=88 gui=none guifg=bg guibg=Red
+let g:airline_theme ='simple'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ''
@@ -367,4 +363,3 @@ function! MyPrev()
 endfunction
 nnoremap <silent> <C-l> :call MyNext()<CR>
 nnoremap <silent> <C-h> :call MyPrev()<CR>
-" ----------------------------------------------------------------------------------------
