@@ -144,3 +144,5 @@ man() {
         col -b | \
         vim -R -c 'set ft=man nomod nolist' -
 }
+# alias for rm command to ask user before delelete something
+alias rm='rm -i'
