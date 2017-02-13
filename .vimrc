@@ -56,7 +56,6 @@ set ttimeoutlen=100                                     " speed esc
 set tabpagemax=12                                       " only show 12 tabs
 set switchbuf=usetab                                    " if opening buffer, search first in opened windows.
 set autoindent
-set cindent
 set smartindent
 set tabstop=4                                           " size of a hard tabstop
 set softtabstop=4
@@ -115,8 +114,8 @@ highlight colorcolumn ctermbg=lightgrey
 highlight cursorlinenr ctermfg=lightblue
 highlight cursorline cterm=NONE ctermbg=234 ctermfg=NONE
 highlight cursorcolumn cterm=NONE ctermbg=234 ctermfg=NONE
-highlight OverLength cterm=NONE ctermbg=NONE ctermfg=red guibg=#592929
-match OverLength /\%106v.\+/
+" highlight OverLength cterm=NONE ctermbg=NONE ctermfg=red guibg=#592929
+" match OverLength /\%106v.\+/
 highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
 highlight DiffDelete cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
 highlight DiffChange cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
@@ -245,6 +244,7 @@ noremap <Leader>Z :w! /tmp/query.sql\| wq!<CR>
 " use j/k to start, then scroll through autocomplete options
 inoremap <expr> <C-j> ((pumvisible())?("\<C-n>"):("\<C-x><c-n>"))
 inoremap <expr> <C-k> ((pumvisible())?("\<C-p>"):("\<C-x><c-k>"))
+inoremap <c-k> <c-p>
 " stop autocomment on nextline
 nnoremap <expr> O getline('.') =~ '^\s*//' ? 'O<esc>S' : 'O'
 nnoremap <expr> o getline('.') =~ '^\s*//' ? 'o<esc>S' : 'o'
