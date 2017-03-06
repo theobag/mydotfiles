@@ -45,7 +45,6 @@ set t_ut=                                               " disbale background col
 set t_Co=256                                            " enable 256 color
 set laststatus=2
 set number
-set relativenumber
 set ruler                                               " show the line number on the bar
 set secure                                              " limit what modelines and autocmds can do
 set cursorline
@@ -246,6 +245,7 @@ inoremap <expr> <C-j> ((pumvisible())?("\<C-n>"):("\<C-x><c-n>"))
 inoremap <expr> <C-k> ((pumvisible())?("\<C-p>"):("\<C-x><c-k>"))
 inoremap <c-k> <c-p>
 " stop autocomment on nextline
+inoremap <expr> <enter> getline('.') =~ '^\s*//' ? '<enter><esc>S' : '<enter>'
 nnoremap <expr> O getline('.') =~ '^\s*//' ? 'O<esc>S' : 'O'
 nnoremap <expr> o getline('.') =~ '^\s*//' ? 'o<esc>S' : 'o'
 " copy and paste to system clipboard
