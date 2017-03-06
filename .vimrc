@@ -61,7 +61,7 @@ set tabstop=4                                           " size of a hard tabstop
 set softtabstop=4
 set shiftwidth=4                                        " size of indent
 set shiftround                                          " use multiple of shiftwidth when indenting with '<' and '>'
-set expandtab
+set noexpandtab
 set smarttab
 set textwidth=106
 set backspace=indent,eol,start
@@ -120,7 +120,7 @@ highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Re
 highlight DiffDelete cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
 highlight DiffChange cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
 highlight DiffText   cterm=bold ctermfg=10 ctermbg=88 gui=none guifg=bg guibg=Red
-let g:airline_theme ='jellybeans'
+let g:airline_theme ='behelit'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 " let g:airline#extensions#tabline#left_sep = ''
