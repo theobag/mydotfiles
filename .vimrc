@@ -60,7 +60,6 @@ set tabstop=4                                           " size of a hard tabstop
 set softtabstop=4
 set shiftwidth=4                                        " size of indent
 set shiftround                                          " use multiple of shiftwidth when indenting with '<' and '>'
-set noexpandtab
 set smarttab
 set textwidth=106
 set backspace=indent,eol,start
@@ -105,7 +104,6 @@ set listchars=tab:▸\ ,trail:·,extends:❯,precedes:❮,nbsp:×
 " ----------------------------------------------------------------------------------------
 " COLORS
 " ----------------------------------------------------------------------------------------
-" color scheme
 colorscheme badwolf
 let g:badwolf_tabline = 0
 highlight clear signcolumn                              " signcolumn should match background
@@ -113,8 +111,6 @@ highlight colorcolumn ctermbg=lightgrey
 highlight cursorlinenr ctermfg=lightblue
 highlight cursorline cterm=NONE ctermbg=234 ctermfg=NONE
 highlight cursorcolumn cterm=NONE ctermbg=234 ctermfg=NONE
-" highlight OverLength cterm=NONE ctermbg=NONE ctermfg=red guibg=#592929
-" match OverLength /\%106v.\+/
 highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
 highlight DiffDelete cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
 highlight DiffChange cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
@@ -122,7 +118,7 @@ highlight DiffText   cterm=bold ctermfg=10 ctermbg=88 gui=none guifg=bg guibg=Re
 let g:airline_theme ='behelit'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
-" let g:airline#extensions#tabline#left_sep = ''
+let g:airline#extensions#tabline#left_sep = ''
 let g:airline#extensions#tabline#left_alt_sep = ''
 let g:airline#extensions#tabline#fnamemod = ':t'        " display only file name
 let g:airline#extensions#tabline#tab_nr_type = 1        " tab number
