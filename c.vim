@@ -1,2 +1,1 @@
-set noexpandtab
 set cindent
