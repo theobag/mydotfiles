@@ -115,7 +115,7 @@ highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Re
 highlight DiffDelete cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
 highlight DiffChange cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
 highlight DiffText   cterm=bold ctermfg=10 ctermbg=88 gui=none guifg=bg guibg=Red
-let g:airline_theme ='behelit'
+let g:airline_theme ='hybrid'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ''
@@ -139,6 +139,7 @@ let g:netrw_banner = 0
 " clever tab only one line search
 let g:clever_f_across_no_line = 1
 let g:clever_f_fix_key_direction = 1
+nmap <silent> <Leader>f <Plug>(clever-f-reset)
 " ag disbale message
 let g:ag_mapping_message = 0
 nnoremap <Leader>A :Ag!<space>
@@ -243,7 +244,7 @@ inoremap <c-k> <c-p>
 " stop autocomment on nextline
 nnoremap <expr> O getline('.') =~ '^\s*//' ? 'O<esc>S' : 'O'
 nnoremap <expr> o getline('.') =~ '^\s*//' ? 'o<esc>S' : 'o'
-" copy and paste to system clipboard
+" leader stuff
 nnoremap <Leader>y "+y
 nnoremap <Leader>Y "+y$
 vnoremap <Leader>y "+y
@@ -254,7 +255,6 @@ nnoremap <Leader>p "+p
 nnoremap <Leader>P "+P
 vnoremap <Leader>p "+p
 vnoremap <Leader>P "+P
-" type the leader++
 nnoremap <silent> <Leader>w :w!<CR>
 nnoremap <silent> <Leader>W :wa!<CR>
 nnoremap <silent> <Leader>x :x!<CR>
