@@ -136,10 +136,6 @@ let g:move_key_modifier = 'C'
 " netrw
 let g:netrw_liststyle = 2
 let g:netrw_banner = 0
-" clever tab only one line search
-let g:clever_f_across_no_line = 1
-let g:clever_f_fix_key_direction = 1
-nmap <silent> <Leader>f <Plug>(clever-f-reset)
 " ag disbale message
 let g:ag_mapping_message = 0
 nnoremap <Leader>A :Ag!<space>
@@ -149,6 +145,10 @@ nnoremap <silent> <F8> :TagbarToggle<CR>
 " delimitmate
 let delimitMate_expand_space = 1
 imap <expr> <CR> pumvisible() ? "\<c-y>" : "<Plug>delimitMateCR"
+" clever tab only one line search
+let g:clever_f_across_no_line = 1
+let g:clever_f_fix_key_direction = 1
+nmap <silent> <Leader>f <Plug>(clever-f-reset)
 " toggle tabs and buffers
 let notabs = 0
 nnoremap <silent> <F10> :let notabs=!notabs<Bar>:if
