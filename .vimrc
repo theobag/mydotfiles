@@ -35,9 +35,6 @@ Plugin 'tpope/vim-unimpaired'                           " pair maps and stuff
 Plugin 'ivalkeen/vim-simpledb'
 call vundle#end()             " required
 filetype plugin indent on     " required
-" ----------------------------------------------------------------------------------------
-" GENERAL
-" ----------------------------------------------------------------------------------------
 syntax sync minlines=256
 set re=1                                                " fixes slow speed due to syntax highlighting
 set synmaxcol=1000                                      " syntax coloring lines that are too long just slows down the world
@@ -208,6 +205,19 @@ vnoremap <C-@> <Esc>gV
 onoremap <C-@> <Esc>
 cnoremap <C-@> <C-c>
 nnoremap <C-@> <Esc>:noh<CR>
+" clipboard
+nnoremap gy "+y
+nnoremap gY "+y$
+vnoremap gy "+y
+vnoremap gY "+y
+nnoremap gd "+d
+nnoremap gD "+D
+vnoremap gd "+d
+vnoremap gD "+d
+nnoremap gp "+p
+nnoremap gP "+P
+vnoremap gp "+p
+vnoremap gP "+p
 " hit enter to go end of line and hit 12 + enter to jump line 12
 noremap <CR> G
 " move the beginning/end of line
@@ -245,16 +255,6 @@ inoremap <c-k> <c-p>
 nnoremap <expr> O getline('.') =~ '^\s*//' ? 'O<esc>S' : 'O'
 nnoremap <expr> o getline('.') =~ '^\s*//' ? 'o<esc>S' : 'o'
 " leader stuff
-nnoremap <Leader>y "+y
-nnoremap <Leader>Y "+y$
-vnoremap <Leader>y "+y
-nnoremap <Leader>d "+d
-nnoremap <Leader>D "+D
-vnoremap <Leader>d "+d
-nnoremap <Leader>p "+p
-nnoremap <Leader>P "+P
-vnoremap <Leader>p "+p
-vnoremap <Leader>P "+P
 nnoremap <silent> <Leader>w :w!<CR>
 nnoremap <silent> <Leader>W :wa!<CR>
 nnoremap <silent> <Leader>x :x!<CR>
