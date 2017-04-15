@@ -244,9 +244,6 @@ cnoremap <C-l> <right>
 cnoremap <C-h> <left>
 cnoremap <C-k> <S-Right>
 cnoremap <C-j> <S-Left>
-" save mysql last query
-noremap <Leader>z :w! /tmp/query.sql\| w!<CR>
-noremap <Leader>Z :w! /tmp/query.sql\| wq!<CR>
 " use j/k to start, then scroll through autocomplete options
 inoremap <expr> <C-j> ((pumvisible())?("\<C-n>"):("\<C-x><c-n>"))
 inoremap <expr> <C-k> ((pumvisible())?("\<C-p>"):("\<C-x><c-k>"))
@@ -277,6 +274,9 @@ nnoremap <Leader>8 :au! BufWritePost *.hs :! runhaskell<space>
 nnoremap <Leader>9 :au! BufWritePost *.hs :! ghc<space>
 nnoremap <Leader>0 :au! BufWritePost *.lisp :! clisp<space>
 nnoremap <Leader><Leader> V
+" save mysql last query
+noremap <Leader>z :w! /tmp/query.sql\| w!<CR>
+noremap <Leader>Z :w! /tmp/query.sql\| wq!<CR>
 " disable arrow and prevent show weird characters
 nnoremap <silent> <ESC>OA <Nop>
 nnoremap <silent> <ESC>OB <Nop>
