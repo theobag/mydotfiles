@@ -35,6 +35,9 @@ Plugin 'tpope/vim-unimpaired'                           " pair maps and stuff
 Plugin 'ivalkeen/vim-simpledb'
 call vundle#end()             " required
 filetype plugin indent on     " required
+" ----------------------------------------------------------------------------------------
+" GENERAL
+" ----------------------------------------------------------------------------------------
 syntax sync minlines=256
 set re=1                                                " fixes slow speed due to syntax highlighting
 set synmaxcol=1000                                      " syntax coloring lines that are too long just slows down the world
@@ -80,6 +83,7 @@ set hlsearch                                            " highlight matches
 set gdefault                                            " for search and replace
 set confirm                                             " ask to save buffer
 set nojoinspaces	  	                                " use only one space after '.' when joining
+set virtualedit=block									" let cursor move past the last char in <c-v> mode
 set lazyredraw                                          " don't update while executing macros
 set ttyfast                                             " smoother changer
 set title                                               " show title in console title bar
@@ -251,6 +255,8 @@ inoremap <c-k> <c-p>
 " stop autocomment on nextline
 nnoremap <expr> O getline('.') =~ '^\s*//' ? 'O<esc>S' : 'O'
 nnoremap <expr> o getline('.') =~ '^\s*//' ? 'o<esc>S' : 'o'
+nnoremap <expr> O getline('.') =~ '^\s*#' ? 'O<esc>S' : 'O'
+nnoremap <expr> o getline('.') =~ '^\s*#' ? 'o<esc>S' : 'o'
 " leader stuff
 nnoremap <silent> <Leader>w :w!<CR>
 nnoremap <silent> <Leader>W :wa!<CR>
