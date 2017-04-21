@@ -10,7 +10,6 @@ Plugin 'bling/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'majutsushi/tagbar'                              " sudo apt install exuberant-ctags
-Plugin 'brookhong/cscope.vim'                           " sudo apt install cscope
 Plugin 'rip-rip/clang_complete'                         " sudo apt install clang
 Plugin 'scrooloose/syntastic'
 Plugin 'raimondi/delimitmate'                           " jump c-g g or just repeat the action
