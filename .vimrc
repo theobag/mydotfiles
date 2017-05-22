@@ -31,6 +31,7 @@ Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-commentary'	                        " gc + motion or line with gcc
 Plugin 'tpope/vim-unimpaired'                           " pair maps and stuff
+Plugin 'tpope/vim-endwise'
 Plugin 'ivalkeen/vim-simpledb'
 call vundle#end()             " required
 filetype plugin indent on     " required
@@ -46,7 +47,7 @@ set laststatus=2
 set number
 set ruler                                               " show the line number on the bar
 set secure                                              " limit what modelines and autocmds can do
-set cursorline
+set cursorline!
 set cursorcolumn
 set nostartofline                                       " keep cursor column pos
 set termencoding=utf-8
@@ -55,6 +56,7 @@ set tabpagemax=12                                       " only show 12 tabs
 set switchbuf=usetab                                    " if opening buffer, search first in opened windows.
 set autoindent
 set smartindent
+set copyindent
 set tabstop=4                                           " size of a hard tabstop
 set softtabstop=4
 set shiftwidth=4                                        " size of indent
@@ -144,7 +146,7 @@ let g:tagbar_sort = 0                                   " order tags based on fi
 nnoremap <silent> <F8> :TagbarToggle<CR>
 " delimitmate
 let delimitMate_expand_space = 1
-imap <expr> <CR> pumvisible() ? "\<c-y>" : "<Plug>delimitMateCR"
+" imap <expr> <CR> pumvisible() ? "\<c-y>" : "<Plug>delimitMateCR"
 " clever tab only one line search
 let g:clever_f_across_no_line = 1
 let g:clever_f_fix_key_direction = 1
@@ -254,8 +256,6 @@ inoremap <c-k> <c-p>
 " stop autocomment on nextline
 nnoremap <expr> O getline('.') =~ '^\s*//' ? 'O<esc>S' : 'O'
 nnoremap <expr> o getline('.') =~ '^\s*//' ? 'o<esc>S' : 'o'
-nnoremap <expr> O getline('.') =~ '^\s*#' ? 'O<esc>S' : 'O'
-nnoremap <expr> o getline('.') =~ '^\s*#' ? 'o<esc>S' : 'o'
 " leader stuff
 nnoremap <silent> <Leader>w :w!<CR>
 nnoremap <silent> <Leader>W :wa!<CR>
