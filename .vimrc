@@ -48,7 +48,7 @@ set number
 set ruler                                               " show the line number on the bar
 set secure                                              " limit what modelines and autocmds can do
 set cursorline!
-set cursorcolumn
+set cursorcolumn!
 set nostartofline                                       " keep cursor column pos
 set termencoding=utf-8
 set ttimeoutlen=100                                     " speed esc
@@ -117,6 +117,7 @@ highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Re
 highlight DiffDelete cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
 highlight DiffChange cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
 highlight DiffText   cterm=bold ctermfg=10 ctermbg=88 gui=none guifg=bg guibg=Red
+" airline
 let g:airline_theme ='hybrid'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
@@ -313,7 +314,7 @@ autocmd BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
 " auto remove multiple empty lines at the end of line
 autocmd BufWrite * :%s/\(\s*\n\)\+\%$//ge
 " replace groups or function of empty or whitespaces-only lines with one empty line
-autocmd BufWrite *.c :%s/\(\s*\n\)\{3,}/\r\r/ge
+autocmd BufWrite * :%s/\(\s*\n\)\{3,}/\r\r/ge
 " by default, vim assumes all .h files to be C++ files
 augroup project
     autocmd!
@@ -335,17 +336,6 @@ function! s:Repl()
     return "p@=RestoreRegister()\<cr>"
 endfunction
 vmap <silent> <expr> p <sid>Repl()
-" display the numbered register(:Reg), press a key and paste it to the buffer
-function! Reg()
-    reg
-    echo "Register: "
-    let char = nr2char(getchar())
-    if char != "\<Esc>"
-        execute "normal! \"".char."p"
-    endif
-    redraw
-endfunction
-command! -nargs=0 Reg call Reg()
 " movement between tabs or buffers
 function! MyNext()
     if exists( '*tabpagenr' ) && tabpagenr('$') != 1
