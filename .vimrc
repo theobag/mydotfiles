@@ -51,7 +51,9 @@ set cursorline!
 set cursorcolumn!
 set nostartofline                                       " keep cursor column pos
 set termencoding=utf-8
-set ttimeoutlen=100                                     " speed esc
+set notimeout											" just :h notimeout
+set ttimeout
+set ttimeoutlen=10										" speed esc
 set tabpagemax=12                                       " only show 12 tabs
 set switchbuf=usetab                                    " if opening buffer, search first in opened windows.
 set autoindent
@@ -66,7 +68,7 @@ set textwidth=106
 set backspace=indent,eol,start
 set omnifunc=syntaxcomplete#Complete
 set wildmenu
-set wildignore=*.o,*~,*.pyc
+set wildignore=*.o,*.obj,*~,*.pyc
 set hidden                                              " allow to have buffers with unsaved changes
 set nowrap                                              " dont wrap lines by default
 set showmatch
@@ -95,11 +97,11 @@ set shortmess+=I                                        " don't display the intr
 set titleold=                                           " don't display 'Thank for flaying Vim' when exiting
 set history=1000
 set backup
-set backupext=.bak                                      " save backup with bak extension
-set backupdir=~/.vim/backup
-set directory=~/.vim/tmp
 set undofile
-set undodir^=~/.vim/undo
+set backupext=.bak                                      " save backup with bak extension
+set backupdir=~/.vim/tmp/backup
+set directory=~/.vim/tmp/swap
+set undodir^=~/.vim/tmp/undo
 set viminfo='20,\"100                                   " read/write a .viminfo file, don't store more than 100 lines
 set tags=tags;~/                                        " look for the file in the current directory, then south until you reach home.
 set listchars=tab:▸\ ,trail:·,extends:❯,precedes:❮,nbsp:×
@@ -117,7 +119,6 @@ highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Re
 highlight DiffDelete cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
 highlight DiffChange cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
 highlight DiffText   cterm=bold ctermfg=10 ctermbg=88 gui=none guifg=bg guibg=Red
-" airline
 let g:airline_theme ='hybrid'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
@@ -205,12 +206,47 @@ nnoremap <Leader>J J
 " add one space
 nnoremap [s i<space><esc>
 nnoremap ]s a<space><esc>
+" hit enter to go end of line and hit 12 + enter to jump line 12
+noremap <CR> G
+" move the beginning/end of line
+noremap B ^
+noremap E g_
+" easier horizontal scrolling
+nnoremap zl zL
+nnoremap zh zH
+" re-select visual block after indenting
+vnoremap < <gv
+vnoremap > >gv
+" move tab
+nnoremap <silent> + :tabm+<CR>
+nnoremap <silent> - :tabm-<CR>
+" center screen on next/previous selection.
+nnoremap n nzz
+nnoremap N Nzz
+nnoremap } }zz
+nnoremap { {zz
+" paste multiple lines multiple times with simple ppppp
+vnoremap <silent> y y`]
+vnoremap <silent> p p`]
+nnoremap <silent> p p`]
+" moving around in command mode ctrl+b & ctrl+e move beginning and end
+cnoremap <C-l> <right>
+cnoremap <C-h> <left>
+cnoremap <C-k> <S-Right>
+cnoremap <C-j> <S-Left>
 " use C-Space to Esc out of any mode but terminal sees <C-@> as <C-space> WTF, but ok
 inoremap <C-@> <Esc>`^
 vnoremap <C-@> <Esc>gV
 onoremap <C-@> <Esc>
 cnoremap <C-@> <C-c>
 nnoremap <C-@> <Esc>:noh<CR>
+" use j/k to start, then scroll through autocomplete options
+inoremap <expr> <C-j> ((pumvisible())?("\<C-n>"):("\<C-x><c-n>"))
+inoremap <expr> <C-k> ((pumvisible())?("\<C-p>"):("\<C-x><c-k>"))
+inoremap <c-k> <c-p>
+" stop autocomment on nextline
+nnoremap <expr> O getline('.') =~ '^\s*//' ? 'O<esc>S' : 'O'
+nnoremap <expr> o getline('.') =~ '^\s*//' ? 'o<esc>S' : 'o'
 " clipboard
 nnoremap gy "+y
 nnoremap gY "+y$
@@ -224,39 +260,6 @@ nnoremap gp "+p
 nnoremap gP "+P
 vnoremap gp "+p
 vnoremap gP "+p
-" hit enter to go end of line and hit 12 + enter to jump line 12
-noremap <CR> G
-" move the beginning/end of line
-noremap B ^
-noremap E g_
-" center screen on next/previous selection.
-nnoremap n nzz
-nnoremap N Nzz
-" easier horizontal scrolling
-nnoremap zl zL
-nnoremap zh zH
-" re-select visual block after indenting
-vnoremap < <gv
-vnoremap > >gv
-" move tab
-nnoremap <silent> + :tabm+<CR>
-nnoremap <silent> - :tabm-<CR>
-" paste multiple lines multiple times with simple ppppp
-vnoremap <silent> y y`]
-vnoremap <silent> p p`]
-nnoremap <silent> p p`]
-" moving around in command mode ctrl+b & ctrl+e move beginning and end
-cnoremap <C-l> <right>
-cnoremap <C-h> <left>
-cnoremap <C-k> <S-Right>
-cnoremap <C-j> <S-Left>
-" use j/k to start, then scroll through autocomplete options
-inoremap <expr> <C-j> ((pumvisible())?("\<C-n>"):("\<C-x><c-n>"))
-inoremap <expr> <C-k> ((pumvisible())?("\<C-p>"):("\<C-x><c-k>"))
-inoremap <c-k> <c-p>
-" stop autocomment on nextline
-nnoremap <expr> O getline('.') =~ '^\s*//' ? 'O<esc>S' : 'O'
-nnoremap <expr> o getline('.') =~ '^\s*//' ? 'o<esc>S' : 'o'
 " leader stuff
 nnoremap <silent> <Leader>w :w!<CR>
 nnoremap <silent> <Leader>W :wa!<CR>
@@ -309,6 +312,10 @@ onoremap <silent> <ESC>OD <Nop>
 " ----------------------------------------------------------------------------------------
 " man page, use leader K to open it or :Man 3 {option} in command mode
 runtime! ftplugin/man.vim
+" save when losing focus
+au FocusLost * :silent! wall
+" resize splits when the window is resized
+au VimResized * :wincmd =
 " remove any trailing whitespace that is in the file
 autocmd BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
 " auto remove multiple empty lines at the end of line
@@ -319,6 +326,14 @@ autocmd BufWrite * :%s/\(\s*\n\)\{3,}/\r\r/ge
 augroup project
     autocmd!
     autocmd BufRead,BufNewFile *.h,*.c set filetype=c.doxygen
+augroup END
+" only show cursorline in the current window and in normal mode.
+augroup cline
+	au!
+	au WinLeave * set nocursorline
+	au WinEnter * set cursorline
+	au InsertEnter * set nocursorline
+	au InsertLeave * set cursorline
 augroup END
 " activate alt
 for i in range(65,90) + range(97,122)
