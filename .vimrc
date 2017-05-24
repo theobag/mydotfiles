@@ -51,7 +51,7 @@ set cursorline!
 set cursorcolumn!
 set nostartofline                                       " keep cursor column pos
 set termencoding=utf-8
-set notimeout											" just :h notimeout
+set notimeout											" make vim and terminal work properly :h notimeout
 set ttimeout
 set ttimeoutlen=10										" speed esc
 set tabpagemax=12                                       " only show 12 tabs
@@ -203,9 +203,6 @@ nnoremap K <Nop>
 " too much accident, please use leader J instead
 nnoremap J <Nop>
 nnoremap <Leader>J J
-" add one space
-nnoremap [s i<space><esc>
-nnoremap ]s a<space><esc>
 " hit enter to go end of line and hit 12 + enter to jump line 12
 noremap <CR> G
 " move the beginning/end of line
@@ -217,6 +214,9 @@ nnoremap zh zH
 " re-select visual block after indenting
 vnoremap < <gv
 vnoremap > >gv
+" add one space
+nnoremap [s i<space><esc>
+nnoremap ]s a<space><esc>
 " move tab
 nnoremap <silent> + :tabm+<CR>
 nnoremap <silent> - :tabm-<CR>
