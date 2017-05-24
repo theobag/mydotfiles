@@ -192,6 +192,8 @@ nnoremap <silent> <Leader>m :CtrlPMRUFiles<cr>
 " ----------------------------------------------------------------------------------------
 " MAPS
 " ----------------------------------------------------------------------------------------
+" hit enter to go end of line and hit 12 + enter to jump line 12
+noremap <CR> G
 " make Y yank to end of line (like D, or C)
 noremap Y y$
 " go to position of last edit. mean: 'go to edit'
@@ -203,8 +205,6 @@ nnoremap K <Nop>
 " too much accident, please use leader J instead
 nnoremap J <Nop>
 nnoremap <Leader>J J
-" hit enter to go end of line and hit 12 + enter to jump line 12
-noremap <CR> G
 " move the beginning/end of line
 noremap B ^
 noremap E g_
@@ -220,15 +220,15 @@ nnoremap ]s a<space><esc>
 " move tab
 nnoremap <silent> + :tabm+<CR>
 nnoremap <silent> - :tabm-<CR>
+" paste multiple lines multiple times with simple ppppp
+vnoremap <silent> y y`]
+vnoremap <silent> p p`]
+nnoremap <silent> p p`]
 " center screen on next/previous selection.
 nnoremap n nzz
 nnoremap N Nzz
 nnoremap } }zz
 nnoremap { {zz
-" paste multiple lines multiple times with simple ppppp
-vnoremap <silent> y y`]
-vnoremap <silent> p p`]
-nnoremap <silent> p p`]
 " moving around in command mode ctrl+b & ctrl+e move beginning and end
 cnoremap <C-l> <right>
 cnoremap <C-h> <left>
