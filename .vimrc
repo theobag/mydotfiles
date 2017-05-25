@@ -336,9 +336,9 @@ augroup END
 augroup cline
 	au!
 	au WinLeave * set nocursorline
-	au WinEnter * set cursorline
+	au WinEnter * set cursorline!
 	au InsertEnter * set nocursorline
-	au InsertLeave * set cursorline
+	au InsertLeave * set cursorline!
 augroup END
 " activate alt
 for i in range(65,90) + range(97,122)
