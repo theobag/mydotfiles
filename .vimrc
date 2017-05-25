@@ -43,9 +43,15 @@ set re=1                                                " fixes slow speed due t
 set synmaxcol=1000                                      " syntax coloring lines that are too long just slows down the world
 set t_ut=                                               " disbale background color erase (BCE)
 set t_Co=256                                            " enable 256 color
+set visualbell t_vb=
+set title                                               " show title in console title bar
+set titlestring=%t                                      " only title not PATH
+set shortmess+=I                                        " don't display the intro message on starting vim.
+set titleold=                                           " don't display 'Thank for flaying Vim' when exiting
 set laststatus=2
 set number
 set ruler                                               " show the line number on the bar
+set modelines=0
 set secure                                              " limit what modelines and autocmds can do
 set cursorline!
 set cursorcolumn!
@@ -67,6 +73,9 @@ set smarttab
 set textwidth=106
 set backspace=indent,eol,start
 set omnifunc=syntaxcomplete#Complete
+set complete-=i
+set completeopt=menu,menuone                            " clang complete without preview
+set pumheight=20                                        " limit popup menu height (completion) or max 20 whatever
 set wildmenu
 set wildignore=*.o,*.obj,*~,*.pyc
 set hidden                                              " allow to have buffers with unsaved changes
@@ -78,9 +87,6 @@ set noshowmode                                          " hide insert status
 set autowrite                                           " automatically save before commands like :next and :make
 set autoread                                            " set to auto read when file is changed from outside
 set autochdir
-set complete-=i
-set completeopt=menu,menuone                            " clang complete without preview
-set pumheight=20                                        " limit popup menu height (completion) or max 20 whatever
 set incsearch                                           " search as characters are entered
 set hlsearch                                            " highlight matches
 set gdefault                                            " for search and replace
@@ -89,12 +95,9 @@ set nojoinspaces	  	                                " use only one space after '
 set virtualedit=block									" let cursor move past the last char in <c-v> mode
 set lazyredraw                                          " don't update while executing macros
 set ttyfast                                             " smoother changer
-set title                                               " show title in console title bar
-set titlestring=%t                                      " only title not PATH
 set scrolloff=1                                         " keep at least 1 lines above/below
 set sidescrolloff=5                                     " keep at least 5 lines left/right
-set shortmess+=I                                        " don't display the intro message on starting vim.
-set titleold=                                           " don't display 'Thank for flaying Vim' when exiting
+set splitbelow splitright
 set history=1000
 set backup
 set undofile
@@ -156,7 +159,7 @@ nmap <silent> <Leader>f <Plug>(clever-f-reset)
 " toggle tabs and buffers
 let notabs = 0
 nnoremap <silent> <F10> :let notabs=!notabs<Bar>:if
-            \ notabs<Bar>:tabo<Bar>:else<Bar>:tab ball<Bar>:tabn<Bar>:endif<CR>
+			\ notabs<Bar>:tabo<Bar>:else<Bar>:tab ball<Bar>:tabn<Bar>:endif<CR>
 " clang
 let g:clang_library_path ='/usr/lib/x86_64-linux-gnu/libclang-3.8.so.1'
 let g:clang_close_preview = 1
@@ -270,6 +273,8 @@ nnoremap <silent> <Leader>r :bd<CR>
 nnoremap <silent> <Leader>R :bd!<CR>
 nnoremap <silent> <Leader>t :e .<CR>
 nnoremap <silent> <Leader>T :e ~/<CR>
+nnoremap <silent> <Leader>v :vsplit<CR>
+nnoremap <silent> <Leader>V :split<CR>
 nnoremap <leader>e :e<space>
 nnoremap <leader>E :e <C-R>=expand("%:p:h") . "/" <CR>
 nnoremap <Leader>1 :au! BufWritePost *.c :!<space>
@@ -324,8 +329,8 @@ autocmd BufWrite * :%s/\(\s*\n\)\+\%$//ge
 autocmd BufWrite * :%s/\(\s*\n\)\{3,}/\r\r/ge
 " by default, vim assumes all .h files to be C++ files
 augroup project
-    autocmd!
-    autocmd BufRead,BufNewFile *.h,*.c set filetype=c.doxygen
+	autocmd!
+	autocmd BufRead,BufNewFile *.h,*.c set filetype=c.doxygen
 augroup END
 " only show cursorline in the current window and in normal mode.
 augroup cline
@@ -337,34 +342,34 @@ augroup cline
 augroup END
 " activate alt
 for i in range(65,90) + range(97,122)
-    let c = nr2char(i)
-    exec "map \e".c." <M-".c.">"
-    exec "map! \e".c." <M-".c.">"
+	let c = nr2char(i)
+	exec "map \e".c." <M-".c.">"
+	exec "map! \e".c." <M-".c.">"
 endfor
 " vp doesn't replace paste buffer
 function! RestoreRegister()
-    let @" = s:restore_reg
-    return ''
+	let @" = s:restore_reg
+	return ''
 endfunction
 function! s:Repl()
-    let s:restore_reg = @"
-    return "p@=RestoreRegister()\<cr>"
+	let s:restore_reg = @"
+	return "p@=RestoreRegister()\<cr>"
 endfunction
 vmap <silent> <expr> p <sid>Repl()
 " movement between tabs or buffers
 function! MyNext()
-    if exists( '*tabpagenr' ) && tabpagenr('$') != 1
-        normal gt
-    else
-        execute ":bnext"
-    endif
+	if exists( '*tabpagenr' ) && tabpagenr('$') != 1
+		normal gt
+	else
+		execute ":bnext"
+	endif
 endfunction
 function! MyPrev()
-    if exists( '*tabpagenr' ) && tabpagenr('$') != '1'
-        normal gT
-    else
-        execute ":bprev"
-    endif
+	if exists( '*tabpagenr' ) && tabpagenr('$') != '1'
+		normal gT
+	else
+		execute ":bprev"
+	endif
 endfunction
 nnoremap <silent> <C-l> :call MyNext()<CR>
 nnoremap <silent> <C-h> :call MyPrev()<CR>
