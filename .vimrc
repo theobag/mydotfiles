@@ -102,12 +102,12 @@ set history=1000
 set backup
 set undofile
 set backupext=.bak                                      " save backup with bak extension
-set backupdir=~/.vim/tmp/backup
-set directory=~/.vim/tmp/swap
-set undodir^=~/.vim/tmp/undo
-set viminfo='20,\"100                                   " read/write a .viminfo file, don't store more than 100 lines
 set tags=tags;~/                                        " look for the file in the current directory, then south until you reach home.
+set viminfo='20,\"100,s10,h                             " don't store more than 100 lines, h: disable hlsearch, s10: maximum KB
+set viminfo+=n~/.vim/viminfo      						" set viminfo file name
+set dictionary=/usr/share/dict/words
 set listchars=tab:▸\ ,trail:·,extends:❯,precedes:❮,nbsp:×
+set backupdir=~/.vim/tmp/backup directory=~/.vim/tmp/swap undodir^=~/.vim/tmp/undo
 " ----------------------------------------------------------------------------------------
 " COLORS
 " ----------------------------------------------------------------------------------------
@@ -122,7 +122,7 @@ highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Re
 highlight DiffDelete cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
 highlight DiffChange cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
 highlight DiffText   cterm=bold ctermfg=10 ctermbg=88 gui=none guifg=bg guibg=Red
-let g:airline_theme ='hybrid'
+let g:airline_theme ='minimalist'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ''
