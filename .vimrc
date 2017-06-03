@@ -32,6 +32,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-commentary'	                        " gc + motion or line with gcc
 Plugin 'tpope/vim-unimpaired'                           " pair maps and stuff
 Plugin 'tpope/vim-endwise'
+Plugin 'gregsexton/matchtag'
 Plugin 'ivalkeen/vim-simpledb'
 call vundle#end()             " required
 filetype plugin indent on     " required
@@ -122,7 +123,7 @@ highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Re
 highlight DiffDelete cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
 highlight DiffChange cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
 highlight DiffText   cterm=bold ctermfg=10 ctermbg=88 gui=none guifg=bg guibg=Red
-let g:airline_theme ='minimalist'
+let g:airline_theme ='hybrid'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ''
