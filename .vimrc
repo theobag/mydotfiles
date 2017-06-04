@@ -44,7 +44,6 @@ set re=1                                                " fixes slow speed due t
 set synmaxcol=1000                                      " syntax coloring lines that are too long just slows down the world
 set t_ut=                                               " disbale background color erase (BCE)
 set t_Co=256                                            " enable 256 color
-set visualbell t_vb=
 set title                                               " show title in console title bar
 set titlestring=%t                                      " only title not PATH
 set shortmess+=I                                        " don't display the intro message on starting vim.
@@ -52,15 +51,16 @@ set titleold=                                           " don't display 'Thank f
 set laststatus=2
 set number
 set ruler                                               " show the line number on the bar
-set modelines=0
-set secure                                              " limit what modelines and autocmds can do
 set cursorline!
 set cursorcolumn!
-set nostartofline                                       " keep cursor column pos
 set termencoding=utf-8
 set notimeout											" make vim and terminal work properly :h notimeout
 set ttimeout
 set ttimeoutlen=10										" speed esc
+set modelines=0
+set secure                                              " limit what modelines and autocmds can do
+set visualbell
+set t_vb=
 set tabpagemax=12                                       " only show 12 tabs
 set switchbuf=usetab                                    " if opening buffer, search first in opened windows.
 set autoindent
@@ -91,6 +91,7 @@ set autochdir
 set incsearch                                           " search as characters are entered
 set hlsearch                                            " highlight matches
 set gdefault                                            " for search and replace
+set nostartofline                                       " keep cursor column pos
 set confirm                                             " ask to save buffer
 set nojoinspaces	  	                                " use only one space after '.' when joining
 set virtualedit=block									" let cursor move past the last char in <c-v> mode
@@ -98,7 +99,8 @@ set lazyredraw                                          " don't update while exe
 set ttyfast                                             " smoother changer
 set scrolloff=1                                         " keep at least 1 lines above/below
 set sidescrolloff=5                                     " keep at least 5 lines left/right
-set splitbelow splitright
+set splitbelow
+set splitright
 set history=1000
 set backup
 set undofile
@@ -318,6 +320,8 @@ onoremap <silent> <ESC>OD <Nop>
 " ----------------------------------------------------------------------------------------
 " man page, use leader K to open it or :Man 3 {option} in command mode
 runtime! ftplugin/man.vim
+" move between tag
+runtime! macros/matchit.vim
 " save when losing focus
 au FocusLost * :silent! wall
 " resize splits when the window is resized
