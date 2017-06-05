@@ -33,6 +33,7 @@ Plugin 'tpope/vim-commentary'	                        " gc + motion or line with
 Plugin 'tpope/vim-unimpaired'                           " pair maps and stuff
 Plugin 'tpope/vim-endwise'
 Plugin 'gregsexton/matchtag'
+Plugin 'ap/vim-css-color'
 Plugin 'ivalkeen/vim-simpledb'
 call vundle#end()             " required
 filetype plugin indent on     " required
@@ -59,8 +60,7 @@ set ttimeout
 set ttimeoutlen=10										" speed esc
 set modelines=0
 set secure                                              " limit what modelines and autocmds can do
-set visualbell
-set t_vb=
+set visualbell t_vb=
 set tabpagemax=12                                       " only show 12 tabs
 set switchbuf=usetab                                    " if opening buffer, search first in opened windows.
 set autoindent
