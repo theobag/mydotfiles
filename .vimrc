@@ -52,8 +52,8 @@ set titleold=                                           " don't display 'Thank f
 set laststatus=2
 set number
 set ruler                                               " show the line number on the bar
-set cursorline!
-set cursorcolumn!
+" set cursorline!
+" set cursorcolumn!
 set termencoding=utf-8
 set notimeout											" make vim and terminal work properly :h notimeout
 set ttimeout
@@ -102,15 +102,18 @@ set sidescrolloff=5                                     " keep at least 5 lines 
 set splitbelow
 set splitright
 set history=1000
+set noswapfile
 set backup
 set undofile
 set backupext=.bak                                      " save backup with bak extension
+set backupdir=~/.vim/tmp/backup//						" add double slash to the end of the path so that you can modify
+set directory=~/.vim/tmp/swap//							" two files with the same name at the time
+set undodir^=~/.vim/tmp/undo//
 set tags=tags;~/                                        " look for the file in the current directory, then south until you reach home.
-set viminfo='20,\"100,s10,h                             " don't store more than 100 lines, h: disable hlsearch, s10: maximum KB
 set viminfo+=n~/.vim/viminfo      						" set viminfo file name
+set viminfo='20,\"100,s10,h                             " don't store more than 100 lines, h: disable hlsearch, s10: maximum KB
 set dictionary=/usr/share/dict/words
 set listchars=tab:▸\ ,trail:·,extends:❯,precedes:❮,nbsp:×
-set backupdir=~/.vim/tmp/backup directory=~/.vim/tmp/swap undodir^=~/.vim/tmp/undo
 " ----------------------------------------------------------------------------------------
 " COLORS
 " ----------------------------------------------------------------------------------------
@@ -199,7 +202,7 @@ nnoremap <silent> <Leader>m :CtrlPMRUFiles<cr>
 " MAPS
 " ----------------------------------------------------------------------------------------
 " hit enter to go end of line and hit 12 + enter to jump line 12
-noremap <CR> G
+" noremap <CR> G
 " make Y yank to end of line (like D, or C)
 noremap Y y$
 " go to position of last edit. mean: 'go to edit'
@@ -338,13 +341,13 @@ augroup project
 	autocmd BufRead,BufNewFile *.h,*.c set filetype=c.doxygen
 augroup END
 " only show cursorline in the current window and in normal mode.
-augroup cline
-	au!
-	au WinLeave * set nocursorline
-	au WinEnter * set cursorline!
-	au InsertEnter * set nocursorline
-	au InsertLeave * set cursorline!
-augroup END
+" augroup cline
+" 	au!
+" 	au WinLeave * set nocursorline
+" 	au WinEnter * set cursorline!
+" 	au InsertEnter * set nocursorline
+" 	au InsertLeave * set cursorline!
+" augroup END
 " activate alt
 for i in range(65,90) + range(97,122)
 	let c = nr2char(i)
