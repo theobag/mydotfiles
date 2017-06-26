@@ -52,8 +52,6 @@ set titleold=                                           " don't display 'Thank f
 set laststatus=2
 set number
 set ruler                                               " show the line number on the bar
-" set cursorline!
-" set cursorcolumn!
 set termencoding=utf-8
 set notimeout											" make vim and terminal work properly :h notimeout
 set ttimeout
@@ -146,6 +144,8 @@ let g:airline_section_c = '%<%F%m %#__accent_red#%{airline#util#wrap(airline#par
 " ----------------------------------------------------------------------------------------
 " vim move : use c-k and c-j to move current line/selection to up and down
 let g:move_key_modifier = 'C'
+" delimitmate
+let delimitMate_expand_space = 1
 " netrw
 let g:netrw_liststyle = 2
 let g:netrw_banner = 0
@@ -155,9 +155,6 @@ nnoremap <Leader>A :Ag!<space>
 " tagbar
 let g:tagbar_sort = 0                                   " order tags based on file order; don't sort alphabetically
 nnoremap <silent> <F8> :TagbarToggle<CR>
-" delimitmate
-let delimitMate_expand_space = 1
-" imap <expr> <CR> pumvisible() ? "\<c-y>" : "<Plug>delimitMateCR"
 " clever tab only one line search
 let g:clever_f_across_no_line = 1
 let g:clever_f_fix_key_direction = 1
@@ -201,8 +198,6 @@ nnoremap <silent> <Leader>m :CtrlPMRUFiles<cr>
 " ----------------------------------------------------------------------------------------
 " MAPS
 " ----------------------------------------------------------------------------------------
-" hit enter to go end of line and hit 12 + enter to jump line 12
-" noremap <CR> G
 " make Y yank to end of line (like D, or C)
 noremap Y y$
 " go to position of last edit. mean: 'go to edit'
@@ -340,14 +335,6 @@ augroup project
 	autocmd!
 	autocmd BufRead,BufNewFile *.h,*.c set filetype=c.doxygen
 augroup END
-" only show cursorline in the current window and in normal mode.
-" augroup cline
-" 	au!
-" 	au WinLeave * set nocursorline
-" 	au WinEnter * set cursorline!
-" 	au InsertEnter * set nocursorline
-" 	au InsertLeave * set cursorline!
-" augroup END
 " activate alt
 for i in range(65,90) + range(97,122)
 	let c = nr2char(i)
