@@ -274,8 +274,8 @@ nnoremap <silent> <Leader>r :bd<CR>
 nnoremap <silent> <Leader>R :bd!<CR>
 nnoremap <silent> <Leader>t :e .<CR>
 nnoremap <silent> <Leader>T :e ~/<CR>
-nnoremap <silent> <Leader>v :vsplit<CR>
-nnoremap <silent> <Leader>V :split<CR>
+nnoremap <Leader>v :vsplit<space>
+nnoremap <Leader>V :split<space>
 nnoremap <leader>e :e<space>
 nnoremap <leader>E :e <C-R>=expand("%:p:h") . "/" <CR>
 nnoremap <Leader>1 :au! BufWritePost *.c :!<space>
