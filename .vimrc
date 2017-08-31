@@ -32,6 +32,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-commentary'	                        " gc + motion or line with gcc
 Plugin 'tpope/vim-unimpaired'                           " pair maps and stuff
 Plugin 'tpope/vim-endwise'
+Plugin 'vim-ruby/vim-ruby'
 Plugin 'gregsexton/matchtag'
 Plugin 'ap/vim-css-color'
 Plugin 'ivalkeen/vim-simpledb'
@@ -100,7 +101,6 @@ set sidescrolloff=5                                     " keep at least 5 lines 
 set splitbelow
 set splitright
 set history=1000
-set noswapfile
 set backup
 set undofile
 set backupext=.bak                                      " save backup with bak extension
