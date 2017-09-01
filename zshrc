@@ -131,10 +131,6 @@ bindkey '^Z' fancy-ctrl-z
 # 10ms for key sequences
 KEYTIMEOUT=1
 
-# dictionary
-chmod +x ~/.vocab
-~/.vocab
-
 # default broser zsh
 export BROWSER=w3m
 
@@ -146,6 +142,7 @@ man() {
 }
 # alias for rm command to ask user before delelete something
 # alias rm='rm -i'
+# alias for rm to move to trash
 alias rm="trash-rm"
 
 transfer() {
