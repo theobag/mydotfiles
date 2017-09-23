@@ -198,6 +198,8 @@ nnoremap <silent> <Leader>m :CtrlPMRUFiles<cr>
 " ----------------------------------------------------------------------------------------
 " MAPS
 " ----------------------------------------------------------------------------------------
+noremap q <Nop>
+noremap Q <Nop>
 " make Y yank to end of line (like D, or C)
 noremap Y y$
 " go to position of last edit. mean: 'go to edit'
