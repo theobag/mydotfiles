@@ -235,7 +235,7 @@ nnoremap n nzz
 nnoremap N Nzz
 nnoremap } }zz
 nnoremap { {zz
-" moving around in command mode ctrl+b & ctrl+e move beginning and end
+" moving around in command mode, ctrl+b & ctrl+e move beginning and end
 cnoremap <C-l> <right>
 cnoremap <C-h> <left>
 cnoremap <C-k> <S-Right>
@@ -290,7 +290,6 @@ nnoremap <Leader>7 :au! BufWritePost *.js :! nodejs<space>
 nnoremap <Leader>8 :au! BufWritePost *.hs :! runhaskell<space>
 nnoremap <Leader>9 :au! BufWritePost *.hs :! ghc<space>
 nnoremap <Leader>0 :au! BufWritePost *.lisp :! clisp<space>
-nnoremap <Leader><Leader> V
 " save mysql last query
 noremap <Leader>z :w! /tmp/query.sql\| w!<CR>
 noremap <Leader>Z :w! /tmp/query.sql\| wq!<CR>
