@@ -29,7 +29,7 @@ Plugin 'kana/vim-textobj-function'
 Plugin 'tpope/vim-eunuch'                               " bash commands
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-commentary'	                        " gc + motion or line with gcc
+Plugin 'tpope/vim-commentary'														" gc + motion or line with gcc
 Plugin 'tpope/vim-unimpaired'                           " pair maps and stuff
 Plugin 'tpope/vim-endwise'
 Plugin 'vim-ruby/vim-ruby'
@@ -54,9 +54,9 @@ set laststatus=2
 set number
 set ruler                                               " show the line number on the bar
 set termencoding=utf-8
-set notimeout											" make vim and terminal work properly :h notimeout
+set notimeout																						" make vim and terminal work properly :h notimeout
 set ttimeout
-set ttimeoutlen=10										" speed esc
+set ttimeoutlen=10																			" speed esc
 set modelines=0
 set secure                                              " limit what modelines and autocmds can do
 set visualbell t_vb=
@@ -65,9 +65,9 @@ set switchbuf=usetab                                    " if opening buffer, sea
 set autoindent
 set smartindent
 set copyindent
-set tabstop=4                                           " size of a hard tabstop
-set softtabstop=4
-set shiftwidth=4                                        " size of indent
+set tabstop=2                                           " size of a hard tabstop
+set softtabstop=2
+set shiftwidth=2                                        " size of indent
 set shiftround                                          " use multiple of shiftwidth when indenting with '<' and '>'
 set smarttab
 set textwidth=106
@@ -92,8 +92,8 @@ set hlsearch                                            " highlight matches
 set gdefault                                            " for search and replace
 set nostartofline                                       " keep cursor column pos
 set confirm                                             " ask to save buffer
-set nojoinspaces	  	                                " use only one space after '.' when joining
-set virtualedit=block									" let cursor move past the last char in <c-v> mode
+set nojoinspaces																				" use only one space after '.' when joining
+set virtualedit=block																		" let cursor move past the last char in <c-v> mode
 set lazyredraw                                          " don't update while executing macros
 set ttyfast                                             " smoother changer
 set scrolloff=1                                         " keep at least 1 lines above/below
@@ -104,11 +104,11 @@ set history=1000
 set backup
 set undofile
 set backupext=.bak                                      " save backup with bak extension
-set backupdir=~/.vim/tmp/backup//						" add double slash to the end of the path so that you can modify
-set directory=~/.vim/tmp/swap//							" two files with the same name at the time
+set backupdir=~/.vim/tmp/backup//												" add double slash to the end of the path so that you can modify
+set directory=~/.vim/tmp/swap//													" two files with the same name at the time
 set undodir^=~/.vim/tmp/undo//
 set tags=tags;~/                                        " look for the file in the current directory, then south until you reach home.
-set viminfo+=n~/.vim/viminfo      						" set viminfo file name
+set viminfo+=n~/.vim/viminfo														" set viminfo file name
 set viminfo='20,\"100,s10,h                             " don't store more than 100 lines, h: disable hlsearch, s10: maximum KB
 set dictionary=/usr/share/dict/words
 set listchars=tab:▸\ ,trail:·,extends:❯,precedes:❮,nbsp:×
@@ -276,20 +276,12 @@ nnoremap <silent> <Leader>r :bd<CR>
 nnoremap <silent> <Leader>R :bd!<CR>
 nnoremap <silent> <Leader>t :e .<CR>
 nnoremap <silent> <Leader>T :e ~/<CR>
-nnoremap <Leader>v :vsplit<space>
-nnoremap <Leader>V :split<space>
 nnoremap <leader>e :e<space>
 nnoremap <leader>E :e <C-R>=expand("%:p:h") . "/" <CR>
 nnoremap <Leader>1 :au! BufWritePost *.c :!<space>
-nnoremap <Leader>2 :au! BufWritePost *.pas :! fpc<space>
+nnoremap <Leader>! :au! BufWritePost *.cpp :!<space>
+nnoremap <Leader>2 :au! BufWritePost *.py :! python<space>
 nnoremap <Leader>3 :au! BufWritePost *.rb :! ruby<space>
-nnoremap <Leader>4 :au! BufWritePost *.py :! python<space>
-nnoremap <Leader>5 :au! BufWritePost *.pl :! perl<space>
-nnoremap <Leader>6 :au! BufWritePost *.go :! go build<space>
-nnoremap <Leader>7 :au! BufWritePost *.js :! nodejs<space>
-nnoremap <Leader>8 :au! BufWritePost *.hs :! runhaskell<space>
-nnoremap <Leader>9 :au! BufWritePost *.hs :! ghc<space>
-nnoremap <Leader>0 :au! BufWritePost *.lisp :! clisp<space>
 " save mysql last query
 noremap <Leader>z :w! /tmp/query.sql\| w!<CR>
 noremap <Leader>Z :w! /tmp/query.sql\| wq!<CR>
