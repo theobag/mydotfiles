@@ -174,6 +174,7 @@ noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
 noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
 " syntastic
 let g:syntastic_check_on_wq = 0                         " skip check on :wq, :x, :ZZ etc
+let g:syntastic_javascript_checkers = ['jshint']
 highlight SyntasticError guibg=#2f0000
 nnoremap <silent> <Leader>so :Errors<CR>
 nnoremap <silent> <Leader>sl :lclose<CR>
@@ -282,6 +283,7 @@ nnoremap <Leader>1 :au! BufWritePost *.c :!<space>
 nnoremap <Leader>! :au! BufWritePost *.cpp :!<space>
 nnoremap <Leader>2 :au! BufWritePost *.py :! python<space>
 nnoremap <Leader>3 :au! BufWritePost *.rb :! ruby<space>
+nnoremap <Leader>4 :au! BufWritePost *.js :! nodejs<space>
 " save mysql last query
 noremap <Leader>z :w! /tmp/query.sql\| w!<CR>
 noremap <Leader>Z :w! /tmp/query.sql\| wq!<CR>
