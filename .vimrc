@@ -1,6 +1,7 @@
 set nocompatible              " be improved, required
 filetype off                  " required
 let mapleader = "\<Space>"
+
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
@@ -174,7 +175,6 @@ noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
 noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
 " syntastic
 let g:syntastic_check_on_wq = 0                         " skip check on :wq, :x, :ZZ etc
-let g:syntastic_javascript_checkers = ['eslint']
 highlight SyntasticError guibg=#2f0000
 nnoremap <silent> <Leader>so :Errors<CR>
 nnoremap <silent> <Leader>sl :lclose<CR>
