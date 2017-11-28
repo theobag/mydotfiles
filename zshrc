@@ -143,7 +143,8 @@ man() {
 # alias for rm command to ask user before delelete something
 # alias rm='rm -i'
 # alias for rm to move to trash
-alias rm="trash-rm"
+alias rmf="trash-rm"
+alias rmd="trash-put"
 
 transfer() {
 	if [ $# -eq 0 ];
