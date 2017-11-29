@@ -35,8 +35,10 @@ Plugin 'tpope/vim-unimpaired'                           " pair maps and stuff
 Plugin 'tpope/vim-endwise'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'gregsexton/matchtag'
+Plugin 'docunext/closetag.vim'
 Plugin 'ap/vim-css-color'
 Plugin 'ivalkeen/vim-simpledb'
+Plugin 'loremipsum'
 call vundle#end()             " required
 filetype plugin indent on     " required
 " ----------------------------------------------------------------------------------------
