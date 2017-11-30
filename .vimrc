@@ -34,6 +34,7 @@ Plugin 'tpope/vim-commentary'														" gc + motion or line with gcc
 Plugin 'tpope/vim-unimpaired'                           " pair maps and stuff
 Plugin 'tpope/vim-endwise'
 Plugin 'vim-ruby/vim-ruby'
+Plugin 'othree/html5.vim'
 Plugin 'gregsexton/matchtag'
 Plugin 'docunext/closetag.vim'
 Plugin 'ap/vim-css-color'
