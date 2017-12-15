@@ -325,11 +325,6 @@ autocmd BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
 autocmd BufWrite * :%s/\(\s*\n\)\+\%$//ge
 " replace groups or function of empty or whitespaces-only lines with one empty line
 autocmd BufWrite * :%s/\(\s*\n\)\{3,}/\r\r/ge
-" by default, vim assumes all .h files to be C++ files
-augroup project
-	autocmd!
-	autocmd BufRead,BufNewFile *.h,*.c set filetype=c.doxygen
-augroup END
 " activate alt
 for i in range(65,90) + range(97,122)
 	let c = nr2char(i)
