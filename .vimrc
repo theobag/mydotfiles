@@ -2,46 +2,53 @@ set nocompatible              " be improved, required
 filetype off                  " required
 let mapleader = "\<Space>"
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'sjl/badwolf'
-Plugin 'mhinz/vim-startify'
-Plugin 'bling/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'sheerun/vim-polyglot'
-Plugin 'majutsushi/tagbar'                              " sudo apt install exuberant-ctags
-Plugin 'rip-rip/clang_complete'                         " sudo apt install clang
-Plugin 'scrooloose/syntastic'
-Plugin 'raimondi/delimitmate'                           " jump c-g g or just repeat the action
-Plugin 'ervandew/supertab'	                            " c-v + tab for real tab
-Plugin 'rhysd/clever-f.vim'                             " use f or F repeat last command
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'rking/ag.vim'
-Plugin 'henrik/vim-indexed-search'
-Plugin 'darfink/starsearch.vim'                         " dont jump next on star search
-Plugin 'terryma/vim-smooth-scroll'
-Plugin 'matze/vim-move'
-Plugin 'ReplaceWithRegister'                            " gr and motion
-Plugin 'argtextobj.vim'                                 " argument text object eg. dia, cia, via, daa ..
-Plugin 'kana/vim-textobj-user'
-Plugin 'kana/vim-textobj-entire'                        " motion plus ae or ie to select entire
-Plugin 'kana/vim-textobj-function'
-Plugin 'tpope/vim-eunuch'                               " bash commands
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-commentary'														" gc + motion or line with gcc
-Plugin 'tpope/vim-unimpaired'                           " pair maps and stuff
-Plugin 'tpope/vim-endwise'
-Plugin 'vim-ruby/vim-ruby'
-Plugin 'othree/html5.vim'
-Plugin 'gregsexton/matchtag'
-Plugin 'docunext/closetag.vim'
-Plugin 'ap/vim-css-color'
-Plugin 'ivalkeen/vim-simpledb'
-Plugin 'loremipsum'
-call vundle#end()             " required
-filetype plugin indent on     " required
+call plug#begin('~/.vim/plugged')
+Plug 'sjl/badwolf'
+Plug 'mhinz/vim-startify'
+Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'sheerun/vim-polyglot'
+Plug 'majutsushi/tagbar'                              " sudo apt install exuberant-ctags
+Plug 'rip-rip/clang_complete'                         " sudo apt install clang
+Plug 'scrooloose/syntastic'
+Plug 'raimondi/delimitmate'                           " jump c-g g or just repeat the action
+Plug 'ervandew/supertab'	                            " c-v + tab for real tab
+Plug 'rhysd/clever-f.vim'                             " use f or F repeat last command
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'rking/ag.vim'
+Plug 'henrik/vim-indexed-search'
+Plug 'darfink/starsearch.vim'                         " dont jump next on star search
+Plug 'terryma/vim-smooth-scroll'
+Plug 'matze/vim-move'
+Plug 'vim-scripts/ReplaceWithRegister'								" gr and motion
+Plug 'vim-scripts/argtextobj.vim'											" argument text object eg. dia, cia, via, daa ..
+Plug 'kana/vim-textobj-user'
+Plug 'kana/vim-textobj-entire'                        " motion plus ae or ie to select entire
+Plug 'kana/vim-textobj-function'
+Plug 'tpope/vim-eunuch'                               " bash commands
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'														" gc + motion or line with gcc
+Plug 'tpope/vim-unimpaired'                           " pair maps and stuff
+Plug 'vim-scripts/loremipsum'
+if executable('ruby')
+	Plug 'tpope/vim-endwise'
+	Plug 'tpope/vim-rails'
+	Plug 'vim-ruby/vim-ruby'
+endif
+if executable('html')
+	Plug 'othree/html5.vim'
+	Plug 'gregsexton/matchtag'
+	Plug 'docunext/closetag.vim'
+endif
+if executable('css')
+	Plug 'ap/vim-css-color'
+endif
+if executable('sql')
+	Plug 'ivalkeen/vim-simpledb'
+endif
+call plug#end()
+
 " ----------------------------------------------------------------------------------------
 " GENERAL
 " ----------------------------------------------------------------------------------------
