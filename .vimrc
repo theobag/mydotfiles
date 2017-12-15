@@ -9,7 +9,7 @@ Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'sheerun/vim-polyglot'
 Plug 'majutsushi/tagbar'                              " sudo apt install exuberant-ctags
-Plug 'rip-rip/clang_complete'                         " sudo apt install clang
+Plug 'rip-rip/clang_complete', {'for': ['c', 'cpp']}  " sudo apt install clang
 Plug 'scrooloose/syntastic'
 Plug 'raimondi/delimitmate'                           " jump c-g g or just repeat the action
 Plug 'ervandew/supertab'	                            " c-v + tab for real tab
