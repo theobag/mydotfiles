@@ -1,7 +1,6 @@
 set nocompatible              " be improved, required
 filetype off                  " required
 let mapleader = "\<Space>"
-
 call plug#begin('~/.vim/plugged')
 Plug 'sjl/badwolf'
 Plug 'mhinz/vim-startify'
@@ -33,16 +32,12 @@ Plug 'tpope/vim-unimpaired'                           " pair maps and stuff
 Plug 'vim-scripts/loremipsum'
 Plug 'ap/vim-css-color', {'for': ['css']}
 Plug 'ivalkeen/vim-simpledb', {'for': ['sql']}
-if executable('ruby')
-	Plug 'tpope/vim-endwise'
-	Plug 'tpope/vim-rails'
-	Plug 'vim-ruby/vim-ruby'
-endif
-if executable('html')
-	Plug 'othree/html5.vim'
-	Plug 'gregsexton/matchtag'
-	Plug 'docunext/closetag.vim'
-endif
+Plug 'tpope/vim-endwise', {'for': ['ruby']}
+Plug 'tpope/vim-rails', {'for': ['ruby']}
+Plug 'vim-ruby/vim-ruby', {'for': ['ruby']}
+Plug 'othree/html5.vim', {'for': ['html']}
+Plug 'gregsexton/matchtag', {'for': ['html']}
+Plug 'docunext/closetag.vim', {'for': ['html']}
 call plug#end()
 " ----------------------------------------------------------------------------------------
 " GENERAL
