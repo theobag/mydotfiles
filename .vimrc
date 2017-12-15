@@ -31,6 +31,8 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'														" gc + motion or line with gcc
 Plug 'tpope/vim-unimpaired'                           " pair maps and stuff
 Plug 'vim-scripts/loremipsum'
+Plug 'ap/vim-css-color', {'for': ['css']}
+Plug 'ivalkeen/vim-simpledb', {'for': ['sql']}
 if executable('ruby')
 	Plug 'tpope/vim-endwise'
 	Plug 'tpope/vim-rails'
@@ -41,14 +43,7 @@ if executable('html')
 	Plug 'gregsexton/matchtag'
 	Plug 'docunext/closetag.vim'
 endif
-if executable('css')
-	Plug 'ap/vim-css-color'
-endif
-if executable('sql')
-	Plug 'ivalkeen/vim-simpledb'
-endif
 call plug#end()
-
 " ----------------------------------------------------------------------------------------
 " GENERAL
 " ----------------------------------------------------------------------------------------
