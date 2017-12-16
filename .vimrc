@@ -1,7 +1,6 @@
 set nocompatible              " be improved, required
 filetype off                  " required
 let mapleader = "\<Space>"
-
 call plug#begin('~/.vim/plugged')
 Plug 'sjl/badwolf'
 Plug 'mhinz/vim-startify'
@@ -38,9 +37,10 @@ Plug 'ivalkeen/vim-simpledb', {'for': ['sql']}
 Plug 'tpope/vim-endwise', {'for': ['ruby']}
 Plug 'tpope/vim-rails', {'for': ['ruby']}
 Plug 'vim-ruby/vim-ruby', {'for': ['ruby']}
-Plug 'othree/html5.vim', {'for': ['html']}
-Plug 'gregsexton/matchtag', {'for': ['html']}
-Plug 'docunext/closetag.vim', {'for': ['html']}
+Plug 'othree/html5.vim', {'for': ['html', 'php']}
+Plug 'gregsexton/matchtag', {'for': ['html', 'php']}
+Plug 'docunext/closetag.vim', {'for': ['html', 'php']}
+Plug 'captbaritone/better-indent-support-for-php-with-html', {'for': ['php']}
 call plug#end()
 " ----------------------------------------------------------------------------------------
 " GENERAL
