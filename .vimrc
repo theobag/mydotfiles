@@ -32,7 +32,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'															" gc + motion or line with gcc
 Plug 'tpope/vim-unimpaired'                           	" pair maps and stuff
 Plug 'vim-scripts/loremipsum'
-Plug 'ap/vim-css-color', {'for': ['css']}
+Plug 'ap/vim-css-color'
 Plug 'ivalkeen/vim-simpledb', {'for': ['sql']}
 Plug 'tpope/vim-endwise', {'for': ['ruby']}
 Plug 'tpope/vim-rails', {'for': ['ruby']}
