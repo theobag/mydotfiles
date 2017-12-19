@@ -1,6 +1,7 @@
 set nocompatible              " be improved, required
 filetype off                  " required
 let mapleader = "\<Space>"
+
 call plug#begin('~/.vim/plugged')
 Plug 'sjl/badwolf'
 Plug 'mhinz/vim-startify'
@@ -274,8 +275,7 @@ cnoremap <C-@> <C-c>
 nnoremap <C-@> <Esc>:noh<CR>
 " use j/k to start, then scroll through autocomplete options
 inoremap <expr> <C-j> ((pumvisible())?("\<C-n>"):("\<C-x><c-n>"))
-inoremap <expr> <C-k> ((pumvisible())?("\<C-p>"):("\<C-x><c-k>"))
-inoremap <c-k> <c-p>
+inoremap <expr> <C-k> ((pumvisible())?("\<C-p>"):("\<C-x><c-p>"))
 " stop autocomment on nextline
 nnoremap <expr> O getline('.') =~ '^\s*//' ? 'O<esc>S' : 'O'
 nnoremap <expr> o getline('.') =~ '^\s*//' ? 'o<esc>S' : 'o'
