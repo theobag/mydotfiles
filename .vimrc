@@ -191,12 +191,9 @@ inoremap <s-tab> <tab>
 " fzf
 nnoremap <silent> <Leader>g :FZF<CR>
 nnoremap <silent> <Leader>G :FZF!<CR>
-nnoremap <silent> <Leader>h :FZF ~<CR>
-nnoremap <silent> <Leader>H :FZF! ~<CR>
 nnoremap <silent> <Leader>b :Buffers<CR>
-nnoremap <silent> <Leader>B :Buffers!<CR>
-nnoremap <silent> <Leader>m :History<CR>
-nnoremap <silent> <Leader>M :History!<CR>
+nnoremap <silent> <Leader>h :History<CR>
+nnoremap <silent> <Leader>H :History!<CR>
 let g:fzf_action = {
 			\ 'ctrl-t': 'tab split',
 			\ 'ctrl-x': 'split',
