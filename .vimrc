@@ -1,7 +1,6 @@
 set nocompatible              " be improved, required
 filetype off                  " required
 let mapleader = "\<Space>"
-
 call plug#begin('~/.vim/plugged')
 Plug 'sjl/badwolf'
 Plug 'mhinz/vim-startify'
@@ -14,9 +13,8 @@ Plug 'scrooloose/syntastic'
 Plug 'raimondi/delimitmate'                           	" jump c-g g or just repeat the action
 Plug 'ervandew/supertab'	                            	" c-v + tab for real tab
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug '~/.fzf'
+Plug 'junegunn/fzf.vim'
 Plug 'rhysd/clever-f.vim'																" use f or F repeat last command
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'rking/ag.vim'
 Plug 'henrik/vim-indexed-search'
 Plug 'darfink/starsearch.vim'                         	" dont jump next on star search
@@ -190,20 +188,15 @@ let g:SuperTabCrMapping = 1                             " no newline on supertab
 let g:SuperTabClosePreviewOnPopupClose = 1              " autoclose popup
 runtime! plugin/supertab.vim                            " real tabs with shift+tab
 inoremap <s-tab> <tab>
-" ctrlp
-set grepprg=ag\ --nogroup\ --nocolor                    " use ag over grep
-let g:ctrlp_match_window = 'bottom,order:ttb,results:35'
-let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-let g:ctrlp_use_caching = 0                             " ag is fast enough that CtrlP doesn't need to cache
-nnoremap <silent> <C-p> :CtrlP .<cr>
-nnoremap <silent> <Leader>b :CtrlPBuffer<cr>
-nnoremap <silent> <Leader>n :CtrlP ~<cr>
-nnoremap <silent> <Leader>m :CtrlPMRUFiles<cr>
 " fzf
 nnoremap <silent> <Leader>g :FZF<CR>
 nnoremap <silent> <Leader>G :FZF!<CR>
 nnoremap <silent> <Leader>h :FZF ~<CR>
 nnoremap <silent> <Leader>H :FZF! ~<CR>
+nnoremap <silent> <Leader>b :Buffers<CR>
+nnoremap <silent> <Leader>B :Buffers!<CR>
+nnoremap <silent> <Leader>m :History<CR>
+nnoremap <silent> <Leader>M :History!<CR>
 let g:fzf_action = {
 			\ 'ctrl-t': 'tab split',
 			\ 'ctrl-x': 'split',
