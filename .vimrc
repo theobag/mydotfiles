@@ -6,13 +6,13 @@ Plug 'sjl/badwolf'
 Plug 'mhinz/vim-startify'
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'junegunn/goyo.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'majutsushi/tagbar'																" sudo apt install exuberant-ctags
 Plug 'rip-rip/clang_complete', {'for': ['c', 'cpp']}  	" sudo apt install clang
 Plug 'scrooloose/syntastic'
 Plug 'raimondi/delimitmate'                           	" jump c-g g or just repeat the action
 Plug 'ervandew/supertab'	                            	" c-v + tab for real tab
+Plug 'junegunn/goyo.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'rhysd/clever-f.vim'																" use f or F repeat last command
@@ -108,8 +108,8 @@ set history=1000
 set backup
 set undofile
 set backupext=.bak                                      " save backup with bak extension
-set backupdir=~/.vim/tmp/backup//												" add double slash to the end of the path so that you can modify
-set directory=~/.vim/tmp/swap//													" two files with the same name at the time
+set backupdir=~/.vim/tmp/backup//												" The double tailing slash will store files using full paths
+set directory=~/.vim/tmp/swap//													" so if you edit two different files you won't clobber your swap or backups.
 set undodir^=~/.vim/tmp/undo//
 set tags=tags;~/                                        " look for the file in the current directory, then south until you reach home.
 set viminfo+=n~/.vim/viminfo														" set viminfo file name
@@ -162,6 +162,7 @@ nnoremap <silent> <F8> :TagbarToggle<CR>
 " clever tab only one line search
 let g:clever_f_across_no_line = 1
 let g:clever_f_fix_key_direction = 1
+nmap <silent> <Leader>f <Plug>(clever-f-reset)
 " toggle tabs and buffers
 let notabs = 0
 nnoremap <silent> <F10> :let notabs=!notabs<Bar>:if
