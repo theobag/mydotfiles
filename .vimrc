@@ -6,6 +6,7 @@ Plug 'sjl/badwolf'
 Plug 'mhinz/vim-startify'
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'junegunn/goyo.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'majutsushi/tagbar'																" sudo apt install exuberant-ctags
 Plug 'rip-rip/clang_complete', {'for': ['c', 'cpp']}  	" sudo apt install clang
@@ -161,7 +162,6 @@ nnoremap <silent> <F8> :TagbarToggle<CR>
 " clever tab only one line search
 let g:clever_f_across_no_line = 1
 let g:clever_f_fix_key_direction = 1
-nmap <silent> <Leader>f <Plug>(clever-f-reset)
 " toggle tabs and buffers
 let notabs = 0
 nnoremap <silent> <F10> :let notabs=!notabs<Bar>:if
