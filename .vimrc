@@ -192,6 +192,8 @@ inoremap <s-tab> <tab>
 " fzf
 nnoremap <silent> <Leader>g :FZF<CR>
 nnoremap <silent> <Leader>G :FZF!<CR>
+nnoremap <silent> <Leader>n :FZF ~<CR>
+nnoremap <silent> <Leader>N :FZF! ~<CR>
 nnoremap <silent> <Leader>b :Buffers<CR>
 nnoremap <silent> <Leader>h :History<CR>
 nnoremap <silent> <Leader>H :History:<CR>
