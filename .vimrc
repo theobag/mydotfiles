@@ -194,7 +194,8 @@ nnoremap <silent> <Leader>g :FZF<CR>
 nnoremap <silent> <Leader>G :FZF!<CR>
 nnoremap <silent> <Leader>b :Buffers<CR>
 nnoremap <silent> <Leader>h :History<CR>
-nnoremap <silent> <Leader>H :History!<CR>
+nnoremap <silent> <Leader>H :History:<CR>
+nnoremap <silent> <Leader>/ :History/<CR>
 let g:fzf_action = {
 			\ 'ctrl-t': 'tab split',
 			\ 'ctrl-x': 'split',
@@ -239,8 +240,8 @@ nnoremap zh zH
 vnoremap < <gv
 vnoremap > >gv
 " add one space
-nnoremap [s i<space><esc>
-nnoremap ]s a<space><esc>
+nnoremap [s i<space><esc>l
+nnoremap ]s a<space><esc>h
 " move tab
 nnoremap <silent> + :tabm+<CR>
 nnoremap <silent> - :tabm-<CR>
