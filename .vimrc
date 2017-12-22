@@ -12,9 +12,9 @@ Plug 'rip-rip/clang_complete', {'for': ['c', 'cpp']}  	" sudo apt install clang
 Plug 'scrooloose/syntastic'
 Plug 'raimondi/delimitmate'                           	" jump c-g g or just repeat the action
 Plug 'ervandew/supertab'	                            	" c-v + tab for real tab
-Plug 'junegunn/goyo.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'rhysd/clever-f.vim'																" use f or F repeat last command
 Plug 'rking/ag.vim'
@@ -147,6 +147,8 @@ let g:airline_section_c = '%<%F%m %#__accent_red#%{airline#util#wrap(airline#par
 " ----------------------------------------------------------------------------------------
 " PLUGINS
 " ----------------------------------------------------------------------------------------
+" goyo toggle
+nnoremap <silent> <Leader>G :Goyo<CR>
 " vim move : use c-k and c-j to move current line/selection to up and down
 let g:move_key_modifier = 'C'
 " delimitmate
@@ -160,13 +162,13 @@ nnoremap <Leader>A :Ag!<space>
 " tagbar
 let g:tagbar_sort = 0                                   " order tags based on file order; don't sort alphabetically
 nnoremap <silent> <F8> :TagbarToggle<CR>
-" limelight
-nnoremap <silent> <Leader>l :Limelight<CR>
-nnoremap <silent> <Leader>L :Limelight!<CR>
+" limelight toggle
+nnoremap <silent> <Leader>ll :Limelight<CR>
+nnoremap <silent> <Leader>LL :Limelight!<CR>
 " clever tab only one line search
 let g:clever_f_across_no_line = 1
 let g:clever_f_fix_key_direction = 1
-nmap <silent> <Leader>f <Plug>(clever-f-reset)
+nmap <silent> <Leader><Leader> <Plug>(clever-f-reset)
 " toggle tabs and buffers
 let notabs = 0
 nnoremap <silent> <F10> :let notabs=!notabs<Bar>:if
@@ -194,8 +196,8 @@ let g:SuperTabClosePreviewOnPopupClose = 1              " autoclose popup
 runtime! plugin/supertab.vim                            " real tabs with shift+tab
 inoremap <s-tab> <tab>
 " fzf
-nnoremap <silent> <Leader>g :FZF<CR>
-nnoremap <silent> <Leader>G :FZF!<CR>
+nnoremap <silent> <Leader>f :FZF<CR>
+nnoremap <silent> <Leader>F :FZF!<CR>
 nnoremap <silent> <Leader>n :FZF ~<CR>
 nnoremap <silent> <Leader>N :FZF! ~<CR>
 nnoremap <silent> <Leader>b :Buffers<CR>
