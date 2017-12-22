@@ -15,6 +15,7 @@ Plug 'ervandew/supertab'	                            	" c-v + tab for real tab
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'junegunn/limelight.vim'
 Plug 'rhysd/clever-f.vim'																" use f or F repeat last command
 Plug 'rking/ag.vim'
 Plug 'henrik/vim-indexed-search'
