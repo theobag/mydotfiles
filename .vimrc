@@ -217,6 +217,56 @@ let g:fzf_colors =
 			\ 'spinner': ['fg', 'Label'],
 			\ 'header':  ['fg', 'Comment'] }
 " ----------------------------------------------------------------------------------------
+" AUTOCMD & FUNCTIONS
+" ----------------------------------------------------------------------------------------
+" man page, use leader K to open it or :Man 3 {option} in command mode
+runtime! ftplugin/man.vim
+" move between tag
+runtime! macros/matchit.vim
+" save when losing focus
+au FocusLost * :silent! wall
+" resize splits when the window is resized
+au VimResized * :wincmd =
+" remove any trailing whitespace that is in the file
+autocmd BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
+" auto remove multiple empty lines at the end of line
+autocmd BufWrite * :%s/\(\s*\n\)\+\%$//ge
+" replace groups or function of empty or whitespaces-only lines with one empty line
+autocmd BufWrite * :%s/\(\s*\n\)\{3,}/\r\r/ge
+" activate alt
+for i in range(65,90) + range(97,122)
+	let c = nr2char(i)
+	exec "map \e".c." <M-".c.">"
+	exec "map! \e".c." <M-".c.">"
+endfor
+" vp doesn't replace paste buffer
+function! RestoreRegister()
+	let @" = s:restore_reg
+	return ''
+endfunction
+function! s:Repl()
+	let s:restore_reg = @"
+	return "p@=RestoreRegister()\<cr>"
+endfunction
+vmap <silent> <expr> p <sid>Repl()
+" movement between tabs or buffers
+function! MyNext()
+	if exists( '*tabpagenr' ) && tabpagenr('$') != 1
+		normal gt
+	else
+		execute ":bnext"
+	endif
+endfunction
+function! MyPrev()
+	if exists( '*tabpagenr' ) && tabpagenr('$') != '1'
+		normal gT
+	else
+		execute ":bprev"
+	endif
+endfunction
+nnoremap <silent> <C-l> :call MyNext()<CR>
+nnoremap <silent> <C-h> :call MyPrev()<CR>
+" ----------------------------------------------------------------------------------------
 " MAPS
 " ----------------------------------------------------------------------------------------
 noremap q <Nop>
@@ -303,6 +353,8 @@ nnoremap <Leader>! :au! BufWritePost *.cpp :!<space>
 nnoremap <Leader>2 :au! BufWritePost *.py :! python<space>
 nnoremap <Leader>3 :au! BufWritePost *.rb :! ruby<space>
 nnoremap <Leader>4 :au! BufWritePost *.js :! nodejs<space>
+nnoremap <Leader>8 :au! BufWritePost *.go :! go run<space>
+nnoremap <Leader>* :au! BufWritePost *.go :! go build<space>
 " save mysql last query
 noremap <Leader>z :w! /tmp/query.sql\| w!<CR>
 noremap <Leader>Z :w! /tmp/query.sql\| wq!<CR>
@@ -327,53 +379,3 @@ onoremap <silent> <ESC>OA <Nop>
 onoremap <silent> <ESC>OB <Nop>
 onoremap <silent> <ESC>OC <Nop>
 onoremap <silent> <ESC>OD <Nop>
-" ----------------------------------------------------------------------------------------
-" AUTOCMD & FUNCTIONS
-" ----------------------------------------------------------------------------------------
-" man page, use leader K to open it or :Man 3 {option} in command mode
-runtime! ftplugin/man.vim
-" move between tag
-runtime! macros/matchit.vim
-" save when losing focus
-au FocusLost * :silent! wall
-" resize splits when the window is resized
-au VimResized * :wincmd =
-" remove any trailing whitespace that is in the file
-autocmd BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
-" auto remove multiple empty lines at the end of line
-autocmd BufWrite * :%s/\(\s*\n\)\+\%$//ge
-" replace groups or function of empty or whitespaces-only lines with one empty line
-autocmd BufWrite * :%s/\(\s*\n\)\{3,}/\r\r/ge
-" activate alt
-for i in range(65,90) + range(97,122)
-	let c = nr2char(i)
-	exec "map \e".c." <M-".c.">"
-	exec "map! \e".c." <M-".c.">"
-endfor
-" vp doesn't replace paste buffer
-function! RestoreRegister()
-	let @" = s:restore_reg
-	return ''
-endfunction
-function! s:Repl()
-	let s:restore_reg = @"
-	return "p@=RestoreRegister()\<cr>"
-endfunction
-vmap <silent> <expr> p <sid>Repl()
-" movement between tabs or buffers
-function! MyNext()
-	if exists( '*tabpagenr' ) && tabpagenr('$') != 1
-		normal gt
-	else
-		execute ":bnext"
-	endif
-endfunction
-function! MyPrev()
-	if exists( '*tabpagenr' ) && tabpagenr('$') != '1'
-		normal gT
-	else
-		execute ":bprev"
-	endif
-endfunction
-nnoremap <silent> <C-l> :call MyNext()<CR>
-nnoremap <silent> <C-h> :call MyPrev()<CR>
