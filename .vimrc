@@ -160,6 +160,9 @@ nnoremap <Leader>A :Ag!<space>
 " tagbar
 let g:tagbar_sort = 0                                   " order tags based on file order; don't sort alphabetically
 nnoremap <silent> <F8> :TagbarToggle<CR>
+" limelight
+nnoremap <silent> <Leader>l :Limelight<CR>
+nnoremap <silent> <Leader>L :Limelight!<CR>
 " clever tab only one line search
 let g:clever_f_across_no_line = 1
 let g:clever_f_fix_key_direction = 1
