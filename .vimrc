@@ -192,7 +192,6 @@ let g:SuperTabClosePreviewOnPopupClose = 1              " autoclose popup
 runtime! plugin/supertab.vim                            " real tabs with shift+tab
 inoremap <s-tab> <tab>
 " fzf
-" color
 let g:fzf_action = {
 			\ 'ctrl-t': 'tab split',
 			\ 'ctrl-x': 'split',
@@ -246,8 +245,6 @@ command! -nargs=* Ag call fzf#run({
 			\ 'down':    '50%'
 			\ })
 command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, '--color-path "1;36"', fzf#vim#with_preview(), <bang>0)
-nnoremap <silent> <Leader>g :FZF<CR>
-nnoremap <silent> <Leader>G :FZF!<CR>
 nnoremap <silent> <Leader>f :Files<CR>
 nnoremap <silent> <Leader>F :Files!<CR>
 nnoremap <silent> <Leader>n :FZF ~<CR>
