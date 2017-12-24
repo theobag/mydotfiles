@@ -192,14 +192,7 @@ let g:SuperTabClosePreviewOnPopupClose = 1              " autoclose popup
 runtime! plugin/supertab.vim                            " real tabs with shift+tab
 inoremap <s-tab> <tab>
 " fzf
-nnoremap <silent> <Leader>f :FZF<CR>
-nnoremap <silent> <Leader>F :FZF!<CR>
-nnoremap <silent> <Leader>n :FZF ~<CR>
-nnoremap <silent> <Leader>N :FZF! ~<CR>
-nnoremap <silent> <Leader>b :Buffers<CR>
-nnoremap <silent> <Leader>h :History<CR>
-nnoremap <silent> <Leader>H :History:<CR>
-nnoremap <silent> <Leader>/ :History/<CR>
+" color
 let g:fzf_action = {
 			\ 'ctrl-t': 'tab split',
 			\ 'ctrl-x': 'split',
@@ -218,25 +211,25 @@ let g:fzf_colors =
 			\ 'marker':  ['fg', 'Keyword'],
 			\ 'spinner': ['fg', 'Label'],
 			\ 'header':  ['fg', 'Comment'] }
+" :Files command with color
+command! -bang -nargs=? -complete=dir Files
+			\ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+" ag
 function! s:ag_to_qf(line)
 	let parts = split(a:line, ':')
 	return {'filename': parts[0], 'lnum': parts[1], 'col': parts[2],
 				\ 'text': join(parts[3:], ':')}
 endfunction
-
 function! s:ag_handler(lines)
 	if len(a:lines) < 2 | return | endif
-
 	let cmd = get({'ctrl-x': 'split',
 				\ 'ctrl-v': 'vertical split',
 				\ 'ctrl-t': 'tabe'}, a:lines[0], 'e')
 	let list = map(a:lines[1:], 's:ag_to_qf(v:val)')
-
 	let first = list[0]
 	execute cmd escape(first.filename, ' %#\')
 	execute first.lnum
 	execute 'normal!' first.col.'|zz'
-
 	if len(list) > 1
 		call setqflist(list)
 		copen
@@ -253,8 +246,18 @@ command! -nargs=* Ag call fzf#run({
 			\ 'down':    '50%'
 			\ })
 command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, '--color-path "1;36"', fzf#vim#with_preview(), <bang>0)
-nnoremap <Leader>a :Ag<CR>
-nnoremap <Leader>A :Ag!<CR>
+nnoremap <silent> <Leader>g :FZF<CR>
+nnoremap <silent> <Leader>G :FZF!<CR>
+nnoremap <silent> <Leader>f :Files<CR>
+nnoremap <silent> <Leader>F :Files!<CR>
+nnoremap <silent> <Leader>n :FZF ~<CR>
+nnoremap <silent> <Leader>N :FZF! ~<CR>
+nnoremap <silent> <Leader>b :Buffers<CR>
+nnoremap <silent> <Leader>h :History<CR>
+nnoremap <silent> <Leader>H :History:<CR>
+nnoremap <silent> <Leader>/ :History/<CR>
+nnoremap <silent> <Leader>a :Ag<CR>
+nnoremap <silent> <Leader>A :Ag!<CR>
 " ----------------------------------------------------------------------------------------
 " AUTOCMD & FUNCTIONS
 " ----------------------------------------------------------------------------------------
