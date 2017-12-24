@@ -12,6 +12,7 @@ Plug 'rip-rip/clang_complete', {'for': ['c', 'cpp']}  	" sudo apt install clang
 Plug 'scrooloose/syntastic'
 Plug 'raimondi/delimitmate'                           	" jump c-g g or just repeat the action
 Plug 'ervandew/supertab'	                            	" c-v + tab for real tab
+Plug 'rking/ag.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
@@ -155,6 +156,9 @@ let delimitMate_expand_space = 1
 " netrw
 let g:netrw_liststyle = 2
 let g:netrw_banner = 0
+" ag disbale message
+let g:ag_mapping_message = 0
+nnoremap <Leader>A :Ag!<space>
 " tagbar
 let g:tagbar_sort = 0                                   " order tags based on file order; don't sort alphabetically
 nnoremap <silent> <F8> :TagbarToggle<CR>
@@ -210,51 +214,17 @@ let g:fzf_colors =
 			\ 'marker':  ['fg', 'Keyword'],
 			\ 'spinner': ['fg', 'Label'],
 			\ 'header':  ['fg', 'Comment'] }
-" :Files command with color
-command! -bang -nargs=? -complete=dir Files
-			\ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
-" ag
-function! s:ag_to_qf(line)
-	let parts = split(a:line, ':')
-	return {'filename': parts[0], 'lnum': parts[1], 'col': parts[2],
-				\ 'text': join(parts[3:], ':')}
-endfunction
-function! s:ag_handler(lines)
-	if len(a:lines) < 2 | return | endif
-	let cmd = get({'ctrl-x': 'split',
-				\ 'ctrl-v': 'vertical split',
-				\ 'ctrl-t': 'tabe'}, a:lines[0], 'e')
-	let list = map(a:lines[1:], 's:ag_to_qf(v:val)')
-	let first = list[0]
-	execute cmd escape(first.filename, ' %#\')
-	execute first.lnum
-	execute 'normal!' first.col.'|zz'
-	if len(list) > 1
-		call setqflist(list)
-		copen
-		wincmd p
-	endif
-endfunction
-command! -nargs=* Ag call fzf#run({
-			\ 'source':  printf('ag --nogroup --column --color "%s"',
-			\                   escape(empty(<q-args>) ? '^(?=.)' : <q-args>, '"\')),
-			\ 'sink*':    function('<sid>ag_handler'),
-			\ 'options': '--ansi --expect=ctrl-t,ctrl-v,ctrl-x --delimiter : --nth 4.. '.
-			\            '--multi --bind=ctrl-a:select-all,ctrl-d:deselect-all '.
-			\            '--color hl:68,hl+:110',
-			\ 'down':    '50%'
-			\ })
-command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, '--color-path "1;36"', fzf#vim#with_preview(), <bang>0)
-nnoremap <silent> <Leader>f :Files<CR>
-nnoremap <silent> <Leader>F :Files!<CR>
+nnoremap <silent> <Leader>f :FZF<CR>
+nnoremap <silent> <Leader>F :FZF!<CR>
 nnoremap <silent> <Leader>n :FZF ~<CR>
 nnoremap <silent> <Leader>N :FZF! ~<CR>
 nnoremap <silent> <Leader>b :Buffers<CR>
 nnoremap <silent> <Leader>h :History<CR>
 nnoremap <silent> <Leader>H :History:<CR>
 nnoremap <silent> <Leader>/ :History/<CR>
-nnoremap <silent> <Leader>a :Ag<CR>
-nnoremap <silent> <Leader>A :Ag!<CR>
+" :Files command with with preview
+command! -bang -nargs=? -complete=dir Files
+			\ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 " ----------------------------------------------------------------------------------------
 " AUTOCMD & FUNCTIONS
 " ----------------------------------------------------------------------------------------
