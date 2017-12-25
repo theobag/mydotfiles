@@ -189,6 +189,7 @@ nnoremap <silent> <Leader>so :Errors<CR>
 nnoremap <silent> <Leader>sl :lclose<CR>
 noremap <silent> <Leader>sy :SyntasticToggleMode<cr>
 " supertab
+let g:SuperTabDefaultCompletionType = "context"
 let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
 let g:SuperTabNoCompleteAfter = ['^', ',', '\s']
 let g:SuperTabCrMapping = 1                             " no newline on supertab
