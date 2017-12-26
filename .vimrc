@@ -1,6 +1,7 @@
 set nocompatible              " be improved, required
 filetype off                  " required
 let mapleader = "\<Space>"
+
 call plug#begin('~/.vim/plugged')
 Plug 'sjl/badwolf'
 Plug 'mhinz/vim-startify'
@@ -147,12 +148,12 @@ let g:airline_section_c = '%<%F%m %#__accent_red#%{airline#util#wrap(airline#par
 " ----------------------------------------------------------------------------------------
 " PLUGINS
 " ----------------------------------------------------------------------------------------
-" goyo toggle
-nnoremap <silent> <Leader>G :Goyo<CR>
 " vim move : use c-k and c-j to move current line/selection to up and down
 let g:move_key_modifier = 'C'
 " delimitmate
 let delimitMate_expand_space = 1
+" goyo toggle
+nnoremap <silent> <Leader>G :Goyo<CR>
 " netrw
 let g:netrw_liststyle = 2
 let g:netrw_banner = 0
@@ -215,13 +216,11 @@ let g:fzf_colors =
 			\ 'marker':  ['fg', 'Keyword'],
 			\ 'spinner': ['fg', 'Label'],
 			\ 'header':  ['fg', 'Comment'] }
-nnoremap <silent> <Leader>f :FZF<CR>
-nnoremap <silent> <Leader>F :FZF!<CR>
-nnoremap <silent> <Leader>n :FZF ~<CR>
+nnoremap <silent> <Leader>F :FZF<CR>
 nnoremap <silent> <Leader>N :FZF! ~<CR>
-nnoremap <silent> <Leader>b :Buffers<CR>
-nnoremap <silent> <Leader>h :History<CR>
+nnoremap <silent> <Leader>B :Buffers<CR>
 nnoremap <silent> <Leader>H :History:<CR>
+nnoremap <silent> <Leader>M :History<CR>
 nnoremap <silent> <Leader>/ :History/<CR>
 " :Files command with with preview
 command! -bang -nargs=? -complete=dir Files
