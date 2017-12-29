@@ -169,7 +169,7 @@ nnoremap <silent> <Leader>LL :Limelight!<CR>
 " clever tab only one line search
 let g:clever_f_across_no_line = 1
 let g:clever_f_fix_key_direction = 1
-nmap <silent> <Leader><Leader> <Plug>(clever-f-reset)
+nmap <silent> <Leader>f <Plug>(clever-f-reset)
 " toggle tabs and buffers
 let notabs = 0
 nnoremap <silent> <F10> :let notabs=!notabs<Bar>:if
