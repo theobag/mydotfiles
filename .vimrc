@@ -289,8 +289,6 @@ noremap Q <Nop>
 noremap Y y$
 " go to position of last edit. mean: 'go to edit'
 nnoremap ge `.
-" highlight last inserted text
-nnoremap gV `[v`]
 " please use leader K to see man page
 nnoremap K <Nop>
 " too much accident, please use leader J instead
@@ -369,9 +367,6 @@ nnoremap <Leader>3 :au! BufWritePost *.rb :! ruby<space>
 nnoremap <Leader>4 :au! BufWritePost *.js :! nodejs<space>
 nnoremap <Leader>8 :au! BufWritePost *.go :! go run<space>
 nnoremap <Leader>* :au! BufWritePost *.go :! go build<space>
-" save mysql last query
-noremap <Leader>z :w! /tmp/query.sql\| w!<CR>
-noremap <Leader>Z :w! /tmp/query.sql\| wq!<CR>
 " disable arrow and prevent show weird characters
 nnoremap <silent> <ESC>OA <Nop>
 nnoremap <silent> <ESC>OB <Nop>
