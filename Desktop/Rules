@@ -1,0 +1,144 @@
+
+Beware! "How can I learn Python?" is a very different question from
+"How can I learn to use computers to solve problems?" The language
+doesn't matter: if you study from the latter question, you'll pick up
+any language in no time.
+
+Analogy and manifesto
+-----------------------------------
+
+Say I told you I want to learn how to cook. You'd probably recommend
+some book of recipes you like. Which would be great if I just want to
+make dinner for my family: I could repeat the steps in those recipes
+and enjoy the results. But that'd be a terrible answer if I have greater
+aspirations. If I want to really impress my friends, do something new or
+unique, be an "improvisational cook," I need to understand what's going
+on in the minds of those recipe authors. I need to understand theory,
+not just practice.
+
+The problem, of course, is that if I sit around reading some enormous
+textbook on the theory of cooking all day, I'd be a terrible chef—both
+because I'd have no real practice, and because I'd surely give up a few
+days in!
+
+For learning in this way, I advocate combining theory with
+practice. Self-plagiarizing[1]: "derive motivation and intuition from
+top-down exploration while cementing understanding and that crucial
+universal access with a bottom-up climb."
+
+A cautionary tale
+-----------------------------------
+
+Now back to programming. I started my path to computer nerdery in
+elementary school with one of those ubiquitous Learn C++ in 21 Days
+books. I finished it, and I could make the computer do things! Some
+things. Small things. When my software broke, I didn't understand
+why. When the problem got too large, I couldn't express it. The libraries
+I was working with seemed like magic, and when I needed something beyond
+what they could do, I was powerless. I could express instructions in C++,
+sure, but I didn't understand which instructions to express.
+
+But here's the scary part of my story, why I want to warn you about
+this: That hazy feeling of impotence continued for almost a decade, even
+though I spent hours every day writing code. It didn't get better. I
+didn't osmose real understanding. I had to back way, way up, summon
+the humility to admit I had no idea what was going on, and struggle
+through the most fundamental parts of a field I'd been pretending to
+have learned. That was painful and wasteful. Don't do it.
+
+If you want to use computers to solve problems, the hardest thing you need
+to learn is not the "computer" part: it's solving problems. The nature
+of general-purpose, efficient, correct, beautiful solutions to problems
+is closer to math and physics than to electrical engineering. Once
+you've crafted a real solution, making the computer do it will not
+be the problem. The challenges in my work come from thinking and my
+whiteboard—not typing and my computer.
+
+Okay, finally, some friendly advice
+-----------------------------------
+
+The problem with all this ivory-tower-ing is that I predict you'll totally
+lose your motivation if you try to do all the grandiose theory stuff up
+front. I saw that happen to so many CS 1 students at Caltech.
+
+So here's what I propose: sure, use Codecademy and learn to make iOS
+apps. Make a little feedback cycle for yourself. Build fun toys to
+motivate yourself to understand, so that you can build better toys.
+
+Right now, the best introduction I've seen to
+this theory is Structure and Interpretation of Computer
+Programs (https://mitpress.mit.edu/sicp/full-text/book/book.html), which is
+available for free online. It has "computer" in the title, but it's really
+more about problem solving. Bonus: the prose is careful and concise.
+
+The language it teaches is not important. That's on purpose. It's built so
+that you can learn it instantly and focus on problem solving, not syntax.
+
+By the time you finish reading that book, you'll know what to look
+for next.
+
+A postscript for art
+-----------------------------------
+
+I've talked about the tension between understanding and utilitarianism,
+but there's a third force at play here: beauty.
+
+When I understand something new about the structure of problems, I
+feel like I see stars. The world blossoms around me. New possibilities
+everywhere. It's so beautiful!
+
+There's an artistic side to all this stuff, just as there is with
+math. When I was in high school, my introduction to that aspect of this
+world was Why's (Poignant) Guide to Ruby, which is only halfway about Ruby
+(http://poignant.guide/). If you've already learned Python or JavaScript,
+you might skip to chapter 5 or 6.
+
+Mohamed Bakr : You won't find a good answer for this so I will give you
+---one First learn good English to help you learn it
+---Second know minimum knowledge about math (not too much)
+---Third have the ability to understand the logic
+of how it will be done by understanding very well what the
+project is about
+
+Start coding learn from tutorials books etc .... what important is you
+need to understand very well the basics after that things will go easy
+with you
+
+Note : it all depends on you
+
+---------------------------------------------------------------------
+How do I start learning or strengthen my knowledge of data structures
+and algorithms?
+
+Looks funny but its true. Let me explain why.
+
+Suppose you have asked me how to reach to Non-Veg restaurant. I
+explain the route to you. Now what will happens? You will follow my
+route and reached there. But have you noticed that you missed the
+KFC restaurant? Absolutely not because you were following my route.
+The same thing is happens with algorithm. If I tell you learn this and
+that algorithm than you comes up with nothing. You can get the algorithm
+at that time but will not be able to apply on real-world situation. To
+learn algorithm you need to struggle with real problems and finding
+solution of your own first.
+
+You can follow this instruction.
+
+1.Take a real world problem.
+2.Try to think what are the possible solution for that problem and write
+in on a paper .This is must. Try to think at-least 5 solution. (I know
+this will be difficult in
+		beginning but after sometime you will be able to do).
+3.Now search on Google about the problem, and study what others have
+given the solution.
+4.Compare your solution with others.( Don't worry if none
+		of your solution correct. because after that you will
+		know what are the 5 different way through which you
+		can't solve this problem.)
+
+5.Make a note of correct solution along with yours.
+6.Again think and try to find some better solution.
+
+Disclaimer: The above steps requires lot of patience. So if you stuck
+at any steps don't loose your patience and keep trying. You will learn
+more if your try more.

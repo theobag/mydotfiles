@@ -1,0 +1,4 @@
+
+let g:ag_qhandler="copen 20"        "windows size"
+
+let g:ag_mapping_message=0          "disable message"

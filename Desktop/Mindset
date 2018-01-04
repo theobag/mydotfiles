@@ -1,0 +1,117 @@
+-- computers don’t do what you want them to do, only what you tell
+them to do --
+
+The mindset behind a great programmer
+
+Coding is a fun and valuable (and at sometime, a little tiring)
+skill. There are many perks of learning to code: better salary, awesome
+job environment, a opportunity to create a app which a thousand people
+will use and thank you for it, working from home etc. Everyone is
+going to talk about the benefits of being a programmer but seriously,
+nearly no one tells us about the mindset we must attain in order to be a
+successful programmer.  I remember when me and my friends first started
+coding in C in the first semester in our university. We were all afraid
+and terribly overwhelmed. Later, some of us excelled at writing codes,
+and others began to hate coding and freak out on any assignment that
+involved coding. What was the big difference between them? the latter
+thought the former were more skilled problem solving geniuses who ate
+code for breakfast in the morning. But that was assumption was wrong,
+horribly wrong. The only difference between them and the former group was
+the programming mindset. Mindset that have produced brilliant programmers
+in the world (Bill Gates, Mark Zuckerberg, Jeff Bezos to name a few).So
+what is this mindset about? Lets dig in!
+
+1) Make a mental solution of the problem in your mind first
+
+It looks like this: you are given a program,now where do you start? Most
+people will fold their sleeves and jump right in the code; and when they
+get stuck they freak out about how they want to end their life and how
+much clueless and helpless they are about what the heck went wrong in
+their code (or logic). While some pro programmers want to first draw
+a mental picture of how they are going to solve it, break it down into
+digestive pieces and then start to code.When they get stuck, they exactly
+know where their code/logic went wrong because they have been testing
+the snippets alongside one step at a time.
+
+2) Learn to get in the game and don’t stop until you get the job done
+
+The most challenging aspects of learning to code is acknowledging that it
+is going to be a little challenging at first. You will have to require a
+lot of patience especially in the beginning. There are literally times
+when a totally confusing error comes in the debugger only to know that
+all you were missing was a semi colon or something non significant and
+its really frustrating at times. What you can do is check and test your
+code line by line to figure out the bug. Sometimes I like to comment
+part of my code and run it and when the part runs perfectly then I start
+decommenting and running the lines one by one and to root out the bug.
+
+3) Learn to deal with the bug frustration
+
+There are going to be times when the code wont work no matter how long
+you try and what you do. Know that even the most senior developers also
+have this frustration from time to time and is perfectly normal. What
+you can do in this time change your posture or surrounding or simply
+gulp down some water and get some fresh air. Or you can take a break
+and relax or do some other thing on your to-do. You may get the light
+bulb a some time later or the next time you sit down after your break.
+
+4)Reach out for help
+
+Sometimes reaching out for help can save you tons of time,headaches and
+heartbreaks. This is the mistake I made when I was starting out, mostly
+because I was shy and was ashamed of asking for help. Please don’t do
+that! Start by googling the error script. If you cant find a suitable
+solution, ask for help in a reputable forum (I recommend StackOverflow).
+If you know any friend who codes too, ask them for help.  You can also
+join various facebook groups where you can ask for help.  And remember,
+there is no shame in asking for help. We all get stuck at something and
+its best to reach out whenever you can.
+
+5) Be adaptive and willing to learn
+
+Just get it, tech changes a lot. A lot of new language, framework etc
+come into scene from time to time (but the basic concepts and theories
+almost remains the same). Be willing to learn a new language, framework
+etc when the time comes because in programming, being adaptive is one
+of the most key skill that cant help you prevail in programming.
+
+With this said, remember to keep the big picture in mind, be creative,
+and enjoy the ride! and know that you wont break anything (but can be
+required to resolve a few bugs 😛 )
+
+--------------------------------------------------------------------
+You are only stupid if you refuse to learn.
+
+Logic is the study of cause and effect. Given these inputs, and that
+process (cause), what will the output (effect) be?
+
+Whether it is math, psychology, sociology, computer programming,
+chemistry, or electrical wiring, logic is still a relationship between
+inputs, processes, and output.
+
+One way to improve logic skills is to build things. When you build
+something, you are taking raw materials (input) and doing a process
+(cause) to create a product (effect). But don't learn just one way to
+do it; test different processes. Observe how the different processes
+affect the production and the final product.
+
+Use your memory to advantage when studying logic. Observe everything,
+everywhere, every day. Observe how different processes affect things. The
+more you've observed effect, the easier it becomes to predict the
+effect, and the easier it becomes to determine the best process (cause)
+to achieve the desired effect.
+
+--------------------------------------------------------------------
+Conclusion
+
+As a developer, there is too much out there to master everything. Don’t
+even try. Learn how you work best as a developer, build a toolset that
+fits you, and don’t try to have all the answers. Focus on learning
+how to find the answers quickly.
+
+Whether you’re just getting started with coding or your fingers are
+already well worn by your favorite mechanical keyboard, I hope this post
+has been useful for you.
+
+Remember: No one expects you to know everything. Have fun, and never
+stop learning.
