@@ -40,7 +40,8 @@ Plug 'tpope/vim-rails', {'for': ['ruby']}
 Plug 'vim-ruby/vim-ruby', {'for': ['ruby']}
 Plug 'othree/html5.vim', {'for': ['html', 'php']}
 Plug 'gregsexton/matchtag', {'for': ['html', 'php']}
-Plug 'docunext/closetag.vim', {'for': ['html', 'php']}
+Plug 'docunext/closetag.vim', {'for': ['html']}
+Plug 'stanangeloff/php.vim', {'for': ['php']}
 Plug 'captbaritone/better-indent-support-for-php-with-html', {'for': ['php']}
 Plug 'fatih/vim-go', {'for': ['go']}
 call plug#end()
