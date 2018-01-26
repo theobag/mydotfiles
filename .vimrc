@@ -13,37 +13,36 @@ Plug 'scrooloose/syntastic'
 Plug 'raimondi/delimitmate'                           	" jump c-g g or just repeat the action
 Plug 'ervandew/supertab'	                            	" c-v + tab for real tab
 Plug 'rking/ag.vim'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-Plug 'junegunn/goyo.vim'
-Plug 'junegunn/limelight.vim'
 Plug 'rhysd/clever-f.vim'																" use f or F repeat last command
 Plug 'henrik/vim-indexed-search'
 Plug 'darfink/starsearch.vim'                         	" dont jump next on star search
 Plug 'terryma/vim-smooth-scroll'
 Plug 'matze/vim-move'
+Plug 'ap/vim-css-color'
+Plug 'gregsexton/matchtag'
 Plug 'vim-scripts/ReplaceWithRegister'									" gr and motion
 Plug 'vim-scripts/argtextobj.vim'												" argument text object eg. dia, cia, via, daa ..
+Plug 'vim-scripts/loremipsum'
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-entire'                        	" motion plus ae or ie to select entire
 Plug 'kana/vim-textobj-function'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
 Plug 'tpope/vim-eunuch'                               	" bash commands
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'															" gc + motion or line with gcc
 Plug 'tpope/vim-unimpaired'                           	" pair maps and stuff
-Plug 'vim-scripts/loremipsum'
-Plug 'ap/vim-css-color'
-Plug 'ivalkeen/vim-simpledb', {'for': ['sql']}
+Plug 'tpope/vim-ragtag'																	" :h ragtag
 Plug 'tpope/vim-endwise', {'for': ['ruby']}
-Plug 'tpope/vim-rails', {'for': ['ruby']}
 Plug 'vim-ruby/vim-ruby', {'for': ['ruby']}
-Plug 'othree/html5.vim', {'for': ['html', 'php']}
-Plug 'gregsexton/matchtag', {'for': ['html', 'php']}
-Plug 'docunext/closetag.vim', {'for': ['html']}
-Plug 'stanangeloff/php.vim', {'for': ['php']}
-Plug 'captbaritone/better-indent-support-for-php-with-html', {'for': ['php']}
+Plug 'ivalkeen/vim-simpledb', {'for': ['sql']}
 Plug 'fatih/vim-go', {'for': ['go']}
+Plug 'stanangeloff/php.vim', {'for': ['php']}
+Plug 'othree/html5.vim', {'for': ['html', 'php']}
+Plug 'captbaritone/better-indent-support-for-php-with-html', {'for': ['php']}
 call plug#end()
 " ----------------------------------------------------------------------------------------
 " GENERAL
@@ -134,7 +133,7 @@ highlight DiffDelete cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Re
 highlight DiffChange cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
 highlight DiffText   cterm=bold ctermfg=10 ctermbg=88 gui=none guifg=bg guibg=Red
 let g:airline_theme ='hybrid'
-let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 0
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ''
 let g:airline#extensions#tabline#left_alt_sep = ''
