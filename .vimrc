@@ -150,8 +150,6 @@ let g:airline_section_c = '%<%F%m %#__accent_red#%{airline#util#wrap(airline#par
 " ----------------------------------------------------------------------------------------
 " vim move : use c-k and c-j to move current line/selection to up and down
 let g:move_key_modifier = 'C'
-" delimitmate
-let delimitMate_expand_space = 1
 " goyo toggle
 nnoremap <silent> <Leader>G :Goyo<CR>
 " netrw
@@ -160,6 +158,9 @@ let g:netrw_banner = 0
 " ag disbale message
 let g:ag_mapping_message = 0
 nnoremap <Leader>A :Ag!<space>
+" delimitmate and map for jump one step
+let delimitMate_expand_space = 1
+imap <C-f> <Plug>delimitMateS-Tab
 " tagbar
 let g:tagbar_sort = 0                                   " order tags based on file order; don't sort alphabetically
 nnoremap <silent> <F8> :TagbarToggle<CR>
@@ -335,7 +336,7 @@ inoremap <expr> <C-k> ((pumvisible())?("\<C-p>"):("\<C-x><c-p>"))
 " stop autocomment on nextline
 nnoremap <expr> O getline('.') =~ '^\s*//' ? 'O<esc>S' : 'O'
 nnoremap <expr> o getline('.') =~ '^\s*//' ? 'o<esc>S' : 'o'
-" clipboard
+" clipboard & leader stuff
 nnoremap gy "+y
 nnoremap gY "+y$
 vnoremap gy "+y
@@ -348,7 +349,6 @@ nnoremap gp "+p
 nnoremap gP "+P
 vnoremap gp "+p
 vnoremap gP "+p
-" leader stuff
 nnoremap <silent> <Leader>w :w!<CR>
 nnoremap <silent> <Leader>W :wa!<CR>
 nnoremap <silent> <Leader>x :x!<CR>
