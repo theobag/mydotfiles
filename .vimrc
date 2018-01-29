@@ -1,6 +1,8 @@
 set nocompatible              " be improved, required
 filetype off                  " required
+
 let mapleader = "\<Space>"
+
 call plug#begin('~/.vim/plugged')
 Plug 'sjl/badwolf'
 Plug 'mhinz/vim-startify'
@@ -12,7 +14,6 @@ Plug 'rip-rip/clang_complete', {'for': ['c', 'cpp']}  	" sudo apt install clang
 Plug 'scrooloose/syntastic'
 Plug 'raimondi/delimitmate'                           	" jump c-g g or just repeat the action
 Plug 'ervandew/supertab'	                            	" c-v + tab for real tab
-Plug 'rking/ag.vim'
 Plug 'rhysd/clever-f.vim'																" use f or F repeat last command
 Plug 'henrik/vim-indexed-search'
 Plug 'darfink/starsearch.vim'                         	" dont jump next on star search
@@ -155,9 +156,6 @@ nnoremap <silent> <Leader>G :Goyo<CR>
 " netrw
 let g:netrw_liststyle = 2
 let g:netrw_banner = 0
-" ag disbale message
-let g:ag_mapping_message = 0
-nnoremap <Leader>A :Ag!<space>
 " delimitmate and map for jump one step
 let delimitMate_expand_space = 1
 imap <C-f> <Plug>delimitMateS-Tab
@@ -217,15 +215,22 @@ let g:fzf_colors =
 			\ 'marker':  ['fg', 'Keyword'],
 			\ 'spinner': ['fg', 'Label'],
 			\ 'header':  ['fg', 'Comment'] }
+command! -bang -nargs=* Ag
+			\ call fzf#vim#ag(<q-args>,
+			\                 <bang>0 ? fzf#vim#with_preview('up:60%')
+			\                         : fzf#vim#with_preview('right:50%:hidden', '?'),
+			\                 <bang>0)
+" :Files command with with preview
+command! -bang -nargs=? -complete=dir Files
+			\ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 nnoremap <silent> <Leader>F :FZF<CR>
 nnoremap <silent> <Leader>N :FZF! ~<CR>
 nnoremap <silent> <Leader>B :Buffers<CR>
 nnoremap <silent> <Leader>H :History:<CR>
 nnoremap <silent> <Leader>M :History<CR>
 nnoremap <silent> <Leader>/ :History/<CR>
-" :Files command with with preview
-command! -bang -nargs=? -complete=dir Files
-			\ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+nnoremap <silent> <Leader>A :Ag<CR>
+nnoremap <silent> <Leader>: :Files<CR>
 " ----------------------------------------------------------------------------------------
 " AUTOCMD & FUNCTIONS
 " ----------------------------------------------------------------------------------------
