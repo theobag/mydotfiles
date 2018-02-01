@@ -2,7 +2,6 @@ set nocompatible              " be improved, required
 filetype off                  " required
 
 let mapleader = "\<Space>"
-
 call plug#begin('~/.vim/plugged')
 Plug 'sjl/badwolf'
 Plug 'mhinz/vim-startify'
@@ -26,7 +25,7 @@ Plug 'vim-scripts/argtextobj.vim'												" argument text object eg. dia, cia
 Plug 'vim-scripts/loremipsum'
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-entire'                        	" motion plus ae or ie to select entire
-Plug 'kana/vim-textobj-function'
+Plug 'kana/vim-textobj-function', {'for': ['c']}
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
@@ -39,11 +38,12 @@ Plug 'tpope/vim-unimpaired'                           	" pair maps and stuff
 Plug 'tpope/vim-ragtag'																	" :h ragtag
 Plug 'tpope/vim-endwise', {'for': ['ruby']}
 Plug 'vim-ruby/vim-ruby', {'for': ['ruby']}
+Plug 'nelstrom/vim-textobj-rubyblock', {'for': ['ruby']}
 Plug 'ivalkeen/vim-simpledb', {'for': ['sql']}
 Plug 'fatih/vim-go', {'for': ['go']}
 Plug 'stanangeloff/php.vim', {'for': ['php']}
 Plug 'othree/html5.vim', {'for': ['html', 'php']}
-Plug 'captbaritone/better-indent-support-for-php-with-html', {'for': ['php']}
+" Plug 'captbaritone/better-indent-support-for-php-with-html', {'for': ['php']}
 call plug#end()
 " ----------------------------------------------------------------------------------------
 " GENERAL
