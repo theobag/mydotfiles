@@ -158,7 +158,7 @@ let g:netrw_liststyle = 2
 let g:netrw_banner = 0
 " delimitmate and map for jump one step
 let delimitMate_expand_space = 1
-imap <C-f> <Plug>delimitMateS-Tab
+imap <C-l> <Plug>delimitMateS-Tab
 " tagbar
 let g:tagbar_sort = 0                                   " order tags based on file order; don't sort alphabetically
 nnoremap <silent> <F8> :TagbarToggle<CR>
