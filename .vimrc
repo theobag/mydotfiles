@@ -1,6 +1,5 @@
 set nocompatible              " be improved, required
 filetype off                  " required
-
 let mapleader = "\<Space>"
 call plug#begin('~/.vim/plugged')
 Plug 'sjl/badwolf'
@@ -42,8 +41,7 @@ Plug 'nelstrom/vim-textobj-rubyblock', {'for': ['ruby']}
 Plug 'ivalkeen/vim-simpledb', {'for': ['sql']}
 Plug 'fatih/vim-go', {'for': ['go']}
 Plug 'stanangeloff/php.vim', {'for': ['php']}
-Plug 'othree/html5.vim', {'for': ['html', 'php']}
-" Plug 'captbaritone/better-indent-support-for-php-with-html', {'for': ['php']}
+Plug 'othree/html5.vim', {'for': ['html']}
 call plug#end()
 " ----------------------------------------------------------------------------------------
 " GENERAL
@@ -324,17 +322,19 @@ nnoremap n nzz
 nnoremap N Nzz
 nnoremap } }zz
 nnoremap { {zz
-" moving around in command mode, ctrl+b & ctrl+e move beginning and end
-cnoremap <C-l> <right>
-cnoremap <C-h> <left>
-cnoremap <C-k> <S-Right>
-cnoremap <C-j> <S-Left>
 " use C-Space to Esc out of any mode but terminal sees <C-@> as <C-space> WTF, but ok
 inoremap <C-@> <Esc>`^
 vnoremap <C-@> <Esc>gV
 onoremap <C-@> <Esc>
 cnoremap <C-@> <C-c>
 nnoremap <C-@> <Esc>:noh<CR>
+" moving around in insert mode and command mode
+inoremap <C-b> <esc>I
+inoremap <C-e> <esc>A
+cnoremap <C-l> <right>
+cnoremap <C-h> <left>
+cnoremap <C-k> <S-Right>
+cnoremap <C-j> <S-Left>
 " use j/k to start, then scroll through autocomplete options
 inoremap <expr> <C-j> ((pumvisible())?("\<C-n>"):("\<C-x><c-n>"))
 inoremap <expr> <C-k> ((pumvisible())?("\<C-p>"):("\<C-x><c-p>"))
